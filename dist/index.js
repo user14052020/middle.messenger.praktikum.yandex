@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"ShInH":[function(require,module,exports) {
+})({"kFYzK":[function(require,module,exports) {
 "use strict";
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "890e741a975ef6c8";
+module.bundle.HMR_BUNDLE_ID = "66e35d65a3563aca";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
@@ -531,49 +531,109 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"8lqZg":[function(require,module,exports) {
-// import templateFunction from './template.hbs';
-// import template from './template.hbs';
-// document.body.innerHTML = templateFunction();
-// src/index.js
-// import './pages/home/modules/login/style.css'; 
-// import {sum} from './modules/sum';
-// const root = document.querySelector('#root');
-// root.textContent = sum(80, -1).toString();
-const Handlebars = require("handlebars");
-const inputs = {
-    "forms": [
-        {
-            "formName": "Логин",
-            "inputs": [
-                {
-                    "inputDesctription": "Логин",
-                    "inputName": "login"
+},{}],"61tJn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebars = require("handlebars");
+var _handlebarsDefault = parcelHelpers.interopDefault(_handlebars);
+const templateFunction = (0, _handlebarsDefault.default).template({
+    "1": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '           <input type="text" name="' + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "name",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 10,
+                    "column": 36
                 },
-                {
-                    "inputDesctription": "Пароль",
-                    "inputName": "password"
-                }, 
-            ]
-        }
-    ]
-};
-// var template = document.getElementById('template').innerHTML;
-const template = `
-		{{#each forms}}
-			<h1>{{formName}}</h1>
-    		{{#each inputs}}
-       			<input type="text" name="{{inputName}}">
-          		<label>{{inputName}}</label>
-          	{{/each}} 
-        {{/each}}     
-`;
-// //Compile the template
-var compiled_template = Handlebars.compile(template)(inputs);
-// //Overwrite the contents of #target with the renderer HTML
-document.getElementById("target").innerHTML = compiled_template;
+                "end": {
+                    "line": 10,
+                    "column": 44
+                }
+            }
+        }) : helper)) + '">\n              <label>' + alias4((helper = (helper = lookupProperty(helpers, "desctription") || (depth0 != null ? lookupProperty(depth0, "desctription") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "desctription",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 11,
+                    "column": 21
+                },
+                "end": {
+                    "line": 11,
+                    "column": 37
+                }
+            }
+        }) : helper)) + "</label>\n";
+    },
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '<html>\n    <head>\n        <script src="src/index.js" type="module"></script>\n    </head>\n    <body>\n        <div id="target"></div>\n        <script id="template" type="text/template" >       \n        <h1>test</h1>\n' + ((stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "inputs") : depth0, {
+            "name": "each",
+            "hash": {},
+            "fn": container.program(1, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 9,
+                    "column": 11
+                },
+                "end": {
+                    "line": 12,
+                    "column": 19
+                }
+            }
+        })) != null ? stack1 : "") + "  </script>\n    </body>\n</html>";
+    },
+    "useData": true
+});
+exports.default = templateFunction;
 
-},{"handlebars":"i0QfX"}],"i0QfX":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","handlebars":"i0QfX"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"i0QfX":[function(require,module,exports) {
 // USAGE:
 // var handlebars = require('handlebars');
 /* eslint-disable no-var */ // var local = handlebars.create();
@@ -11891,6 +11951,6 @@ PrintVisitor.prototype.HashPair = function(pair) {
 },{"./visitor":"fk5sS"}],"jhUEF":[function(require,module,exports) {
 "use strict";
 
-},{}]},["ShInH","8lqZg"], "8lqZg", "parcelRequirefc40")
+},{}]},["kFYzK","61tJn"], "61tJn", "parcelRequirefc40")
 
-//# sourceMappingURL=index.975ef6c8.js.map
+//# sourceMappingURL=index.js.map

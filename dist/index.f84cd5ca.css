@@ -1,0 +1,13 @@
+@supports (display: flex) {
+  div {
+    display: flex;
+  }
+}
+
+@supports not (display: flex) {
+  div {
+    float: left;
+  }
+}
+
+/*# sourceMappingURL=index.f84cd5ca.css.map */

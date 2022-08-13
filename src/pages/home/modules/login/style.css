@@ -1,0 +1,7 @@
+@supports (display: flex) {
+    div { display: flex; }
+}
+ 
+@supports not (display: flex) {
+    div { float: left; } /* задан альтернативный стиль */
+} 
