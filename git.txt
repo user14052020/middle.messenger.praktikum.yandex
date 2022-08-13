@@ -15,4 +15,4 @@ git push -u origin sprint_1
 $ git branch iss53
 $ git checkout iss53
 
-удаление лишних папок из гит https://tyapk.ru/blog/post/gitignore
+удаление лишних папок из гит git rm --cached <file> https://tyapk.ru/blog/post/gitignore
