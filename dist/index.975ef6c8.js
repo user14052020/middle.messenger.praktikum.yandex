@@ -535,7 +535,7 @@ function hmrAcceptRun(bundle, id) {
 // src/index.js
 var _sum = require("./modules/sum");
 const root = document.querySelector("#root");
-root.textContent = (0, _sum.sum)(6, -1).toString();
+root.textContent = (0, _sum.sum)(80, -1).toString();
 
 },{"./modules/sum":"88j4g"}],"88j4g":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
