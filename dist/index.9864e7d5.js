@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"bUsGZ":[function(require,module,exports) {
+})({"gRc4c":[function(require,module,exports) {
 "use strict";
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "df5216f4ec94d95e";
+module.bundle.HMR_BUNDLE_ID = "a4a77c279864e7d5";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
@@ -531,7 +531,53 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"3g39l":[function(require,module,exports) {
+},{}],"8zxwW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _atorizationHbs = require("./atorization.hbs");
+var _atorizationHbsDefault = parcelHelpers.interopDefault(_atorizationHbs);
+window.addEventListener("DOMContentLoaded", ()=>{
+    const root = document.querySelector("#root");
+    root.innerHTML = (0, _atorizationHbsDefault.default)();
+}); // import templateFunction from './template.hbs';
+ // import template from './template.hbs';
+ // document.body.innerHTML = templateFunction();
+ // src/index.js
+ // import './atorization.css'; 
+ // import {sum} from './modules/sum';
+ // const root = document.querySelector('#root');
+ // root.textContent = sum(80, -1).toString();
+ // const Handlebars = require("handlebars");
+ // const inputs = { 
+ // 				"forms":[{
+ // 						"formName":"Логин",		
+ // 						"inputs":[
+ // 							        {
+ // 							            "inputDesctription": "Логин",
+ // 							            "inputName": "login"
+ // 							        }, 
+ // 							        {
+ // 							            "inputDesctription": "Пароль",
+ // 							            "inputName": "password"
+ // 							        }, 
+ // 							    ]
+ // 						}]				    
+ // 			};
+ // var template = document.getElementById('template').innerHTML;
+ // const template = `
+ // 		{{#each forms}}
+ // 			<h1>{{formName}}</h1>
+ //     		{{#each inputs}}
+ //        			<input type="text" name="{{inputName}}">
+ //           		<label>{{inputName}}</label>
+ //           	{{/each}} 
+ //         {{/each}}     
+ // `;
+ // // //Compile the template
+ // var compiled_template = Handlebars.compile(template)(inputs);
+ // // //Overwrite the contents of #target with the renderer HTML
+ // document.getElementById('target').innerHTML = compiled_template;
+
+},{"./atorization.hbs":"6vXna","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6vXna":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
@@ -542,7 +588,7 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
         ">= 4.3.0"
     ],
     "main": function(container, depth0, helpers, partials, data) {
-        return "test";
+        return '<!doctype html>\r\n<html lang="en-US">\r\n<head>\r\n<meta charset="utf-8">\r\n<meta http-equiv="X-UA-Compatible" content="IE=edge">\r\n<meta name="viewport" content="width=device-width, initial-scale=1">\r\n<title>Выбрать чат</title>\r\n<link href="atorization.css" rel="stylesheet" type="text/css">\r\n	\r\n<link rel="preconnect" href="https://fonts.googleapis.com">\r\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\r\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">\r\n	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">\r\n</head>\r\n<body>\r\n<!-- Main Container -->\r\n<div class="main"> \r\n  <!-- Navigation -->\r\n  <header>\r\n  </header>\r\n	\r\n	\r\n<form>\r\n  <h3>Вход</h3>\r\n\r\n<div class="inp-holder"> \r\n	\r\n	\r\n  <input  type="text" placeholder="Логин" id="username" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n<span class="warn" style="opacity: 0; height: 0;">Неверный логин</span>	\r\n<label for="username">Логин</label>\r\n</div> \r\n<div class="inp-holder">\r\n	\r\n  <input  type="password" placeholder="Пароль" id="password" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n<label for="password">Пароль</label>\r\n	<span class="warn" style="opacity: 0; height: 0;">Неверный пароль</span>\r\n</div>\r\n	\r\n  <button>Авторизоваться</button>\r\n  <div class="form-bottom">\r\n    <a href="#" class="no-akkaunt">Нет аккаунта?</a>\r\n  </div>\r\n</form>	\r\n\r\n\r\n</div>\r\n<!-- Main Container Ends -->\r\n</body>\r\n</html>\r\n';
     },
     "useData": true
 });
@@ -1793,6 +1839,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["bUsGZ","3g39l"], "3g39l", "parcelRequirefc40")
+},{}]},["gRc4c","8zxwW"], "8zxwW", "parcelRequire40a5")
 
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.9864e7d5.js.map
