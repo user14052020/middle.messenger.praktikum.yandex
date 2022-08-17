@@ -544,18 +544,10 @@ var _chatsHbs = require("./views/layouts/chats.hbs");
 var _chatsHbsDefault = parcelHelpers.interopDefault(_chatsHbs);
 var _profileHbs = require("./views/layouts/profile.hbs");
 var _profileHbsDefault = parcelHelpers.interopDefault(_profileHbs);
-var _profileChangeDataHbs = require("./views/layouts/profile-change-data.hbs");
-var _profileChangeDataHbsDefault = parcelHelpers.interopDefault(_profileChangeDataHbs);
-var _profileChangePassHbs = require("./views/layouts/profile-change-pass.hbs");
-var _profileChangePassHbsDefault = parcelHelpers.interopDefault(_profileChangePassHbs);
-var _profileNewAvaModalChooseFileHbs = require("./views/layouts/profile-new-ava-modal-choose-file.hbs");
-var _profileNewAvaModalChooseFileHbsDefault = parcelHelpers.interopDefault(_profileNewAvaModalChooseFileHbs);
-var _atorizationRegistrationCss = require("./views/layouts/atorization_registration.css");
-var _errorCss = require("./views/layouts/error.css");
+var _profileChangeInfoHbs = require("./views/layouts/profile-change-info.hbs");
+var _profileChangeInfoHbsDefault = parcelHelpers.interopDefault(_profileChangeInfoHbs);
 var _chatsCss = require("./views/layouts/chats.css");
 var _profileCss = require("./views/layouts/profile.css");
-var _profileChangeDataCss = require("./views/layouts/profile-change-data.css");
-var _profileNewAvaModalChooseFileCss = require("./views/layouts/profile-new-ava-modal-choose-file.css");
 var _fileImgJpg = require("./views/images/file-img.jpg");
 var _fileImgJpgDefault = parcelHelpers.interopDefault(_fileImgJpg);
 var _toRightAngleSvg = require("./views/images/to-right-angle.svg");
@@ -595,12 +587,22 @@ window.addEventListener("DOMContentLoaded", ()=>{
         to_right_angle_svg: (0, _toRightAngleSvgDefault.default)
     });
     else if (window.location.pathname === "/profile") body.innerHTML = (0, _profileHbsDefault.default)();
-    else if (window.location.pathname === "/profile-change-data") body.innerHTML = (0, _profileChangeDataHbsDefault.default)();
-    else if (window.location.pathname === "/profile-change-pass") body.innerHTML = (0, _profileChangePassHbsDefault.default)();
-    else if (window.location.pathname === "/profile-new-ava-modal-choose-file") body.innerHTML = (0, _profileNewAvaModalChooseFileHbsDefault.default)();
+    else if (window.location.pathname === "/profile-change-data") body.innerHTML = (0, _profileChangeInfoHbsDefault.default)();
+    else if (window.location.pathname === "/profile-change-pass") body.innerHTML = (0, _profileChangeInfoHbsDefault.default)({
+        change_pass: true
+    });
+    else if (window.location.pathname === "/profile-new-ava-modal-choose-file") body.innerHTML = (0, _profileHbsDefault.default)({
+        change_ava: true
+    });
+    else body.innerHTML = (0, _atorizationRegistrationHbsDefault.default)({
+        title: "Вход",
+        reg_auth_button_title: "Авторизоваться",
+        reg_auth_link_title: "Нет аккаунта?",
+        reg_auth_link: "registration"
+    });
 });
 
-},{"./views/layouts/layout.hbs":"3nU9z","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/partials/":"2fPOx","./views/layouts/atorization_registration.hbs":"c6EAB","./views/layouts/error.hbs":"2RRt6","./views/layouts/chats.hbs":"isot7","./views/images/file-img.jpg":"aHAdS","./views/images/to-right-angle.svg":"8Xa51","./views/images/lupa.svg":"5J09N","./views/layouts/profile.hbs":"6gUru","./views/layouts/profile.css":"l9W8a","./views/layouts/profile-change-data.hbs":"4qnZM","./views/layouts/profile-change-data.css":"jKGK3","./views/layouts/profile-change-pass.hbs":"dARhc","./views/layouts/atorization_registration.css":"9HOCC","./views/layouts/error.css":"dXCap","./views/layouts/chats.css":"2qg8i","./views/layouts/profile-new-ava-modal-choose-file.hbs":"b0MRx","./views/layouts/profile-new-ava-modal-choose-file.css":"aIpaY"}],"3nU9z":[function(require,module,exports) {
+},{"./views/layouts/layout.hbs":"3nU9z","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/partials/":"2fPOx","./views/layouts/error.hbs":"2RRt6","./views/layouts/chats.hbs":"isot7","./views/images/file-img.jpg":"aHAdS","./views/images/to-right-angle.svg":"8Xa51","./views/images/lupa.svg":"5J09N","./views/layouts/profile.hbs":"6gUru","./views/layouts/profile-change-info.hbs":"dg6Pb","./views/layouts/atorization_registration.hbs":"c6EAB","./views/layouts/profile.css":"l9W8a","./views/layouts/chats.css":"2qg8i"}],"3nU9z":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
@@ -1879,12 +1881,27 @@ var _menuHbs = require("./menu.hbs");
 var _menuHbsDefault = parcelHelpers.interopDefault(_menuHbs);
 var _atorizationRegistrationInputHbs = require("./atorization_registration_input.hbs");
 var _atorizationRegistrationInputHbsDefault = parcelHelpers.interopDefault(_atorizationRegistrationInputHbs);
+var _profileRowHbs = require("./profile_row.hbs");
+var _profileRowHbsDefault = parcelHelpers.interopDefault(_profileRowHbs);
+var _profileChangeRowHbs = require("./profile_change_row.hbs");
+var _profileChangeRowHbsDefault = parcelHelpers.interopDefault(_profileChangeRowHbs);
+var _profileChangeLinkHbs = require("./profile_change_link.hbs");
+var _profileChangeLinkHbsDefault = parcelHelpers.interopDefault(_profileChangeLinkHbs);
+var _profileAvaHbs = require("./profile_ava.hbs");
+var _profileAvaHbsDefault = parcelHelpers.interopDefault(_profileAvaHbs);
+var _profileSidebarHbs = require("./profile_sidebar.hbs");
+var _profileSidebarHbsDefault = parcelHelpers.interopDefault(_profileSidebarHbs);
 var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
 var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
 (0, _handlebarsRuntimeDefault.default).registerPartial("menu", (0, _menuHbsDefault.default));
 (0, _handlebarsRuntimeDefault.default).registerPartial("atorization_registration_input", (0, _atorizationRegistrationInputHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerPartial("profile_row", (0, _profileRowHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerPartial("profile_change_row", (0, _profileChangeRowHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerPartial("profile_change_link", (0, _profileChangeLinkHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerPartial("profile_ava", (0, _profileAvaHbsDefault.default));
+(0, _handlebarsRuntimeDefault.default).registerPartial("profile_sidebar", (0, _profileSidebarHbsDefault.default));
 
-},{"./menu.hbs":"kLJj0","handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./atorization_registration_input.hbs":"cGqvE"}],"kLJj0":[function(require,module,exports) {
+},{"./menu.hbs":"kLJj0","handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./atorization_registration_input.hbs":"cGqvE","./profile_row.hbs":"59Am1","./profile_change_link.hbs":"4mVVF","./profile_ava.hbs":"bmBjJ","./profile_sidebar.hbs":"d1s5f","./profile_change_row.hbs":"34Sch"}],"kLJj0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
@@ -1988,6 +2005,716 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             }
         }) : helper)) + "</label>\n</div> ";
     },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"59Am1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '	<div class="prof-table-row">\n		<div class="prof-table-col prof-table-col-left">\n			<p>' + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "description",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 6
+                },
+                "end": {
+                    "line": 3,
+                    "column": 21
+                }
+            }
+        }) : helper)) + '</p>\n		</div>\n		<div class="prof-table-col prof-table-col-right">\n			<p>' + alias4((helper = (helper = lookupProperty(helpers, "value") || (depth0 != null ? lookupProperty(depth0, "value") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "value",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 6,
+                    "column": 6
+                },
+                "end": {
+                    "line": 6,
+                    "column": 15
+                }
+            }
+        }) : helper)) + "</p>\n		</div>\n	</div>";
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4mVVF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '	<div class="prof-table-row">\n		<div class="prof-table-col prof-table-col-left">\n			<p><a href="' + alias4((helper = (helper = lookupProperty(helpers, "link") || (depth0 != null ? lookupProperty(depth0, "link") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "link",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 15
+                },
+                "end": {
+                    "line": 3,
+                    "column": 23
+                }
+            }
+        }) : helper)) + '">' + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "description",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 25
+                },
+                "end": {
+                    "line": 3,
+                    "column": 40
+                }
+            }
+        }) : helper)) + "</a></p>\n		</div>\n	</div>";
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bmBjJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        return '				<div class="profil-ava" onclick="location.href=\'profile-new-ava-modal-choose-file\';">\n					<span class="no-ava">\n						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">\n						<path fill-rule="evenodd" clip-rule="evenodd" d="M36 2H4C2.89543 2 2 2.89543 2 4V25.2667L14.6547 22.3139C15.5486 22.1053 16.4635 22 17.3814 22H22.6186C23.5365 22 24.4514 22.1053 25.3453 22.3139L38 25.2667V4C38 2.89543 37.1046 2 36 2ZM4 0C1.79086 0 0 1.79086 0 4V36C0 38.2091 1.79086 40 4 40H36C38.2091 40 40 38.2091 40 36V4C40 1.79086 38.2091 0 36 0H4ZM10.9091 14.5455C12.9174 14.5455 14.5455 12.9174 14.5455 10.9091C14.5455 8.90079 12.9174 7.27273 10.9091 7.27273C8.90082 7.27273 7.27276 8.90079 7.27276 10.9091C7.27276 12.9174 8.90082 14.5455 10.9091 14.5455Z" fill="#CDCDCD"/>\n						</svg>\n					</span>\n				</div>';
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d1s5f":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        return '		<div class="profile-sidebar">\n			<button class="left-arrow-button">\n				<span class="left-arrow-button">\n					<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">\n					<circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>\n					<rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>\n					<path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>\n					</svg>\n				</span>\n			</button>\n		</div>';
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"34Sch":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '					<div class="inp-holder">	\n					  <input  type="' + alias4((helper = (helper = lookupProperty(helpers, "type") || (depth0 != null ? lookupProperty(depth0, "type") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "type",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 21
+                },
+                "end": {
+                    "line": 2,
+                    "column": 29
+                }
+            }
+        }) : helper)) + '" placeholder="' + alias4((helper = (helper = lookupProperty(helpers, "placeholder") || (depth0 != null ? lookupProperty(depth0, "placeholder") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "placeholder",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 44
+                },
+                "end": {
+                    "line": 2,
+                    "column": 59
+                }
+            }
+        }) : helper)) + '" id="' + alias4((helper = (helper = lookupProperty(helpers, "id") || (depth0 != null ? lookupProperty(depth0, "id") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "id",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 2,
+                    "column": 65
+                },
+                "end": {
+                    "line": 2,
+                    "column": 71
+                }
+            }
+        }) : helper)) + '" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\n					<label for="password">' + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "description",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 3,
+                    "column": 27
+                },
+                "end": {
+                    "line": 3,
+                    "column": 42
+                }
+            }
+        }) : helper)) + '</label>\n						<span class="warn" style="opacity: 0; height: 0;">' + alias4((helper = (helper = lookupProperty(helpers, "_errormessage") || (depth0 != null ? lookupProperty(depth0, "_errormessage") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "_errormessage",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 4,
+                    "column": 56
+                },
+                "end": {
+                    "line": 4,
+                    "column": 73
+                }
+            }
+        }) : helper)) + "</span>\n					</div>	";
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2RRt6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '\r\n<div class="main"> \r\n<section class="error">	\r\n<h3>' + alias4((helper = (helper = lookupProperty(helpers, "error_code") || (depth0 != null ? lookupProperty(depth0, "error_code") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "error_code",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 4,
+                    "column": 4
+                },
+                "end": {
+                    "line": 4,
+                    "column": 18
+                }
+            }
+        }) : helper)) + "</h3>\r\n<h4>" + alias4((helper = (helper = lookupProperty(helpers, "error_message") || (depth0 != null ? lookupProperty(depth0, "error_message") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "error_message",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 5,
+                    "column": 4
+                },
+                "end": {
+                    "line": 5,
+                    "column": 21
+                }
+            }
+        }) : helper)) + '</h4>\r\n<p><a href="chats">Назад к чатам</a></p>\r\n</section>\r\n</div>\r\n';
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"isot7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '<div class="main"> \r\n  <header>\r\n  </header>\r\n  <section class="hero" id="hero">\r\n   <div class="chat">\r\n  <div class="top">\r\n	  <div class="profil"><a href="#">Профиль <img src="' + alias4((helper = (helper = lookupProperty(helpers, "to_right_angle_svg") || (depth0 != null ? lookupProperty(depth0, "to_right_angle_svg") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "to_right_angle_svg",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 7,
+                    "column": 53
+                },
+                "end": {
+                    "line": 7,
+                    "column": 75
+                }
+            }
+        }) : helper)) + '" alt=""/></a></div>\r\n	  <div class="search">\r\n		  <form class="chat-forma">\r\n<input type="text" placeholder="&#xF002; Поиск" style="font-family: \'Inter\', \'Font Awesome 5 Free\'" />\r\n</form>		  \r\n	  </div>\r\n  </div>\r\n  <div class="tumbler">\r\n    <div class="conversations">\r\n      <div class="person">\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>     \r\n        </div>\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message">Изображение</div>\r\n          </div>\r\n        </div>\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n          <div class="point">3</div>\r\n        </div>\r\n      </div>\r\n      <div class="person">\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n        </div>\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Киноклуб</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n        </div>\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">10:49</div>\r\n          </div>\r\n			\r\n          <div class="point">5</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Илья</div>\r\n			<div class="message">Друзья, у меня для вас особенный выпуск новостей!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">12:00</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Вадим</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">15:12</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">тет-а-теты</div>\r\n			<div class="message">И Human Interface Guidelines и Material Design рекомендуют...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пт</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">1, 2, 3</div>\r\n			<div class="message">Миллионы россиян ежедневно проводят десятки часов свое...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Ср</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Design Destroyer</div>\r\n			<div class="message">В 2008 году художник Jon Rafman  начал собирать...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пн</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Day.</div>\r\n			<div class="message">Так увлёкся работой по курсу, что совсем забыл его анонсир...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пн</div>\r\n          </div>\r\n			\r\n         <!-- <div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n		\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div> \r\n    \r\n	   <div class="chat-content">\r\n\r\n        <div class="chat-content-header">\r\n      \r\n          <div class="person">\r\n\r\n              <div class="box">\r\n\r\n                <div class="image">\r\n\r\n                  <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                    <circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"></circle>\r\n                  </svg>\r\n\r\n                </div>\r\n\r\n              </div>\r\n\r\n\r\n              <div class="information">\r\n                <div class="content">\r\n                  <div class="username">Андрей</div>                \r\n                </div>\r\n              </div>\r\n\r\n              <div class="notice">\r\n                <div class="burger-menu">            \r\n                    \r\n                  <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <circle cx="1.5" cy="2" r="1.5" fill="#1E1E1E"/>\r\n                  <circle cx="1.5" cy="8" r="1.5" fill="#1E1E1E"/>\r\n                  <circle cx="1.5" cy="14" r="1.5" fill="#1E1E1E"/>\r\n                  </svg>\r\n\r\n\r\n                </div>               \r\n              </div>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n		    <div class="content-holder">\r\n\r\n          <p class="mess-date">19 июня</p>\r\n\r\n          <div class="message-holder">            \r\n\r\n            <div class="message-in">\r\n\r\n              <div class="message-in-text">\r\n                <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>\r\n\r\n                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>\r\n                <div class="time">11:56</div>\r\n              </div>\r\n\r\n              <div class="message-in-file">\r\n\r\n                <img src="' + alias4((helper = (helper = lookupProperty(helpers, "file_img") || (depth0 != null ? lookupProperty(depth0, "file_img") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "file_img",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 516,
+                    "column": 26
+                },
+                "end": {
+                    "line": 516,
+                    "column": 38
+                }
+            }
+        }) : helper)) + '">\r\n\r\n                <div class="time time-bg">11:56</div>\r\n                \r\n              </div>\r\n\r\n                \r\n\r\n            </div>\r\n\r\n            <div class="message-out">\r\n              <div class="message-out-text">\r\n                <p>Круто!</p>\r\n              \r\n                <div class="time time-check">\r\n                  <span class="mark-polucil">\r\n                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" stroke="#3369F3"/>\r\n                    </svg>\r\n                </span>\r\n                11:56\r\n              </div>\r\n            </div>\r\n            </div>\r\n              \r\n\r\n\r\n          </div>\r\n\r\n\r\n          <p class="mess-date">19 июня</p>\r\n\r\n          <div class="message-holder">            \r\n\r\n            <div class="message-in">\r\n\r\n              <div class="message-in-text">\r\n                <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>\r\n\r\n                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>\r\n                <div class="time">11:56</div>\r\n              </div>\r\n\r\n              <div class="message-in-file">\r\n\r\n                <img src="' + alias4((helper = (helper = lookupProperty(helpers, "file_img") || (depth0 != null ? lookupProperty(depth0, "file_img") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+            "name": "file_img",
+            "hash": {},
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 563,
+                    "column": 26
+                },
+                "end": {
+                    "line": 563,
+                    "column": 38
+                }
+            }
+        }) : helper)) + '">\r\n\r\n                <div class="time time-bg">11:56</div>\r\n                \r\n              </div>\r\n\r\n                \r\n\r\n            </div>\r\n\r\n            <div class="message-out">\r\n              <div class="message-out-text">\r\n                <p>Круто!</p>\r\n              \r\n                <div class="time time-check">\r\n                  <span class="mark-polucil">\r\n                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" stroke="#3369F3"/>\r\n                    </svg>\r\n                </span>\r\n                11:56\r\n              </div>\r\n            </div>\r\n            </div>\r\n              \r\n\r\n\r\n          </div>\r\n\r\n\r\n			\r\n		    </div>\r\n\r\n        <div class="chat-content-footer">\r\n\r\n          <form id="mess_forma">\r\n            <div class="input-holder">        \r\n              <input type="file" id="file-input">\r\n              <label for="file-input">             \r\n                <span class="file">                  \r\n                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.18662 13.5L14.7628 5.92389L15.7056 6.8667L8.12943 14.4428L7.18662 13.5Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70067 16.0141L17.2768 8.43793L18.2196 9.38074L10.6435 16.9569L9.70067 16.0141Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0433 21.3567L22.6195 13.7806L23.5623 14.7234L15.9861 22.2995L15.0433 21.3567Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8708L25.1335 16.2946L26.0763 17.2374L18.5002 24.8136L17.5574 23.8708Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8709C14.9423 26.486 10.7118 26.4954 8.10831 23.8919C5.50482 21.2884 5.51424 17.0579 8.12936 14.4428L7.18655 13.5C4.0484 16.6381 4.0371 21.7148 7.16129 24.839C10.2855 27.9632 15.3621 27.9518 18.5003 24.8137L17.5574 23.8709Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M22.6195 13.7806L23.5623 14.7234C26.003 12.2826 26.0118 8.3341 23.5819 5.90417C21.152 3.47424 17.2035 3.48303 14.7627 5.92381L15.7055 6.86662C17.6233 4.94887 20.7257 4.94196 22.6349 6.85119C24.5441 8.76042 24.5372 11.8628 22.6195 13.7806Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#999999"/>\r\n                  </svg>\r\n                </span>\r\n              </label>\r\n            </div>\r\n            <div class="input-holder">\r\n              <input type="text" id="mess" placeholder="Сообщение">              \r\n            </div>\r\n            <div class="input-holder">        \r\n              <button class="button-send">\r\n                <span class="send">\r\n                  <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <rect y="5.19995" width="11" height="1.6" fill="white"/>\r\n                  <path d="M7 1L11 6L7 11" stroke="white" stroke-width="1.6"/>\r\n                  </svg>\r\n                </span>\r\n              </button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n	  </div>  \r\n  </section>\r\n</div>\r\n';
+    },
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aHAdS":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "file-img.fd72d921.jpg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"8Xa51":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "to-right-angle.de92ae6a.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"5J09N":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "lupa.bbf62c8a.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"6gUru":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "1": function(container, depth0, helpers, partials, data) {
+        return '<div class="modal-overley">\r\n	<form class="modal">\r\n		<h3>Загрузите файл</h3>\r\n		<div class="inp-holder">   \r\n			<input type="file" placeholder="Выбрать файл на компьютере" id="file-sel">\r\n			<span class="file-sel d-none">Выбрать файл на компьютере</span> \r\n			<label for="file-sel">Выбрать файл на компьютере</label>\r\n		</div>   \r\n		<button>Поменять</button>\r\n	</form> \r\n</div>\r\n';
+    },
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '<div class="main">\r\n	<section class="profile">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_sidebar"), depth0, {
+            "name": "profile_sidebar",
+            "data": data,
+            "indent": "		",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '		<div class="profile-content">\r\n			<form class="profil-forma">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_ava"), depth0, {
+            "name": "profile_ava",
+            "data": data,
+            "indent": "				",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '			  	<h3>Вадим</h3>\r\n				<div class="prof-table d-flex">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "asktask@icloud.ru",
+                "description": "Почта"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "vadimmaharram",
+                "description": "Логин"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "Вадим",
+                "description": "Имя"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "Махаррам",
+                "description": "Фамилия"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "Вадим",
+                "description": "Имя в чате"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_row"), depth0, {
+            "name": "profile_row",
+            "hash": {
+                "value": "+7 (909) 967 30 30",
+                "description": "Телефон"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '				</div>\r\n				<div class="prof-table d-flex data-forma">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_link"), depth0, {
+            "name": "profile_change_link",
+            "hash": {
+                "link": "profile-change-data",
+                "description": "Изменить данные"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_link"), depth0, {
+            "name": "profile_change_link",
+            "hash": {
+                "link": "profile-change-pass",
+                "description": "Изменить пароль"
+            },
+            "data": data,
+            "indent": "					",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '				</div>\r\n				<div class="out-profil"><a href="#">Выйти</a></div>\r\n			</form>	\r\n		</div>\r\n	</section>\r\n</div>\r\n' + ((stack1 = lookupProperty(helpers, "if").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "change_ava") : depth0, {
+            "name": "if",
+            "hash": {},
+            "fn": container.program(1, data, 0),
+            "inverse": container.noop,
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 25,
+                    "column": 0
+                },
+                "end": {
+                    "line": 37,
+                    "column": 7
+                }
+            }
+        })) != null ? stack1 : "");
+    },
+    "usePartial": true,
+    "useData": true
+});
+exports.default = templateFunction;
+
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dg6Pb":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
+var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
+const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
+    "1": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверный пароль",
+                "id": "passwordold",
+                "description": "Старый пароль",
+                "type": "password"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Пароли не совпадают",
+                "id": "passwordnew",
+                "description": "Новый пароль",
+                "type": "password"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Пароли не совпадают",
+                "id": "passwordpovt",
+                "description": "Повторите новый пароль",
+                "type": "password"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "");
+    },
+    "3": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверный адрес почты",
+                "id": "email",
+                "description": "Почта",
+                "placeholder": "pochta@yandex.ru",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверный Логин",
+                "id": "login",
+                "description": "Логин",
+                "placeholder": "vadimmaharram",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверное Имя",
+                "id": "name",
+                "description": "Имя",
+                "placeholder": "Вадим",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверная Фамилия",
+                "id": "familiya",
+                "description": "Фамилия",
+                "placeholder": "Махаррам",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверное Имя",
+                "id": "chatname",
+                "description": "Имя в чате",
+                "placeholder": "Вадим",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_change_row"), depth0, {
+            "name": "profile_change_row",
+            "hash": {
+                "_errormessage": "Неверный телефон",
+                "id": "phone",
+                "description": "Телефон",
+                "placeholder": "+7 (909) 967 30 30",
+                "type": "text"
+            },
+            "data": data,
+            "indent": "						",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "");
+    },
+    "compiler": [
+        8,
+        ">= 4.3.0"
+    ],
+    "main": function(container, depth0, helpers, partials, data) {
+        var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
+            return undefined;
+        };
+        return '<div class="main">\r\n	<section class="profile">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_sidebar"), depth0, {
+            "name": "profile_sidebar",
+            "data": data,
+            "indent": "		",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '		<div class="profile-content">\r\n			<form class="change-profil-forma">\r\n' + ((stack1 = container.invokePartial(lookupProperty(partials, "profile_ava"), depth0, {
+            "name": "profile_ava",
+            "data": data,
+            "indent": "				",
+            "helpers": helpers,
+            "partials": partials,
+            "decorators": container.decorators
+        })) != null ? stack1 : "") + '				<div class="change-profil-forma">\r\n' + ((stack1 = lookupProperty(helpers, "if").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "change_pass") : depth0, {
+            "name": "if",
+            "hash": {},
+            "fn": container.program(1, data, 0),
+            "inverse": container.program(3, data, 0),
+            "data": data,
+            "loc": {
+                "start": {
+                    "line": 8,
+                    "column": 5
+                },
+                "end": {
+                    "line": 19,
+                    "column": 12
+                }
+            }
+        })) != null ? stack1 : "") + '						<div class="forma-footer">		\r\n					  	<button>Сохранить</button>\r\n						</div>\r\n				</div>\r\n			</form>	\r\n		</div>\r\n	</section>\r\n</div>';
+    },
+    "usePartial": true,
     "useData": true
 });
 exports.default = templateFunction;
@@ -2138,7 +2865,7 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return '<div class="main"> \r\n  <header>\r\n  </header>\r\n<form id="auth_reg_form">\r\n  <h3>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+        return '<div class="main"> \r\n  <header>\r\n  </header>\r\n<form class="auth_reg_form" id="auth_reg_form">\r\n  <h3>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
             "name": "title",
             "hash": {},
             "data": data,
@@ -2217,229 +2944,6 @@ const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
 });
 exports.default = templateFunction;
 
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2RRt6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return '\r\n<div class="main"> \r\n<section class="error">	\r\n<h3>' + alias4((helper = (helper = lookupProperty(helpers, "error_code") || (depth0 != null ? lookupProperty(depth0, "error_code") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "error_code",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 4,
-                    "column": 4
-                },
-                "end": {
-                    "line": 4,
-                    "column": 18
-                }
-            }
-        }) : helper)) + "</h3>\r\n<h4>" + alias4((helper = (helper = lookupProperty(helpers, "error_message") || (depth0 != null ? lookupProperty(depth0, "error_message") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "error_message",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 5,
-                    "column": 4
-                },
-                "end": {
-                    "line": 5,
-                    "column": 21
-                }
-            }
-        }) : helper)) + '</h4>\r\n<p><a href="chats">Назад к чатам</a></p>\r\n</section>\r\n</div>\r\n';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"isot7":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        var helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
-            return undefined;
-        };
-        return '<div class="main"> \r\n  <header>\r\n  </header>\r\n  <section class="hero" id="hero">\r\n	  \r\n   <div class="chat">\r\n\r\n  <div class="top">\r\n	  \r\n	  <div class="profil"><a href="#">Профиль <img src="' + alias4((helper = (helper = lookupProperty(helpers, "to_right_angle_svg") || (depth0 != null ? lookupProperty(depth0, "to_right_angle_svg") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "to_right_angle_svg",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 10,
-                    "column": 53
-                },
-                "end": {
-                    "line": 10,
-                    "column": 75
-                }
-            }
-        }) : helper)) + '" alt=""/></a></div>\r\n	  \r\n	  <div class="search">\r\n		  <form>\r\n			 \r\n\r\n<input type="text" placeholder="&#xF002; Поиск" style="font-family: \'Inter\', \'Font Awesome 5 Free\'" />\r\n</form>		  \r\n		  \r\n	  </div>\r\n\r\n  </div>\r\n\r\n  \r\n  <div class="tumbler">\r\n\r\n    <div class="conversations">\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message">Изображение</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Киноклуб</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">10:49</div>\r\n          </div>\r\n			\r\n          <div class="point">5</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Илья</div>\r\n			<div class="message">Друзья, у меня для вас особенный выпуск новостей!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">12:00</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Вадим</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">15:12</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">тет-а-теты</div>\r\n			<div class="message">И Human Interface Guidelines и Material Design рекомендуют...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пт</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">1, 2, 3</div>\r\n			<div class="message">Миллионы россиян ежедневно проводят десятки часов свое...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Ср</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Design Destroyer</div>\r\n			<div class="message">В 2008 году художник Jon Rafman  начал собирать...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пн</div>\r\n          </div>\r\n			\r\n          <!--<div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Day.</div>\r\n			<div class="message">Так увлёкся работой по курсу, что совсем забыл его анонсир...</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">Пн</div>\r\n          </div>\r\n			\r\n         <!-- <div class="point">3</div>-->\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n      <div class="person">\r\n\r\n        <div class="box">\r\n          <div class="image"> <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"/>\r\n		</svg>\r\n		 </div>\r\n          \r\n        </div>\r\n\r\n        <div class="information">\r\n          <div class="content">\r\n            <div class="username">Андрей</div>\r\n			<div class="message"><strong>Вы:</strong> Круто!</div>\r\n          </div>\r\n\r\n\r\n        </div>\r\n\r\n        <div class="notice">\r\n			<div class="data">            \r\n            <div class="time">1 Мая 2020</div>\r\n          </div>\r\n			\r\n          <div class="point">3</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n\r\n		\r\n    </div>\r\n\r\n  </div>\r\n\r\n</div> \r\n    \r\n	   <div class="chat-content">\r\n\r\n        <div class="chat-content-header">\r\n      \r\n          <div class="person">\r\n\r\n              <div class="box">\r\n\r\n                <div class="image">\r\n\r\n                  <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                    <circle cx="23.5" cy="23.5" r="23.5" fill="#EFEFEF"></circle>\r\n                  </svg>\r\n\r\n                </div>\r\n\r\n              </div>\r\n\r\n\r\n              <div class="information">\r\n                <div class="content">\r\n                  <div class="username">Андрей</div>                \r\n                </div>\r\n              </div>\r\n\r\n              <div class="notice">\r\n                <div class="burger-menu">            \r\n                    \r\n                  <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <circle cx="1.5" cy="2" r="1.5" fill="#1E1E1E"/>\r\n                  <circle cx="1.5" cy="8" r="1.5" fill="#1E1E1E"/>\r\n                  <circle cx="1.5" cy="14" r="1.5" fill="#1E1E1E"/>\r\n                  </svg>\r\n\r\n\r\n                </div>               \r\n              </div>\r\n\r\n          </div>\r\n\r\n        </div>\r\n\r\n		    <div class="content-holder">\r\n\r\n          <p class="mess-date">19 июня</p>\r\n\r\n          <div class="message-holder">            \r\n\r\n            <div class="message-in">\r\n\r\n              <div class="message-in-text">\r\n                <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>\r\n\r\n                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>\r\n                <div class="time">11:56</div>\r\n              </div>\r\n\r\n              <div class="message-in-file">\r\n\r\n                <img src="' + alias4((helper = (helper = lookupProperty(helpers, "file_img") || (depth0 != null ? lookupProperty(depth0, "file_img") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "file_img",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 544,
-                    "column": 26
-                },
-                "end": {
-                    "line": 544,
-                    "column": 38
-                }
-            }
-        }) : helper)) + '">\r\n\r\n                <div class="time time-bg">11:56</div>\r\n                \r\n              </div>\r\n\r\n                \r\n\r\n            </div>\r\n\r\n            <div class="message-out">\r\n              <div class="message-out-text">\r\n                <p>Круто!</p>\r\n              \r\n                <div class="time time-check">\r\n                  <span class="mark-polucil">\r\n                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" stroke="#3369F3"/>\r\n                    </svg>\r\n                </span>\r\n                11:56\r\n              </div>\r\n            </div>\r\n            </div>\r\n              \r\n\r\n\r\n          </div>\r\n\r\n\r\n          <p class="mess-date">19 июня</p>\r\n\r\n          <div class="message-holder">            \r\n\r\n            <div class="message-in">\r\n\r\n              <div class="message-in-text">\r\n                <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>\r\n\r\n                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>\r\n                <div class="time">11:56</div>\r\n              </div>\r\n\r\n              <div class="message-in-file">\r\n\r\n                <img src="' + alias4((helper = (helper = lookupProperty(helpers, "file_img") || (depth0 != null ? lookupProperty(depth0, "file_img") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "file_img",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 591,
-                    "column": 26
-                },
-                "end": {
-                    "line": 591,
-                    "column": 38
-                }
-            }
-        }) : helper)) + '">\r\n\r\n                <div class="time time-bg">11:56</div>\r\n                \r\n              </div>\r\n\r\n                \r\n\r\n            </div>\r\n\r\n            <div class="message-out">\r\n              <div class="message-out-text">\r\n                <p>Круто!</p>\r\n              \r\n                <div class="time time-check">\r\n                  <span class="mark-polucil">\r\n                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" stroke="#3369F3"/>\r\n                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" stroke="#3369F3"/>\r\n                    </svg>\r\n                </span>\r\n                11:56\r\n              </div>\r\n            </div>\r\n            </div>\r\n              \r\n\r\n\r\n          </div>\r\n\r\n\r\n			\r\n		    </div>\r\n\r\n        <div class="chat-content-footer">\r\n\r\n          <form id="mess_forma">\r\n            <div class="input-holder">        \r\n              <input type="file" id="file-input">\r\n              <label for="file-input">             \r\n                <span class="file">                  \r\n                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.18662 13.5L14.7628 5.92389L15.7056 6.8667L8.12943 14.4428L7.18662 13.5Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70067 16.0141L17.2768 8.43793L18.2196 9.38074L10.6435 16.9569L9.70067 16.0141Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0433 21.3567L22.6195 13.7806L23.5623 14.7234L15.9861 22.2995L15.0433 21.3567Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8708L25.1335 16.2946L26.0763 17.2374L18.5002 24.8136L17.5574 23.8708Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8709C14.9423 26.486 10.7118 26.4954 8.10831 23.8919C5.50482 21.2884 5.51424 17.0579 8.12936 14.4428L7.18655 13.5C4.0484 16.6381 4.0371 21.7148 7.16129 24.839C10.2855 27.9632 15.3621 27.9518 18.5003 24.8137L17.5574 23.8709Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M22.6195 13.7806L23.5623 14.7234C26.003 12.2826 26.0118 8.3341 23.5819 5.90417C21.152 3.47424 17.2035 3.48303 14.7627 5.92381L15.7055 6.86662C17.6233 4.94887 20.7257 4.94196 22.6349 6.85119C24.5441 8.76042 24.5372 11.8628 22.6195 13.7806Z" fill="#999999"/>\r\n                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#999999"/>\r\n                  </svg>\r\n                </span>\r\n              </label>\r\n            </div>\r\n            <div class="input-holder">\r\n              <input type="text" id="mess" placeholder="Сообщение">              \r\n            </div>\r\n            <div class="input-holder">        \r\n              <button class="button-send">\r\n                <span class="send">\r\n                  <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n                  <rect y="5.19995" width="11" height="1.6" fill="white"/>\r\n                  <path d="M7 1L11 6L7 11" stroke="white" stroke-width="1.6"/>\r\n                  </svg>\r\n                </span>\r\n              </button>\r\n            </div>\r\n          </form>\r\n        </div>\r\n	  </div>  \r\n  </section>\r\n</div>\r\n';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aHAdS":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "file-img.fd72d921.jpg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"8Xa51":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "to-right-angle.de92ae6a.svg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"5J09N":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("bLxZJ") + "lupa.bbf62c8a.svg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"6gUru":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        return '\r\n<div class="main">\r\n\r\n<section class="profile">\r\n\r\n	<div class="profile-sidebar">\r\n		<button class="left-arrow-button">\r\n		<span class="left-arrow-button">\r\n\r\n		<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>\r\n		<rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>\r\n		<path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>\r\n		</svg>\r\n\r\n	</span>\r\n</button>\r\n\r\n\r\n	</div>\r\n	<div class="profile-content">\r\n		<form class="profil-forma">\r\n\r\n			<div class="profil-ava" onclick="location.href=\'profile-new-ava-modal-choose-file\';">\r\n				\r\n				<span class="no-ava">\r\n					\r\n					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n					<path fill-rule="evenodd" clip-rule="evenodd" d="M36 2H4C2.89543 2 2 2.89543 2 4V25.2667L14.6547 22.3139C15.5486 22.1053 16.4635 22 17.3814 22H22.6186C23.5365 22 24.4514 22.1053 25.3453 22.3139L38 25.2667V4C38 2.89543 37.1046 2 36 2ZM4 0C1.79086 0 0 1.79086 0 4V36C0 38.2091 1.79086 40 4 40H36C38.2091 40 40 38.2091 40 36V4C40 1.79086 38.2091 0 36 0H4ZM10.9091 14.5455C12.9174 14.5455 14.5455 12.9174 14.5455 10.9091C14.5455 8.90079 12.9174 7.27273 10.9091 7.27273C8.90082 7.27273 7.27276 8.90079 7.27276 10.9091C7.27276 12.9174 8.90082 14.5455 10.9091 14.5455Z" fill="#CDCDCD"/>\r\n					</svg>\r\n\r\n				</span>\r\n\r\n\r\n			</div>\r\n\r\n\r\n\r\n		  <h3>Иван</h3>\r\n\r\n\r\n\r\n<div class="prof-table d-flex">\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Почта</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>pochta@yandex.ru</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Логин</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>ivanivanov</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Имя</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иван</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Фамилия</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иванов</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Имя в чате</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иван</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Телефон</p>\r\n		</div>\r\n\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>+7 (909) 967 30 30</p>\r\n		</div>\r\n\r\n	</div>\r\n\r\n\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n<div class="prof-table d-flex data-forma">\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p><a href="profile-change-data">Изменить данные</a></p>\r\n		</div>\r\n\r\n\r\n\r\n	</div>\r\n\r\n\r\n	<div class="prof-table-row">\r\n\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p><a href="profile-change-pass">Изменить пароль</a></p>\r\n		</div>\r\n\r\n\r\n\r\n	</div>\r\n\r\n\r\n\r\n\r\n\r\n</div>\r\n\r\n\r\n<div class="out-profil"><a href="#">Выйти</a></div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n		</form>	\r\n	</div>\r\n</section>\r\n\r\n</div>\r\n';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9W8a":[function() {},{}],"4qnZM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        return '<div class="main">\r\n<section class="profile">\r\n	<div class="profile-sidebar">\r\n		<button class="left-arrow-button">\r\n		<span class="left-arrow-button">\r\n		<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>\r\n		<rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>\r\n		<path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>\r\n		</svg>\r\n\r\n	</span>\r\n</button>\r\n	</div>\r\n	<div class="profile-content">\r\n		<form class="change-profil-forma">\r\n			<div class="profil-ava" onclick="location.href=\'profile-new-ava-modal-choose-file\';">\r\n				<span class="no-ava">			\r\n					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n					<path fill-rule="evenodd" clip-rule="evenodd" d="M36 2H4C2.89543 2 2 2.89543 2 4V25.2667L14.6547 22.3139C15.5486 22.1053 16.4635 22 17.3814 22H22.6186C23.5365 22 24.4514 22.1053 25.3453 22.3139L38 25.2667V4C38 2.89543 37.1046 2 36 2ZM4 0C1.79086 0 0 1.79086 0 4V36C0 38.2091 1.79086 40 4 40H36C38.2091 40 40 38.2091 40 36V4C40 1.79086 38.2091 0 36 0H4ZM10.9091 14.5455C12.9174 14.5455 14.5455 12.9174 14.5455 10.9091C14.5455 8.90079 12.9174 7.27273 10.9091 7.27273C8.90082 7.27273 7.27276 8.90079 7.27276 10.9091C7.27276 12.9174 8.90082 14.5455 10.9091 14.5455Z" fill="#CDCDCD"/>\r\n					</svg>\r\n				</span>\r\n			</div>\r\n<div class="change-profil-forma">\r\n		<div class="inp-holder">	\r\n		<input  type="text" placeholder="pochta@yandex.ru" id="email" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<span class="warn" style="opacity: 0; height: 0;">Неверный адрес почты</span>	\r\n		<label for="email">Почта</label>\r\n		</div> 		\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="ivanivanov" id="login" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="login">Логин</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный Логин</span>\r\n		</div>		\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Иван" id="name" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="name">Имя</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверное Имя</span>\r\n		</div>		\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Иванов" id="familiya" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="familiya">Фамилия</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверная Фамилия</span>\r\n		</div>\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Иван" id="chatname" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="chatname">Имя в чате</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверное Имя</span>\r\n		</div>\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="+7 (909) 967 30 30" id="phone" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="phone">Телефон</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный телефон</span>\r\n		</div>\r\n		<div class="inp-holder d-none">	\r\n		  <input  type="password" placeholder="Пароль" id="password" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="password">Пароль</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный пароль</span>\r\n		</div>	\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="password" placeholder="Пароль (ещё раз)" id="passwordval" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="passwordval">Пароль (ещё раз)</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Пароли не совпадают</span>\r\n		</div>\r\n			<div class="forma-footer">\r\n		  	<button>Сохранить</button>\r\n			</div>\r\n</div>\r\n		</form>	\r\n	</div>\r\n</section>\r\n</div>';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jKGK3":[function() {},{}],"dARhc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        return '<div class="main">\r\n<section class="profile">\r\n	<div class="profile-sidebar">\r\n		<button class="left-arrow-button">\r\n		<span class="left-arrow-button">\r\n		<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>\r\n		<rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>\r\n		<path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>\r\n		</svg>\r\n	</span>\r\n</button>\r\n	</div>\r\n	<div class="profile-content">\r\n		<form class="change-profil-forma">\r\n			<div class="profil-ava" onclick="location.href=\'profile-new-ava-modal-choose-file\';">			\r\n				<span class="no-ava">\r\n					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n					<path fill-rule="evenodd" clip-rule="evenodd" d="M36 2H4C2.89543 2 2 2.89543 2 4V25.2667L14.6547 22.3139C15.5486 22.1053 16.4635 22 17.3814 22H22.6186C23.5365 22 24.4514 22.1053 25.3453 22.3139L38 25.2667V4C38 2.89543 37.1046 2 36 2ZM4 0C1.79086 0 0 1.79086 0 4V36C0 38.2091 1.79086 40 4 40H36C38.2091 40 40 38.2091 40 36V4C40 1.79086 38.2091 0 36 0H4ZM10.9091 14.5455C12.9174 14.5455 14.5455 12.9174 14.5455 10.9091C14.5455 8.90079 12.9174 7.27273 10.9091 7.27273C8.90082 7.27273 7.27276 8.90079 7.27276 10.9091C7.27276 12.9174 8.90082 14.5455 10.9091 14.5455Z" fill="#CDCDCD"/>\r\n					</svg>\r\n				</span>\r\n			</div>\r\n<div class="change-profil-forma">\r\n		<div class="inp-holder  d-none">\r\n		<input  type="text" placeholder="pochta@yandex.ru" id="email" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<span class="warn" style="opacity: 0; height: 0;">Неверный адрес почты</span>	\r\n		<label for="email">Почта</label>\r\n		</div> 		\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="text" placeholder="ivanivanov" id="login" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="login">Логин</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный Логин</span>\r\n		</div>		\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="text" placeholder="Иван" id="name" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="name">Имя</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверное Имя</span>\r\n		</div>		\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="text" placeholder="Иванов" id="familiya" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="familiya">Фамилия</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверная Фамилия</span>\r\n		</div>\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="text" placeholder="Иван" id="chatname" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="chatname">Имя в чате</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверное Имя</span>\r\n		</div>\r\n		<div class="inp-holder  d-none">	\r\n		  <input  type="text" placeholder="+7 (909) 967 30 30" id="phone" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="phone">Телефон</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный телефон</span>\r\n		</div>\r\n		<div class="inp-holder">	\r\n		  <input  type="password" placeholder="Старый пароль" id="password" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="password">Старый пароль</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный пароль</span>\r\n		</div>		\r\n		<div class="inp-holder">	\r\n		  <input  type="password" placeholder="Новый пароль" id="passwordnew" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="passwordnew">Новый пароль</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Пароли не совпадают</span>\r\n		</div>		\r\n		<div class="inp-holder">	\r\n		  <input  type="password" placeholder="Повторите новый пароль" id="passwordpovt" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="passwordpovt">Повторите новый пароль</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Пароли не совпадают</span>\r\n		</div>\r\n			<div class="forma-footer">		\r\n		  	<button>Сохранить</button>\r\n			</div>\r\n</div>\r\n		</form>	\r\n	</div>\r\n</section>\r\n</div>';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9HOCC":[function() {},{}],"dXCap":[function() {},{}],"2qg8i":[function() {},{}],"b0MRx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _handlebarsRuntime = require("handlebars/dist/handlebars.runtime");
-var _handlebarsRuntimeDefault = parcelHelpers.interopDefault(_handlebarsRuntime);
-const templateFunction = (0, _handlebarsRuntimeDefault.default).template({
-    "compiler": [
-        8,
-        ">= 4.3.0"
-    ],
-    "main": function(container, depth0, helpers, partials, data) {
-        return '<div class="main">\r\n<section class="profile">\r\n	<div class="profile-sidebar">\r\n		<button class="left-arrow-button">\r\n		<span class="left-arrow-button">\r\n		<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n		<circle cx="14" cy="14" r="14" transform="rotate(-180 14 14)" fill="#3369F3"/>\r\n		<rect x="20" y="14.8" width="11" height="1.6" transform="rotate(-180 20 14.8)" fill="white"/>\r\n		<path d="M13 19L9 14L13 9" stroke="white" stroke-width="1.6"/>\r\n		</svg>\r\n	</span>\r\n</button>\r\n	</div>\r\n	<div class="profile-content">\r\n		<form class="profil-forma">\r\n			<div class="profil-ava">\r\n				<span class="no-ava">\r\n					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">\r\n					<path fill-rule="evenodd" clip-rule="evenodd" d="M36 2H4C2.89543 2 2 2.89543 2 4V25.2667L14.6547 22.3139C15.5486 22.1053 16.4635 22 17.3814 22H22.6186C23.5365 22 24.4514 22.1053 25.3453 22.3139L38 25.2667V4C38 2.89543 37.1046 2 36 2ZM4 0C1.79086 0 0 1.79086 0 4V36C0 38.2091 1.79086 40 4 40H36C38.2091 40 40 38.2091 40 36V4C40 1.79086 38.2091 0 36 0H4ZM10.9091 14.5455C12.9174 14.5455 14.5455 12.9174 14.5455 10.9091C14.5455 8.90079 12.9174 7.27273 10.9091 7.27273C8.90082 7.27273 7.27276 8.90079 7.27276 10.9091C7.27276 12.9174 8.90082 14.5455 10.9091 14.5455Z" fill="#CDCDCD"/>\r\n					</svg>\r\n				</span>\r\n			</div>\r\n		  <h3>Иван</h3>\r\n<div class="prof-table d-flex">\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Почта</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>pochta@yandex.ru</p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Логин</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>ivanivanov</p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Имя</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иван</p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Фамилия</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иванов</p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Имя в чате</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>Иван</p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p>Телефон</p>\r\n		</div>\r\n		<div class="prof-table-col prof-table-col-right">\r\n			<p>+7 (909) 967 30 30</p>\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class="prof-table d-flex data-forma">\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p><a href="#">Изменить данные</a></p>\r\n		</div>\r\n	</div>\r\n	<div class="prof-table-row">\r\n		<div class="prof-table-col prof-table-col-left">\r\n			<p><a href="#">Изменить пароль</a></p>\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class="out-profil"><a href="#">Выйти</a></div>\r\n<div class="out-profil-forma d-none">\r\n		<div class="inp-holder">		\r\n		<input  type="text" placeholder="Почта" id="email" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<span class="warn" style="opacity: 0; height: 0;">Неверный адрес почты</span>	\r\n		<label for="email">Почта</label>\r\n		</div> \r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Логин" id="login" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="login">Логин</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный Логин</span>\r\n		</div>	\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Имя" id="name" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="name">Имя</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверное Имя</span>\r\n		</div>\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Фамилия" id="familiya" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="familiya">Фамилия</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверная Фамилия</span>\r\n		</div>		\r\n		<div class="inp-holder">	\r\n		  <input  type="text" placeholder="Телефон" id="phone" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="phone">Телефон</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный телефон</span>\r\n		</div>			\r\n		<div class="inp-holder">	\r\n		  <input  type="password" placeholder="Пароль" id="password" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="password">Пароль</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Неверный пароль</span>\r\n		</div>			\r\n		<div class="inp-holder">	\r\n		  <input  type="password" placeholder="Пароль (ещё раз)" id="passwordval" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n		<label for="passwordval">Пароль (ещё раз)</label>\r\n			<span class="warn" style="opacity: 0; height: 0;">Пароли не совпадают</span>\r\n		</div>\r\n		  	<button>Зарегистрироваться</button>\r\n			  <div class="form-bottom">\r\n			    <a href="#" class="no-akkaunt">Войти</a>\r\n			  </div>\r\n</div>\r\n		</form>	\r\n	</div>\r\n</section>\r\n</div>\r\n<div class="modal-overley">\r\n<form class="modal">\r\n  <h3>Загрузите файл</h3>\r\n<div class="inp-holder d-none"> \r\n  <input type="text" placeholder="Логин" id="username" pattern="^[A-Za-zА-Яа-яЁё\\s]{6,}">\r\n<span class="warn" style="opacity: 0; height: 0;">Неверный логин</span> \r\n<label for="username">Логин</label>\r\n</div> \r\n<div class="inp-holder">   \r\n  <input type="file" placeholder="Выбрать файл на компьютере" id="file-sel">\r\n<span class="file-sel d-none">Выбрать файл на компьютере</span> \r\n<label for="file-sel">Выбрать файл на компьютере</label>\r\n</div>   \r\n  <button>Поменять</button>\r\n  <div class="form-bottom">\r\n    <a href="#" class="no-akkaunt d-none">Нет аккаунта?</a>\r\n  </div>\r\n</form> \r\n</div>';
-    },
-    "useData": true
-});
-exports.default = templateFunction;
-
-},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aIpaY":[function() {},{}]},["ShInH","8lqZg"], "8lqZg", "parcelRequire40a5")
+},{"handlebars/dist/handlebars.runtime":"b7ZpO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9W8a":[function() {},{}],"2qg8i":[function() {},{}]},["ShInH","8lqZg"], "8lqZg", "parcelRequire40a5")
 
 //# sourceMappingURL=index.975ef6c8.js.map

@@ -4,16 +4,11 @@ import atorization_registration_layout from './views/layouts/atorization_registr
 import error_layout from './views/layouts/error.hbs';
 import chats_layout from './views/layouts/chats.hbs';
 import profile_layout from './views/layouts/profile.hbs';
-import profile_change_data_layout from './views/layouts/profile-change-data.hbs';
-import profile_change_pass_layout from './views/layouts/profile-change-pass.hbs';
-import profile_new_ava_modal_choose_file from './views/layouts/profile-new-ava-modal-choose-file.hbs';
-import profile_layout from './views/layouts/profile.hbs';
-import './views/layouts/atorization_registration.css';
-import './views/layouts/error.css';
+import profile_change_info_layout from './views/layouts/profile-change-info.hbs';
+
 import './views/layouts/chats.css';
 import './views/layouts/profile.css';
-import './views/layouts/profile-change-data.css';
-import './views/layouts/profile-new-ava-modal-choose-file.css';
+
 import file_img from './views/images/file-img.jpg';
 import to_right_angle_svg from './views/images/to-right-angle.svg';
 import lupa_svg from './views/images/lupa.svg';
@@ -37,10 +32,12 @@ window.addEventListener("DOMContentLoaded", ()=>{
 	} else if (window.location.pathname === '/profile') {
 		body.innerHTML = profile_layout();
 	}else if (window.location.pathname === '/profile-change-data') {
-		body.innerHTML = profile_change_data_layout();
+		body.innerHTML = profile_change_info_layout();
 	}else if (window.location.pathname === '/profile-change-pass') {
-		body.innerHTML = profile_change_pass_layout();
+		body.innerHTML = profile_change_info_layout({change_pass:true});
 	}else if (window.location.pathname === '/profile-new-ava-modal-choose-file') {
-		body.innerHTML = profile_new_ava_modal_choose_file();
+		body.innerHTML = profile_layout({change_ava:true});
+	}else{
+		body.innerHTML = atorization_registration_layout({title:"Вход",reg_auth_button_title:"Авторизоваться",reg_auth_link_title:"Нет аккаунта?",reg_auth_link:"registration"});
 	}
 });
