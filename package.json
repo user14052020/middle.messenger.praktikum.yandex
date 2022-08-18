@@ -1,5 +1,5 @@
 {
-  "name": "sprint_1",
+  "name": "sprint",
   "version": "1.0.0",
   "description": "https://www.figma.com/file/kmLuPGnncVioppcBkxk9xx/sprint_1_chat",
   "main": "index.js",
@@ -31,10 +31,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user14052020/sprint_1.git"
+    "url": "git+https://github.com/user14052020/sprint.git"
   },
   "bugs": {
-    "url": "https://github.com/user14052020/sprint_1/issues"
+    "url": "https://github.com/user14052020/sprint/issues"
   },
-  "homepage": "https://github.com/user14052020/sprint_1#readme"
+  "homepage": "https://github.com/user14052020/sprint#readme"
 }
