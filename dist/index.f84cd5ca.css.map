@@ -1,1 +1,0 @@
-{"mappings":"AAAA;EACI;;;;;AAGJ;EACI","sources":["src/pages/home/modules/login/style.css"],"sourcesContent":["@supports (display: flex) {\n    div { display: flex; }\n}\n \n@supports not (display: flex) {\n    div { float: left; } /* задан альтернативный стиль */\n} "],"names":[],"version":3,"file":"index.f84cd5ca.css.map","sourceRoot":"/__parcel_source_root/"}
