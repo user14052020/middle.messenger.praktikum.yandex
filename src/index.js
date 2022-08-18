@@ -14,7 +14,6 @@ import to_right_angle_svg from './views/images/to-right-angle.svg';
 import lupa_svg from './views/images/lupa.svg';
 
 window.addEventListener("DOMContentLoaded", ()=>{
-	console.log('test');
 	const root = document.querySelector('#root');
 	const body = document.querySelector('#body');
 	root.innerHTML = main_layout();
