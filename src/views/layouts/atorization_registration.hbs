@@ -1,0 +1,25 @@
+<div class="main"> 
+  <header>
+  </header>
+<form class="auth_reg_form" id="auth_reg_form">
+  <h3>{{title}}</h3>
+
+  {{#if registration}}
+    {{> atorization_registration_input label="Почта" type="text" input_id="email" error_message="Неверный адрес почты"}}
+    {{> atorization_registration_input label="Логин" type="text" input_id="login" error_message="Неверный Логин"}}
+    {{> atorization_registration_input label="Имя" type="text" input_id="name" error_message="Неверное Имя"}}
+    {{> atorization_registration_input label="Фамилия" type="text" input_id="familiya" error_message="Неверная Фамилия"}}
+    {{> atorization_registration_input label="Телефон" type="text" input_id="email" error_message="Неверный Телефон"}}
+    {{> atorization_registration_input label="Пароль" type="password" input_id="password" error_message="Неверный Пароль"}}
+    {{> atorization_registration_input label="Пароль (ещё раз)" type="password" input_id="passwordval" error_message="Пароли не совпадают"}}
+  {{else}}
+    {{> atorization_registration_input label="Логин" type="text" input_id="username" error_message="Неверный логин"}}
+    {{> atorization_registration_input label="Пароль" type="password" input_id="password" error_message="Неверный пароль"}}
+  {{/if}}
+  <button>{{reg_auth_button_title}}</button>
+  <div class="form-bottom">
+    <a href="{{reg_auth_link}}" class="no-akkaunt">{{reg_auth_link_title}}</a>
+  </div>
+</form>	
+</div>
+
