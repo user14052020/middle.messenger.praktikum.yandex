@@ -11,6 +11,7 @@
     "build": "parcel build src/index.html"
   },
   "keywords": [],
+  "start":  "npm run build && node server.js",
   "author": "vadim maharram",
   "license": "ISC",
   "devDependencies": {
@@ -30,10 +31,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user14052020/sprint.git"
+    "url": "git+https://github.com/user14052020/middle.messenger.praktikum.yandex.git"
   },
   "bugs": {
-    "url": "https://github.com/user14052020/sprint/issues"
+    "url": "https://github.com/user14052020/middle.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/user14052020/sprint#readme"
+  "homepage": "https://github.com/user14052020/middle.messenger.praktikum.yandex#readme"
 }
