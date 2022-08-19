@@ -1,10 +1,10 @@
-import menu from './menu.hbs';
-import atorization_registration_input from './atorization_registration_input.hbs';
-import profile_row from './profile_row.hbs';
-import profile_change_row from './profile_change_row.hbs';
-import profile_change_link from './profile_change_link.hbs';
-import profile_ava from './profile_ava.hbs';
-import profile_sidebar from './profile_sidebar.hbs';
+import menu from './menu/menu.hbs';
+import atorization_registration_input from './atorization_registration_input/atorization_registration_input.hbs';
+import profile_row from './profile_row/profile_row.hbs';
+import profile_change_row from './profile_change_row/profile_change_row.hbs';
+import profile_change_link from './profile_change_link/profile_change_link.hbs';
+import profile_ava from './profile_ava/profile_ava.hbs';
+import profile_sidebar from './profile_sidebar/profile_sidebar.hbs';
 import Handlebars from 'handlebars/dist/handlebars.runtime';
 
 Handlebars.registerPartial('menu',menu);

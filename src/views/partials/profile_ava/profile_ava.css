@@ -1,0 +1,35 @@
+.profil-ava {
+  display: flex;
+  width: 13rem;
+  height: 13rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--main-input-bg);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.1rem; 
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+
+  .profil-ava::before {
+    content: "Поменять аватар";
+    position: absolute;
+    max-width: 13rem;
+    height: 13rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--button-color);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    opacity: 0; }
+
+  .profil-ava:hover::before {
+    opacity: 1; }

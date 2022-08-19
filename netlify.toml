@@ -8,5 +8,5 @@
 [build]
   publish = "dist" 
 [[redirects]]
-  from = "/login"
+  from = "/*"
   to = "/index.html"

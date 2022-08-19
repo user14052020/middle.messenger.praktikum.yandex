@@ -5,14 +5,17 @@ import './views/layouts/profile/profile.css';
 import './views/layouts/chats/chats.css';
 import './views/layouts/error/error.css';
 
+import './views/partials/profile_sidebar/profile_sidebar.css';
+import './views/partials/profile_ava/profile_ava.css';
+import './views/partials/profile_change_row/profile_change_row.css';
+import './views/partials/profile_row/profile_row.css';
+
 import main_layout from './views/layouts/main/main.hbs';
 import atorizationRegistrationLayout from './views/layouts/atorization_registration/atorization_registration.hbs';
 import errorLayout from './views/layouts/error/error.hbs';
 import chatsLayout from './views/layouts/chats/chats.hbs';
 import profileLayout from './views/layouts/profile/profile.hbs';
 import profileChangeInfoLayout from './views/layouts/profile/profile-change-info.hbs';
-
-
 
 import fileImg from './views/images/file-img.jpg';
 import toRightAngleSvg from './views/images/to-right-angle.svg';
