@@ -9,5 +9,6 @@
   publish = "dist" 
 [[redirects]]
   status = 301
+  query = {path = ":path"}
   from = "/*"
   to = "/index.html"
