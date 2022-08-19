@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html --no-optimize",
+    "build": "rm -rf dist/ && PARCEL_WORKERS=0 parcel build src/index.html --no-source-maps --log-level verbose",
     "start": "npm run build && node server.js"
   },
   "keywords": [],
