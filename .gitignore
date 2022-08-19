@@ -3,3 +3,4 @@
 /.parcel-cache/
 /parcel-catch/
 /dist/
+*.map
