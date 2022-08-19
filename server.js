@@ -8,7 +8,7 @@ process.env.PORT || PORT;
 app.use(express.static(__dirname + '/dist'));
 
 app.get('*', (req, res) => {
-    res.send(`${__dirname}/dist/`);
+    res.sendFile(__dirname + '/dist/');
 });
 
 app.listen(PORT, function () {

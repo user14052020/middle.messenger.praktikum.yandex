@@ -1,3 +1,6 @@
+.profile-content {
+  flex: 1 0 auto; }
+
 form.profil-forma {
   display: flex;
   flex-direction: column;
@@ -23,46 +26,6 @@ form.profil-forma {
     text-align: center;
     color: var(--main-body-color);
     margin: 0 auto 4rem; }
-
-  form.profil-forma .inp-holder {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100%;
-    margin-bottom: 1rem; }
-
-    form.profil-forma .inp-holder label {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 9px;
-      line-height: 9px;
-      color: var(--main-input-placeholder);
-      margin: 0;
-      display: block;
-      opacity: 0;
-      order: 2; }
-
-    form.profil-forma .inp-holder input {
-      display: block;
-      height: 2.8rem;
-      width: 100%;
-      background-color: var(--button-color);
-      border-radius: 0;
-      padding: 0 2rem;
-      margin-top: 4px;
-      font-weight: 500;
-      font-size: 1.3rem;
-      line-height: 2.8rem;
-      color: var(--main-body-color);
-      margin-bottom: .7rem;
-      border-bottom: 1px solid var(--input-border-bottom-color);
-      order: 2; }
-
-    form.profil-forma .inp-holder span.warn {
-      color: red;
-      order: 0; 
-      opacity: 0; 
-      height: 0;
-    }
 
   form.profil-forma button {
     margin-top: auto;
@@ -207,90 +170,6 @@ form.change-profil-forma {
 
     form.change-profil-forma a.no-akkaunt:hover {
       color: var(--main-input-placeholder); }
-
-.profil-ava {
-  display: flex;
-  width: 13rem;
-  height: 13rem;
-  margin: 0 auto;
-  border-radius: 50%;
-  background: var(--main-input-bg);
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2.1rem; }
-
-.prof-table.d-flex {
-  display: flex;
-  flex-direction: column;
-  max-width: 51rem;
-  margin-bottom: 4rem; }
-
-  .prof-table.d-flex .prof-table-row {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--button-bg-color); }
-
-    .prof-table.d-flex .prof-table-row .prof-table-col.prof-table-col-left {
-      text-align: left;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 3.3rem; }
-
-      .prof-table.d-flex .prof-table-row .prof-table-col.prof-table-col-left p {
-        color: var(--main-body-color); }
-
-    .prof-table.d-flex .prof-table-row .prof-table-col.prof-table-col-right {
-      text-align: right;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      height: 3.3rem; }
-
-      .prof-table.d-flex .prof-table-row .prof-table-col.prof-table-col-right p {
-        color: var(--main-input-placeholder); }
-
-    .prof-table.d-flex .prof-table-row p {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 13px;
-      line-height: 13px; }
-
-  .prof-table.d-flex .prof-table-row:last-child {
-    border: none; }
-
-.prof-table.d-flex.data-forma {
-  margin-bottom: 0; }
-
-  .prof-table.d-flex.data-forma .prof-table-row:last-child {
-    border-bottom: 1px solid var(--button-bg-color); }
-
-.profil-ava {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer; }
-
-  .profil-ava::before {
-    content: "Поменять аватар";
-    position: absolute;
-    max-width: 13rem;
-    height: 13rem;
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--button-color);
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 14px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
-    opacity: 0; }
-
-  .profil-ava:hover::before {
-    opacity: 1; }
 
 .out-profil {
   padding-top: 1.5rem; }
