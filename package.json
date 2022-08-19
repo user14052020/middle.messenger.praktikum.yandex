@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/user14052020/middle.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/user14052020/middle.messenger.praktikum.yandex#readme"
+  "homepage": "https://github.com/user14052020/middle.messenger.praktikum.yandex#readme",
+  "optionalDependencies": {
+    "@parcel/css-linux-x64-gnu": "^1.12.2"
+  }
 }
