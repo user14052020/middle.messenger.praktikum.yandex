@@ -8,32 +8,30 @@
   },
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "start":  "npm run build && node server.js"
   },
   "keywords": [],
   "author": "vadim maharram",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
-    "express": "^4.18.1",
-    "handlebars": "^4.7.7",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.16",
-    "postcss-modules": "^4.3.1"
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "express": "4.18.1",
+    "handlebars": "4.7.7",
+    "parcel": "2.7.0",
+    "postcss": "8.4.16",
+    "postcss-modules": "4.3.1"
   },
   "dependencies": {
-    "handlebars": "^4.7.7",
-    "parcel": "^2.7.0",
-    "parcel-plugin-handlebars": "^0.4.4",
-    "postcss": "^8.4.16",
-    "postcss-modules": "^4.3.1"
+    "postcss": "8.4.16",
+    "postcss-modules": "4.3.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user14052020/sprint.git"
+    "url": "git+https://github.com/user14052020/middle.messenger.praktikum.yandex.git"
   },
   "bugs": {
-    "url": "https://github.com/user14052020/sprint/issues"
+    "url": "https://github.com/user14052020/middle.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/user14052020/sprint#readme"
+  "homepage": "https://github.com/user14052020/middle.messenger.praktikum.yandex#readme"
 }

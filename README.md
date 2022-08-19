@@ -6,3 +6,5 @@ https://www.figma.com/file/kmLuPGnncVioppcBkxk9xx/sprint_1_chat
 npm run build 
 # запуск
 npm run start
+# Netlify
+https://dazzling-kitten-d9da6f.netlify.app/
