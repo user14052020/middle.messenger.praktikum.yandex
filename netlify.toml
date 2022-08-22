@@ -1,0 +1,6 @@
+[build]
+  publish = "dist" 
+[[redirects]]
+  status = 200
+  from = "/*"
+  to = "/index.html"

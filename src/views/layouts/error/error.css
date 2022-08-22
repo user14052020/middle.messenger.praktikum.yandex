@@ -1,0 +1,38 @@
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+  .error h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--main-body-color);
+    margin-bottom: 2rem; }
+
+  .error h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--main-body-color);
+    margin-bottom: 7rem; }
+
+  .error p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center; }
+
+    .error p a {
+      color: var(--input-border-bottom-color); }
+      
+      .error p a:hover {
+        color: var(--main-input-placeholder); }
