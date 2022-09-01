@@ -1,3 +1,4 @@
+//test
 import './views/partials/';
 import './views/layouts/main/main.css';
 import './views/layouts/atorization_registration/atorization_registration.css';
