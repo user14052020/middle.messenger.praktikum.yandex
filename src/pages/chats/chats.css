@@ -95,7 +95,6 @@
   /* Safari and Chrome */ }
 
 .conversations {
-  display: flex;
   flex-direction: column; }
 
 .person {

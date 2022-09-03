@@ -1,0 +1,27 @@
+<div class="main">
+	<section class="profile">
+		{{>profileSidebar}}
+		<div class="profile-content">
+			<form class="change-profil-forma">
+				{{>profileAva}}
+				<div class="change-profil-forma">
+					{{#if changePass}}
+						{{>profileChangeRow type="password" description="Старый пароль" id="passwordold" _errormessage="Неверный пароль"}}
+						{{>profileChangeRow type="password" description="Новый пароль" id="passwordnew" _errormessage="Пароли не совпадают"}}
+						{{>profileChangeRow type="password" description="Повторите новый пароль" id="passwordpovt" _errormessage="Пароли не совпадают"}}	
+					{{else}}
+						{{>profileChangeRow type="text" placeholder="pochta@yandex.ru" description="Почта" id="email" _errormessage="Неверный адрес почты"}}
+						{{>profileChangeRow type="text" placeholder="vadimmaharram" description="Логин" id="login" _errormessage="Неверный Логин"}}
+						{{>profileChangeRow type="text" placeholder="Вадим" description="Имя" id="name" _errormessage="Неверное Имя"}}
+						{{>profileChangeRow type="text" placeholder="Махаррам" description="Фамилия" id="familiya" _errormessage="Неверная Фамилия"}}
+						{{>profileChangeRow type="text" placeholder="Вадим" description="Имя в чате" id="chatname" _errormessage="Неверное Имя"}}
+						{{>profileChangeRow type="text" placeholder="+7 (909) 967 30 30" description="Телефон" id="phone" _errormessage="Неверный телефон"}}
+					{{/if}}
+						<div class="forma-footer">		
+					  	<button>Сохранить</button>
+						</div>
+				</div>
+			</form>	
+		</div>
+	</section>
+</div>
