@@ -34,7 +34,6 @@ form.auth_reg_form {
       color: var(--main-input-placeholder);
       margin: 0;
       display: block;
-      opacity: 0;
       order: 2; }
     form.auth_reg_form .inp-holder input {
       display: block;

@@ -1,0 +1,9 @@
+<!-- из шаблона разговора в шаблон сообщений -->
+<div>
+	<p class="mess-date">{{date}}</p>
+	<div class="message-holder">
+	{{#each chatMessagesBlock}}
+		{{{ this }}}
+	{{/each}}
+	</div>
+</div>

@@ -43,21 +43,35 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
+  // _getChildrenAndProps(childrenAndProps: any) {
+  //   const props: Record<string, any> = {};
+  //   const children: Record<string, Block> = {};
+
+  //   Object.entries(childrenAndProps).forEach(([key, value]) => {
+  //     if (value instanceof Block) {
+  //       children[key] = value;
+  //     } else {
+  //       props[key] = value;
+  //     }
+  //   });
+
+  //   return { props, children };
+  // }
   _getChildrenAndProps(childrenAndProps: any) {
     const props: Record<string, any> = {};
     const children: Record<string, Block> = {};
 
-    Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block) {
-        children[key] = value;
-      } else {
-        props[key] = value;
-      }
-    });
-
+  Object.entries(childrenAndProps).forEach(([key, value]) => {
+  if (Array.isArray(value) && value.every(v => v instanceof Block)) {
+      children[key] = value;
+    } else if (value instanceof Block) {
+      children[key] = value;
+    } else {
+      props[key] = value;
+    }
+  })
     return { props, children };
   }
-
   _addEvents() {
     const {events = {}} = this.props as { events: Record<string, () =>void> };
 
@@ -73,16 +87,8 @@ class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    // const { tagName } = this._meta;
-    // this._element = this._createDocumentElement(tagName);
-  }
-
   private _init() {
-    this._createResources();
-
     this.init();
-
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -96,8 +102,16 @@ class Block {
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)){
+        child.forEach(grandsons => {
+          grandsons.dispatchComponentDidMount();
+        });
+      }else{
+        child.dispatchComponentDidMount();
+      }
+    });
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -125,43 +139,42 @@ class Block {
   private _render() {
     const fragment = this.render();
     this._element = fragment.firstElementChild as HTMLElement;
-    // this._element!.innerHTML = '';
-
-    // this._element!.append(fragment);
-
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = { ...context };
-// <div data-id="${component.id}"></div>
+  protected compile(template: (context: unknown) => string, context: {}){
+    const contextAndStubs : Record<string, any> = {...context};
     Object.entries(this.children).forEach(([name, component]) => {
-      contextAndStubs[name] = `<div data-id="${component.id}" ></div>`;
-
+        if (Array.isArray(component)){
+            contextAndStubs[name] = component.map(el => `<div data-id="${el.id}"></div>`);
+        }
+        else{
+         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;       
+        }
     });
-
     const html = template(contextAndStubs);
-
-    const temp = document.createElement('template');
-
-    temp.innerHTML = html;
-
+    const bufTemplate = document.createElement('template');
+    bufTemplate.innerHTML = html;
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-
-      if (!stub) {
-        return;
-      }
-
-      component.getContent()?.append(...Array.from(stub.childNodes));
-
-      stub.replaceWith(component.getContent()!);
-
+        if (Array.isArray(component))
+        {
+          component.forEach((el : Block) => {
+              const stub = bufTemplate.content.querySelector(`[data-id="${el.id}"]`);
+              if (!stub)
+                  return;
+              // stub.append(el.getContent());
+              stub.replaceWith(el.getContent()!);
+          });
+        }
+        else{
+          const stub = bufTemplate.content.querySelector(`[data-id="${component.id}"]`);
+          if (!stub)
+              return;
+          stub.replaceWith(component.getContent()!);
+        }
     });
-
-    return temp.content;
+    return bufTemplate.content;
   }
-
   protected render(): DocumentFragment {
     return new DocumentFragment();
   }
@@ -171,9 +184,7 @@ class Block {
   }
 
   _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
-
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
@@ -181,11 +192,7 @@ class Block {
       },
       set(target, prop, value) {
         const oldTarget = { ...target }
-
         target[prop] = value;
-
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -196,7 +203,6 @@ class Block {
   }
 
   _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 

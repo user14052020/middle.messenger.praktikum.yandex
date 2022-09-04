@@ -3,17 +3,19 @@
     <div class="chat">
       <div class="top">
         <div class="profil">
-          <a href="#">Профиль <img alt="" src="{{toRightAngleSvg}}"></a>
+          <a href="profile">Профиль <img alt="" src="{{toRightAngleSvg}}"></a>
         </div>
         <div class="search">
           <form class="chat-forma">
-            <input placeholder="&#xF002; Поиск" style="font-family: 'Inter', 'Font Awesome 5 Free'" type="text">
+            {{{chatsSearchInput}}}
           </form>
         </div>
       </div>
       <div class="tumbler">
         <div class="conversations">
-          {{> chatsPerson}}
+          {{#each chatsPersonBlock}}
+            {{{ this }}}
+          {{/each}}
         </div>
       </div>
     </div>
@@ -43,65 +45,11 @@
           </div>
         </div>
       </div>
+      <!-- из шаблона страницы чата в шаблон разговора -->
       <div class="content-holder">
-        <p class="mess-date">19 июня</p>
-        <div class="message-holder">
-          <div class="message-in">
-            <div class="message-in-text">
-              <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>
-              Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-              <div class="time">
-                11:56
-              </div>
-            </div>
-            <div class="message-in-file">
-              <img src="{{fileImg}}">
-              <div class="time time-bg">
-                11:56
-              </div>
-            </div>
-          </div>
-          <div class="message-out">
-            <div class="message-out-text">
-              <p>Круто!</p>
-              <div class="time time-check">
-                <span class="mark-polucil"><svg height="5" viewbox="0 0 11 5" width="11" xmlns="http://www.w3.org/2000/svg">
-                <line stroke="#3369F3" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" x2="3.765" y1="-0.5" y2="-0.5"></line>
-                <line stroke="#3369F3" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" x2="5.6475" y1="-0.5" y2="-0.5"></line>
-                <line stroke="#3369F3" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" x2="5.6475" y1="-0.5" y2="-0.5"></line></svg></span> 11:56
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="mess-date">19 июня</p>
-        <div class="message-holder">
-          <div class="message-in">
-            <div class="message-in-text">
-              <p>EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.<br>
-              Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.</p>
-              <div class="time">
-                11:56
-              </div>
-            </div>
-            <div class="message-in-file">
-              <img src="{{fileImg}}">
-              <div class="time time-bg">
-                11:56
-              </div>
-            </div>
-          </div>
-          <div class="message-out">
-            <div class="message-out-text">
-              <p>Круто!</p>
-              <div class="time time-check">
-                <span class="mark-polucil"><svg height="5" viewbox="0 0 11 5" width="11" xmlns="http://www.w3.org/2000/svg">
-                <line stroke="#3369F3" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33313)" x2="3.765" y1="-0.5" y2="-0.5"></line>
-                <line stroke="#3369F3" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5.00006)" x2="5.6475" y1="-0.5" y2="-0.5"></line>
-                <line stroke="#3369F3" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5.00006)" x2="5.6475" y1="-0.5" y2="-0.5"></line></svg></span> 11:56
-              </div>
-            </div>
-          </div>
-        </div>
+          {{#each conversationBlock}}
+            {{{ this }}}
+          {{/each}}
       </div>
       <div class="chat-content-footer">
         <form id="mess_forma" name="mess_forma">
@@ -116,7 +64,7 @@
             <path clip-rule="evenodd" d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#999999" fill-rule="evenodd"></path></svg></span></label>
           </div>
           <div class="input-holder">
-            <input id="mess" placeholder="Сообщение" type="text">
+            {{{chatsMessageInput}}}
           </div>
           <div class="input-holder">
             <button class="button-send"><span class="send"><svg height="12" viewbox="0 0 13 12" width="13" xmlns="http://www.w3.org/2000/svg">

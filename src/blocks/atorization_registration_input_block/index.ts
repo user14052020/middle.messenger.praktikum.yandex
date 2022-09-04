@@ -2,9 +2,10 @@ import Block from '../../utils/Block';
 import template from './atorization_registration_input_block.hbs';
 
 interface AtorizationRegistrationInputBlockProps {
+  inputId: string;
   label: string;
   errorMessage: string;
-  atorizationRegistrationInput: any;
+  atorizationRegistrationInput: string;
 }
 
 export class AtorizationRegistrationInputBlock extends Block {

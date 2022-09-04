@@ -83,7 +83,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
     padding-top: 11.1rem; }
-
+.chat-forma input{
+  font-family: 'Inter', 'Font Awesome 5 Free';
+}
 .tumbler {
   -ms-overflow-style: none;
   /* Internet Explorer 10+ */
