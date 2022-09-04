@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './chats_person.hbs';
 
 interface ChatsPersonBlockProps {
-  username: string;
+  personName: string;
   messageText: string;
   messageDate: string;
   unreadedMessageAmount: int;

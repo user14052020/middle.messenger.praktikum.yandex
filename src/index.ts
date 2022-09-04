@@ -39,13 +39,13 @@ window.addEventListener('DOMContentLoaded', () => {
     body.append(errorPage.getContent()!);
     errorPage.dispatchComponentDidMount();
   } else if (window.location.pathname === '/login') {
-    const loginButton = new Button({title:'Авторизоваться'});
+    const loginButton = new Button({isSendMessageButton: false, title:'Авторизоваться'});
     const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:false, title: 'Вход',regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
     body.append(atorizationRegistrationPage.getContent()!);
     atorizationRegistrationPage.dispatchComponentDidMount();
 
   } else if (window.location.pathname === '/registration') {
-    const authButton = new Button({title:'Зарегистрироваться'});
+    const authButton = new Button({isSendMessageButton: false, title:'Зарегистрироваться'});
     const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:true, title: 'Регистрация', regAuthButton: authButton, regAuthLinkTitle:"Войти", regAuthLink:"login"});
     body.append(atorizationRegistrationPage.getContent()!);
     atorizationRegistrationPage.dispatchComponentDidMount();
@@ -55,27 +55,30 @@ window.addEventListener('DOMContentLoaded', () => {
   } else if (window.location.pathname === '/chats') {
     
     let conversations = [
-      { username: 'testUser1', messageText: 'Круто!', messageDate: '12:59',unreadedMessageAmount:3},
-      { username: 'testUser2', messageText: 'Нормально!', messageDate: '13:59',unreadedMessageAmount:2},
-      { username: 'testUser3', messageText: 'Отвратительно!', messageDate: '14:59',unreadedMessageAmount:1}
+      { personName: 'Андрей', messageText: 'Катастрофы...', messageDate: '12:59',unreadedMessageAmount:3},
+      { personName: 'Радим', messageText: 'Нормально!', messageDate: '13:59',unreadedMessageAmount:2},
+      { personName: 'Вадим', messageText: 'Отвратительно!', messageDate: '14:59',unreadedMessageAmount:1}
     ];
 
     let chatsPersonBlocks = [];
 
     conversations.forEach((data) => {
       let chatsPersonBlock = new ChatsPersonBlock({ 
-                                username: data.username, 
+                                personName: data.personName, 
                                 messageText: data.messageText, 
                                 messageDate: data.messageDate,
                                 unreadedMessageAmount:data.unreadedMessageAmount
                               });
       chatsPersonBlocks.push(chatsPersonBlock);  
     });
-     console.log(chatsPersonBlocks);
 
     let conversationMessages = [
-      { date: '19 июня', messages: [{type:'in',time:'12:59',text:'text1'},{type:'out',time:'13:59',text:'text2'}]},
-      { date: '20 июня', messages: [{type:'in',time:'12:59',text:'text1'},{type:'out',time:'13:59',text:'text2'}]}
+      { date: '19 июня', messages: [
+                          {isIn:true,time:'12:59',text:'Один раз научишься и наглеешь. Чувствуешь власть над вещами, чувствуешь, что они теперь истинно твои.'},
+                          {isIn:false,time:'13:59',text:' И вот в этот самый момент, когда почувствовал, что можешь всё, и наглеешь - в этот самый момент практически всегда и случается катастрофа.'}]},
+      { date: '20 июня', messages: [
+                          {isIn:true,time:'12:59',text:'В Вашем случае логично предположить сгорание чего-нибудь в принципе не ремонтируемого в машинке - ну например сгорит блок управления, какой уже не выпускается...'},
+                          {isIn:false,time:'13:59',text:'Катастрофы очень любят случаться как раз тогда, когда обнаглеешь, и решишь, что ты всё знаешь, умеешь, можешь и вообще ты превыше всего.'}]}
     ];
     let conversationBlocks = [];
 
@@ -83,25 +86,25 @@ window.addEventListener('DOMContentLoaded', () => {
       let messages = []; 
       data.messages.forEach((message) => {
         //отдельный шаблон для сообщений 
-        let chatMessagesBlock = new ChatMessagesBlock({type:message.type, time:message.time, text:message.text});
+        let chatMessagesBlock = new ChatMessagesBlock({isIn:message.isIn, time:message.time, text:message.text});
         messages.push(chatMessagesBlock);
-      });
-      //отдельный шаблон для разговора куда передаются сообщения  
+      }); 
       let conversationBlock = new ConversationBlock({ date: data.date, messages: messages});
       conversationBlocks.push(conversationBlock); 
     });
-    console.log(conversationBlocks);
-
 
     const chatsSearchInput = new Input({placeholder:'Поиск',inputId:'chatsSearchInput',type:'text'});
-    const chatsMessageInput = new Input({placeholder:'Сообщение',inputId:'mess',type:'text'});
+    const chatsMessageInput = new Input({placeholder:'Сообщение',inputId:'message',type:'text'});
+    const chatsMessageButton = new Button({isSendMessageButton: true});
     const chatsPage = new ChatsPage({
+                                      personName: conversations[0].personName,
                                       fileImg: fileImg,
                                       toRightAngleSvg: toRightAngleSvg,
                                       chatsSearchInput: chatsSearchInput,
                                       chatsMessageInput: chatsMessageInput,
                                       chatsPersonBlock: chatsPersonBlocks,
-                                      conversationBlock: conversationBlocks, 
+                                      conversationBlock: conversationBlocks,
+                                      chatsMessageButton: chatsMessageButton, 
                                     });
     body.append(chatsPage.getContent()!);
     chatsPage.dispatchComponentDidMount();
@@ -115,7 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }else if (window.location.pathname === '/profile-new-ava-modal-choose-file') {
     body.innerHTML = profileLayout({changeAva:true});
   }else{
-    const loginButton = new Button({title:'Авторизоваться'});
+    const loginButton = new Button({isSendMessageButton: false,title:'Авторизоваться'});
     const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:false, title: 'Вход', regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
     body.append(atorizationRegistrationPage.getContent()!);
     atorizationRegistrationPage.dispatchComponentDidMount();

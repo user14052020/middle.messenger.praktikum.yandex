@@ -3,7 +3,7 @@ import template from './chat_messages.hbs';
 
 interface ChatMessagesBlockProps {
 
-  type: string;
+  isIn: boolean;
   time: string;
   text: string;
     

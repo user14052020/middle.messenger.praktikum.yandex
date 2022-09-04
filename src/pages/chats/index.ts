@@ -2,10 +2,12 @@ import Block from '../../utils/Block';
 import template from './chats.hbs';
 
 interface ChatsPageProps {
+  personName: string;
   fileImg: string;
   toRightAngleSvg: string;
   chatsSearchInput: string;
   chatsMessageInput: string;
+  chatsMessageButton: string;
   chatsPersonBlock: string;
   conversationBlock: string;
 }

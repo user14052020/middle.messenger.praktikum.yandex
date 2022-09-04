@@ -50,8 +50,8 @@ export class Input extends Block {
       }else{
         result = true;
       }
-    }else if(this.element?.id === 'mess'|| this.element?.id === 'chatsSearchInput'){
-      result = messageRGEX.test(value);
+    }else if(this.element?.id === 'message'|| this.element?.id === 'chatsSearchInput'){
+      result = !messageRGEX.test(value);
     }else{
       result = true;
     }
@@ -61,7 +61,7 @@ export class Input extends Block {
         nextSibling = nextSibling.nextSibling;
     }
     if (!nextSibling){
-      console.log("Нет поля для вывода сообщения валидации.");
+      this.element.placeholder = 'Сообщение не может быть пустым';
     }else{
       if(result === false){
         nextSibling.style.opacity = 1;

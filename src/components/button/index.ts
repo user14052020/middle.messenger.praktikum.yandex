@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './button.hbs';
 
 interface ButtonProps {
+  isSendMessageButton: boolean;
   type: string;
   id: string;
   events: {
@@ -22,7 +23,30 @@ export class Button extends Block {
     return this.compile(template, this.props);
   }
   validate(event) {
+    const regFormData = {
+      isHuman: false,
+  
+    };
     event.preventDefault(); 
-    console.log("test");
+    let form = document.querySelector('#auth_reg_form');
+    if (!form){
+      form = document.querySelector('#mess_forma');
+    }
+    if (form !== null){
+      let formData = new FormData();
+      Array.from(form.elements).forEach(element => {
+        if(element.tagName === "INPUT"){
+          let elementName = element.name;
+          let elementValue = element.value;
+          formData.set(elementName,elementValue);
+          element.focus();
+        }
+      });
+      var obj = {};
+      for (var key of formData.keys()) {
+        obj[key] = formData.get(key);
+      }
+      console.log(obj);
+    }
   }
 }
