@@ -511,3 +511,8 @@
             border-radius: 30px;
             color: #fff;
             padding: 5px 10px; }
+
+#message::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #996666;
+  opacity: 1; /* Firefox */
+}            

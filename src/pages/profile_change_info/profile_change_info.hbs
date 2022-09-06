@@ -1,0 +1,18 @@
+<div class="main">
+	<section class="profile">
+		{{{profileSidebarBlock}}}
+		<div class="profile-content">
+			<form id="profile_data" class="change-profil-forma">
+				{{{profileAvaBlock}}}
+				<div class="change-profil-forma">
+		          {{#each profileChangeInfoRowBlock}}
+		            {{{ this }}}
+		          {{/each}}
+					<div class="forma-footer">
+					{{{profileChangeInfoSaveButton}}}		
+					</div>
+				</div>
+			</form>	
+		</div>
+	</section>
+</div>

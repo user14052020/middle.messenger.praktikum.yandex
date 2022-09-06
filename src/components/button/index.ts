@@ -28,25 +28,25 @@ export class Button extends Block {
   
     };
     event.preventDefault(); 
-    let form = document.querySelector('#auth_reg_form');
-    if (!form){
-      form = document.querySelector('#mess_forma');
-    }
-    if (form !== null){
-      let formData = new FormData();
-      Array.from(form.elements).forEach(element => {
-        if(element.tagName === "INPUT"){
-          let elementName = element.name;
-          let elementValue = element.value;
-          formData.set(elementName,elementValue);
-          element.focus();
+    const formsIds = ['auth_reg_form','mess_forma','profile_data'];
+    const forms = document.getElementsByTagName('form');
+    for (const form of forms) {
+      if (formsIds.includes(form.id)){
+        let formData = new FormData();
+        Array.from(form.elements).forEach(element => {
+          if(element.tagName === "INPUT"){
+            let elementName = element.name;
+            let elementValue = element.value;
+            formData.set(elementName,elementValue);
+            element.focus();
+          }
+        });
+        var obj = {};
+        for (var key of formData.keys()) {
+          obj[key] = formData.get(key);
         }
-      });
-      var obj = {};
-      for (var key of formData.keys()) {
-        obj[key] = formData.get(key);
+        console.log(obj);
       }
-      console.log(obj);
     }
   }
 }

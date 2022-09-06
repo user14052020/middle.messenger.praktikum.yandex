@@ -32,16 +32,17 @@ export class Input extends Block {
     let passwordRGEX = /(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     let messageRGEX = /^\s*$/;
     let result = false;
-
+    const passwordInputNames = ['password', 'passwordold'];
+    const namesInput = ['first_name', 'second_name','chat_name'];
     if(this.element?.id === 'email'){
       result = emailRGEX.test(value);
     }else if(this.element?.id === 'phone'){
       result = phoneRGEX.test(value);
     }else if(this.element?.id === 'login'){
       result = loginRGEX.test(value);
-    }else if(this.element?.id === 'password'){
+    }else if(passwordInputNames.includes(this.element?.id)){
       result = passwordRGEX.test(value);
-    }else if(this.element?.id === 'first_name' || this.element?.id === 'second_name'){
+    }else if(namesInput.includes(this.element?.id)){
       result = nameRGEX.test(value);
     }else if(this.element?.id === 'passwordval'){
       password = document.getElementById('password').value;
