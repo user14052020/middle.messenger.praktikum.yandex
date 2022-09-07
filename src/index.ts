@@ -1,6 +1,7 @@
 import './pages/main/main.css';
 import './pages/atorization_registration/atorization_registration.css';
 import './pages/profile/profile.css';
+import './pages/profile_change_info/profile_change_info.css';
 import './pages/chats/chats.css';
 import './pages/error/error.css';
 
@@ -30,6 +31,7 @@ import { ProfileChangeInfoRowBlock } from './blocks/profile_change_info_row';
 import { ProfileChangeLinkBlock } from './blocks/profile_change_link';
 import { Input } from './components/input';
 import { Button } from './components/button';
+import HTTPTransport from './utils/HTTPTransport';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -111,7 +113,7 @@ function createProfileChangePage(profileChangeInfoRowBlocksData:[]){
     
     profileChangeInfoRowBlocksData.forEach((data) => {
       let profileChangeInfoRowInput = new Input({placeholder:data.description,inputId:data.id,type:data.type});
-      profileChangeInfoRowBlock = new ProfileChangeInfoRowBlock({
+      let profileChangeInfoRowBlock = new ProfileChangeInfoRowBlock({
                                                                   errorMessage: data.errorMessage,
                                                                   description: data.description,
                                                                   labelFor: data.id,

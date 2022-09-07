@@ -28,7 +28,7 @@ export class Button extends Block {
   
     };
     event.preventDefault(); 
-    const formsIds = ['auth_reg_form','mess_forma','profile_data'];
+    const formsIds = ['auth-reg-form','message-form','profile-data-form'];
     const forms = document.getElementsByTagName('form');
     for (const form of forms) {
       if (formsIds.includes(form.id)){
