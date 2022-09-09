@@ -5,10 +5,10 @@ interface ChatsPersonBlockProps {
   personName: string;
   messageText: string;
   messageDate: string;
-  unreadedMessageAmount: int;
+  unreadedMessageAmount: number;
 }
 
-export class ChatsPersonBlock extends Block {
+export class ChatsPersonBlock extends Block<ChatsPersonBlockProps> {
   constructor(props: ChatsPersonBlockProps) {
     super('div', props);
   }

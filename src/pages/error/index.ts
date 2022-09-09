@@ -6,7 +6,7 @@ interface ErrorPageProps {
   errorMessage: string;
 }
 
-export class ErrorPage extends Block {
+export class ErrorPage extends Block<ErrorPageProps> {
   constructor(props: ErrorPageProps) {
     super('div', props);
   }

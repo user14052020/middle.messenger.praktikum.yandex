@@ -9,7 +9,7 @@ interface ChatMessagesBlockProps {
     
 }
 
-export class ChatMessagesBlock extends Block {
+export class ChatMessagesBlock extends Block<ChatMessagesBlockProps> {
   constructor(props: ChatMessagesBlockProps) {
     super('div', props);
   }

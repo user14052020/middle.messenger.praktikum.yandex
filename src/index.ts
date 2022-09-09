@@ -1,20 +1,19 @@
-import './pages/main/main.css';
-import './pages/atorization_registration/atorization_registration.css';
+import './pages/authorization_registration/authorization_registration.css';
 import './pages/profile/profile.css';
 import './pages/profile_change_info/profile_change_info.css';
 import './pages/chats/chats.css';
 import './pages/error/error.css';
 
+import './blocks/menu/menu.css';
 import './blocks/profile_sidebar/profile_sidebar.css';
 import './blocks/profile_ava/profile_ava.css';
-import './blocks/profile_change_info_row/profile_change_info_row.css';
 import './blocks/profile_row/profile_row.css';
 
 import fileImg from './images/file-img.jpg';
 import toRightAngleSvg from './images/to-right-angle.svg';
 import lupaSvg from './images/lupa.svg';
 
-import { AtorizationRegistrationPage } from './pages/atorization_registration';
+import { AuthorizationRegistrationPage } from './pages/authorization_registration';
 import { ErrorPage } from './pages/error';
 import { ChatsPage } from './pages/chats';
 import { ProfilePage } from './pages/profile';
@@ -54,17 +53,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   } else if (window.location.pathname === '/login') {
     
-    const loginButton = new Button({isSendMessageButton: false, title:'Авторизоваться'});
-    const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:false, title: 'Вход',regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
-    body.append(atorizationRegistrationPage.getContent()!);
-    atorizationRegistrationPage.dispatchComponentDidMount();
+    const loginButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'});
+    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:false, title: 'Вход',regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
+    body.append(authorizationRegistrationPage.getContent()!);
+    authorizationRegistrationPage.dispatchComponentDidMount();
 
   } else if (window.location.pathname === '/registration') {
     
-    const authButton = new Button({isSendMessageButton: false, title:'Зарегистрироваться'});
-    const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:true, title: 'Регистрация', regAuthButton: authButton, regAuthLinkTitle:"Войти", regAuthLink:"login"});
-    body.append(atorizationRegistrationPage.getContent()!);
-    atorizationRegistrationPage.dispatchComponentDidMount();
+    const authButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'});
+    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:true, title: 'Регистрация', regAuthButton: authButton, regAuthLinkTitle:"Войти", regAuthLink:"login"});
+    body.append(authorizationRegistrationPage.getContent()!);
+    authorizationRegistrationPage.dispatchComponentDidMount();
     const reg_form = document.getElementsByTagName('form');
     reg_form[0].style.height = 'auto';
 
@@ -98,21 +97,21 @@ window.addEventListener('DOMContentLoaded', () => {
   }else if (window.location.pathname === '/profile-new-ava-modal-choose-file') {
     createProfilePage(true);
   }else{
-    const loginButton = new Button({isSendMessageButton: false,title:'Авторизоваться'});
-    const atorizationRegistrationPage = new AtorizationRegistrationPage({ isRegistration:false, title: 'Вход', regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
-    body.append(atorizationRegistrationPage.getContent()!);
-    atorizationRegistrationPage.dispatchComponentDidMount();
+    const loginButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false,title:'Авторизоваться'});
+    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:false, title: 'Вход', regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
+    body.append(authorizationRegistrationPage.getContent()!);
+    authorizationRegistrationPage.dispatchComponentDidMount();
   }
 });
 
 function createProfileChangePage(profileChangeInfoRowBlocksData:[]){
     const profileSidebarBlock = new ProfileSidebarBlock({});
     const profileAvaBlock = new ProfileAvaBlock({});
-    const profileChangeInfoSaveButton = new Button({title:"Сохранить"});
+    const profileChangeInfoSaveButton = new Button({title:"Сохранить",class:'change-profil-forma-button'});
     let profileChangeInfoRowBlocks = [];
     
     profileChangeInfoRowBlocksData.forEach((data) => {
-      let profileChangeInfoRowInput = new Input({placeholder:data.description,inputId:data.id,type:data.type});
+      let profileChangeInfoRowInput = new Input({class:'change-profil-forma-inp-input',placeholder:data.description,inputId:data.id,type:data.type});
       let profileChangeInfoRowBlock = new ProfileChangeInfoRowBlock({
                                                                   errorMessage: data.errorMessage,
                                                                   description: data.description,
@@ -172,7 +171,7 @@ function createChatsPage(){
     conversationBlocks.push(conversationBlock); 
   });
 
-  const chatsSearchInput = new Input({placeholder:'Поиск',inputId:'chatsSearchInput',type:'text'});
+  const chatsSearchInput = new Input({class:'chat-forma-search-input',placeholder:'Поиск',inputId:'chatsSearchInput',type:'text'});
   const chatsMessageInput = new Input({placeholder:'Сообщение',inputId:'message',type:'text'});
   const chatsMessageButton = new Button({isSendMessageButton: true});
   const chatsPage = new ChatsPage({

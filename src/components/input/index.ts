@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './input.hbs';
 
 interface InputProps {
+  class: string;
   type: string;
   inputId: string;
   placeholder: string;
@@ -11,7 +12,7 @@ interface InputProps {
   };
 }
 
-export class Input extends Block {
+export class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     super('input', props);
     this.props.events = {
@@ -28,7 +29,7 @@ export class Input extends Block {
     let phoneRGEX = /^[+0-9][0-9]{9,14}$/;
     let emailRGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let loginRGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,20}$/;
-    let nameRGEX = /^[A-ZА-ЯЁ][ёa-zа-я-]$/;
+    let nameRGEX = /^[A-ZА-ЯЁ][ёa-zа-я-]{1,20}$/;
     let passwordRGEX = /(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     let messageRGEX = /^\s*$/;
     let result = false;

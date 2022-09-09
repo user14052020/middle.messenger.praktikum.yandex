@@ -3,15 +3,15 @@ import template from './button.hbs';
 
 interface ButtonProps {
   isSendMessageButton: boolean;
-  type: string;
-  id: string;
+  class: string;
+  title: string;
   events: {
     click: () => void;
 
   };
 }
 
-export class Button extends Block {
+export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
     super('button', props);
     this.props.events = {
@@ -23,10 +23,6 @@ export class Button extends Block {
     return this.compile(template, this.props);
   }
   validate(event) {
-    const regFormData = {
-      isHuman: false,
-  
-    };
     event.preventDefault(); 
     const formsIds = ['auth-reg-form','message-form','profile-data-form'];
     const forms = document.getElementsByTagName('form');

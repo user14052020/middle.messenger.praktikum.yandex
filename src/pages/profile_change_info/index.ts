@@ -8,7 +8,7 @@ interface ProfileChangeInfoPageProps {
   profileChangeInfoSaveButton: string;
 }
 
-export class ProfileChangeInfoPage extends Block {
+export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
   constructor(props: ProfileChangeInfoPageProps) {
     super('div', props);
   }

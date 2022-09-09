@@ -6,7 +6,7 @@ interface ProfileChangeLinkBlockProps {
   link:string;
 }
 
-export class ProfileChangeLinkBlock extends Block {
+export class ProfileChangeLinkBlock extends Block<ProfileChangeLinkBlockProps> {
   constructor(props: ProfileChangeLinkBlockProps) {
     super('div', props);
   }

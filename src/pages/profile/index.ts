@@ -9,7 +9,7 @@ interface ProfilePageProps {
   isChangeAva: boolean;
 }
 
-export class ProfilePage extends Block {
+export class ProfilePage extends Block<ProfilePageProps> {
   constructor(props: ProfilePageProps) {
     super('div', props);
   }

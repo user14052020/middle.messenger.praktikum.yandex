@@ -6,7 +6,7 @@ interface ProfileRowBlockProps {
   value:string;
 }
 
-export class ProfileRowBlock extends Block {
+export class ProfileRowBlock extends Block<ProfileRowBlockProps> {
   constructor(props: ProfileRowBlockProps) {
     super('div', props);
   }

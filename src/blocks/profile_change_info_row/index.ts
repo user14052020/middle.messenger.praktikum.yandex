@@ -8,8 +8,8 @@ interface ProfileChangeInfoRowBlockProps {
   profileChangeInfoRowInput: string;
 }
 
-export class ProfileChangeInfoRowBlock extends Block {
-  constructor(props: ProfileChangeRowBlockProps) {
+export class ProfileChangeInfoRowBlock extends Block<ProfileChangeInfoRowBlockProps> {
+  constructor(props: ProfileChangeInfoRowBlockProps) {
     super('div', props);
   }
 

@@ -8,7 +8,7 @@ interface ConversationBlockProps {
 
 }
 
-export class ConversationBlock extends Block {
+export class ConversationBlock extends Block<ConversationBlockProps> {
   constructor(props: ConversationBlockProps) {
     super('div', props);
   }

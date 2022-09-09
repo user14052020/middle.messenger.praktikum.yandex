@@ -12,7 +12,7 @@ interface ChatsPageProps {
   conversationBlock: string;
 }
 
-export class ChatsPage extends Block {
+export class ChatsPage extends Block<ChatsPageProps> {
   constructor(props: ChatsPageProps) {
     super('div', props);
   }
