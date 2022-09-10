@@ -1,11 +1,15 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
+import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
+import { ProfileAvaBlock } from '../../blocks/profile_ava';
+import { ProfileRowBlock } from '../../blocks/profile_row';
+import { ProfileChangeLinkBlock } from '../../blocks/profile_change_link';
 
 interface ProfilePageProps {
-  profileSidebarBlock: string;
-  profileAvaBlock: string;
-  profileRowBlock: string;
-  profileChangeLinkBlock: string;
+  profileSidebarBlock: ProfileSidebarBlock;
+  profileAvaBlock: ProfileAvaBlock;
+  profileRowBlock: ProfileRowBlock[];
+  profileChangeLinkBlock: ProfileChangeLinkBlock[];
   isChangeAva: boolean;
 }
 

@@ -9,9 +9,7 @@ import './blocks/profile_sidebar/profile_sidebar.css';
 import './blocks/profile_ava/profile_ava.css';
 import './blocks/profile_row/profile_row.css';
 
-import fileImg from './images/file-img.jpg';
 import toRightAngleSvg from './images/to-right-angle.svg';
-import lupaSvg from './images/lupa.svg';
 
 import { AuthorizationRegistrationPage } from './pages/authorization_registration';
 import { ErrorPage } from './pages/error';
@@ -35,7 +33,7 @@ import HTTPTransport from './utils/HTTPTransport';
 window.addEventListener('DOMContentLoaded', () => {
 
   const root = document.querySelector('#root')!;
-  const menu = new MenuBlock({});
+  const menu = new MenuBlock();
   root.append(menu.getContent()!);
   const body = document.querySelector('#body')!;
 
@@ -69,11 +67,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
   } else if (window.location.pathname === '/chats') {
 
-    createChatsPage();
+    createChatsPage(body);
 
   } else if (window.location.pathname === '/profile') {
 
-    createProfilePage(false);
+    createProfilePage(body,false);
 
   }else if (window.location.pathname === '/profile-change-data') {
 
@@ -83,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
     {type:"text", placeholder:"Махаррам", description:"Фамилия", id:"second_name", errorMessage:"Неверная Фамилия"},
     {type:"text", placeholder:"Вадим", description:"Имя в чате", id:"chat_name", errorMessage:"Неверное Имя"},
     {type:"text", placeholder:"+7 (909) 967 30 30", description:"Телефон", id:"phone", errorMessage:"Неверный телефон"}]
-    createProfileChangePage(profileChangeInfoRowBlocksData);
+    createProfileChangePage(body, profileChangeInfoRowBlocksData);
   
   }else if (window.location.pathname === '/profile-change-pass') {
 
@@ -92,10 +90,10 @@ window.addEventListener('DOMContentLoaded', () => {
                                     {type:"password", description:"Новый пароль", id:"password", errorMessage:"Некорректный пароль"},
                                     {type:"password", description:"Повторите новый пароль", id:"passwordval", errorMessage:"Пароли не совпадают"}
                                   ];
-    createProfileChangePage(profileChangeInfoRowBlocksData);
+    createProfileChangePage(body, profileChangeInfoRowBlocksData);
 
   }else if (window.location.pathname === '/profile-new-ava-modal-choose-file') {
-    createProfilePage(true);
+    createProfilePage(body, true);
   }else{
     const loginButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false,title:'Авторизоваться'});
     const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:false, title: 'Вход', regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
@@ -104,11 +102,11 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function createProfileChangePage(profileChangeInfoRowBlocksData:[]){
-    const profileSidebarBlock = new ProfileSidebarBlock({});
-    const profileAvaBlock = new ProfileAvaBlock({});
+function createProfileChangePage(body:Element, profileChangeInfoRowBlocksData:Record<string,string>[]){
+    const profileSidebarBlock = new ProfileSidebarBlock();
+    const profileAvaBlock = new ProfileAvaBlock();
     const profileChangeInfoSaveButton = new Button({title:"Сохранить",class:'change-profil-forma-button'});
-    let profileChangeInfoRowBlocks = [];
+    let profileChangeInfoRowBlocks:ProfileChangeInfoRowBlock[]=[];
     
     profileChangeInfoRowBlocksData.forEach((data) => {
       let profileChangeInfoRowInput = new Input({class:'change-profil-forma-inp-input',placeholder:data.description,inputId:data.id,type:data.type});
@@ -131,14 +129,14 @@ function createProfileChangePage(profileChangeInfoRowBlocksData:[]){
     profileChangeInfoPage.dispatchComponentDidMount();
 }
 
-function createChatsPage(){
+function createChatsPage(body:Element){
   let conversations = [
     { personName: 'Андрей', messageText: 'Катастрофы...', messageDate: '12:59',unreadedMessageAmount:3},
     { personName: 'Радим', messageText: 'Нормально!', messageDate: '13:59',unreadedMessageAmount:2},
     { personName: 'Вадим', messageText: 'Отвратительно!', messageDate: '14:59',unreadedMessageAmount:1}
   ];
 
-  let chatsPersonBlocks = [];
+  let chatsPersonBlocks:ChatsPersonBlock[] = [];
 
   conversations.forEach((data) => {
     let chatsPersonBlock = new ChatsPersonBlock({ 
@@ -158,10 +156,10 @@ function createChatsPage(){
                         {isIn:true,time:'12:59',text:'В Вашем случае логично предположить сгорание чего-нибудь в принципе не ремонтируемого в машинке - ну например сгорит блок управления, какой уже не выпускается...'},
                         {isIn:false,time:'13:59',text:'Катастрофы очень любят случаться как раз тогда, когда обнаглеешь, и решишь, что ты всё знаешь, умеешь, можешь и вообще ты превыше всего.'}]}
   ];
-  let conversationBlocks = [];
+  let conversationBlocks:ConversationBlock[] = [];
 
   conversationMessages.forEach((data) => {
-    let messages = []; 
+    let messages:ChatMessagesBlock[] = []; 
     data.messages.forEach((message) => {
       //отдельный шаблон для сообщений 
       let chatMessagesBlock = new ChatMessagesBlock({isIn:message.isIn, time:message.time, text:message.text});
@@ -176,7 +174,6 @@ function createChatsPage(){
   const chatsMessageButton = new Button({isSendMessageButton: true});
   const chatsPage = new ChatsPage({
                                     personName: conversations[0].personName,
-                                    fileImg: fileImg,
                                     toRightAngleSvg: toRightAngleSvg,
                                     chatsSearchInput: chatsSearchInput,
                                     chatsMessageInput: chatsMessageInput,
@@ -188,9 +185,9 @@ function createChatsPage(){
   chatsPage.dispatchComponentDidMount();
 }
 
-function createProfilePage(isChangeAva:boolean){
-  const profileSidebarBlock = new ProfileSidebarBlock({});
-  const profileAvaBlock = new ProfileAvaBlock({});
+function createProfilePage(body:Element, isChangeAva:boolean){
+  const profileSidebarBlock = new ProfileSidebarBlock();
+  const profileAvaBlock = new ProfileAvaBlock();
   const userData = [
                       {description:"Почта",value:"asktask@icloud.ru"},
                       {description:"Логин",value:"vadimmaharram"},
@@ -203,8 +200,8 @@ function createProfilePage(isChangeAva:boolean){
                                 {description:"Изменить данные",link:"profile-change-data"},
                                 {description:"Изменить пароль",link:"profile-change-pass"},
                               ];
-  let profileChangeLinkBlocks = [];                                       
-  let profileRowBlocks = [];
+  let profileChangeLinkBlocks:ProfileChangeLinkBlock[] = [];                                       
+  let profileRowBlocks:ProfileRowBlock[] = [];
 
   userData.forEach((data) => {
     let profileRowBlock = new ProfileRowBlock({ 

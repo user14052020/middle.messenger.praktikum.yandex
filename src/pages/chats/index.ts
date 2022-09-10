@@ -1,15 +1,18 @@
 import Block from '../../utils/Block';
 import template from './chats.hbs';
+import { Input } from '../../components/input/';
+import { Button } from '../../components/button/';
+import { ConversationBlock } from '../../blocks/conversation';
+import { ChatsPersonBlock } from '../../blocks/chats_person';
 
 interface ChatsPageProps {
   personName: string;
-  fileImg: string;
   toRightAngleSvg: string;
-  chatsSearchInput: string;
-  chatsMessageInput: string;
-  chatsMessageButton: string;
-  chatsPersonBlock: string;
-  conversationBlock: string;
+  chatsSearchInput: Input;
+  chatsMessageInput: Input;
+  chatsMessageButton: Button;
+  chatsPersonBlock: ChatsPersonBlock[];
+  conversationBlock: ConversationBlock[];
 }
 
 export class ChatsPage extends Block<ChatsPageProps> {

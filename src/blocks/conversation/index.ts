@@ -4,7 +4,7 @@ import template from './conversation.hbs';
 interface ConversationBlockProps {
 
     date: string;
-    messages: string;
+    messages: Record<string, any>;
 
 }
 

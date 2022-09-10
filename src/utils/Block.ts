@@ -12,7 +12,7 @@ class Block<P extends Record<string, any> = any> {
 
   public id = nanoid(6);
   protected props: P;
-  public children: Record<string, Block[]>;
+  public children: Record<string, Block | Block[]> ;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
   private _meta: { tagName: string; props: P; };
@@ -23,7 +23,7 @@ class Block<P extends Record<string, any> = any> {
    *
    * @returns {void}
    */
-  constructor(tagName = "div", propsWithChildren: P = {}) {
+  constructor(tagName = "div", propsWithChildren: P = {} as P) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -43,9 +43,9 @@ class Block<P extends Record<string, any> = any> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: P):{ props: P, children: Record<string, Block[]>}  {
+  private _getChildrenAndProps(childrenAndProps: P):{ props: P, children: Record<string, Block | Block[]>}  {
     const props: Record<string, any> = {};
-    const children: Record<string, Block[]> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
     if (Array.isArray(value) && value.every(v => v instanceof Block)) {
@@ -58,7 +58,8 @@ class Block<P extends Record<string, any> = any> {
     })
     return { props: props as P, children };
   }
-  _addEvents() {
+
+  private _addEvents() {
     const {events = {}} = this.props as P & { events: Record<string, () =>void> };
 
     Object.keys(events).forEach(eventName => {
@@ -66,14 +67,14 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  _registerEvents(eventBus: EventBus) {
+  private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
+  private _createResources() {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
   }
@@ -86,7 +87,7 @@ class Block<P extends Record<string, any> = any> {
 
   protected init() {}
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
   }
 
@@ -148,8 +149,7 @@ class Block<P extends Record<string, any> = any> {
     const bufTemplate = document.createElement('template');
     bufTemplate.innerHTML = html;
     Object.entries(this.children).forEach(([_, component]) => {
-        if (Array.isArray(component))
-        {
+        if (Array.isArray(component)){
           component.forEach((el : Block) => {
               const stub = bufTemplate.content.querySelector(`[data-id="${el.id}"]`);
               if (!stub)
@@ -176,7 +176,7 @@ class Block<P extends Record<string, any> = any> {
     return this.element;
   }
 
-  _makePropsProxy(props: P) {
+  private _makePropsProxy(props: P) {
     const self = this;
     return new Proxy(props, {
       get(target, prop: string) {
@@ -195,7 +195,7 @@ class Block<P extends Record<string, any> = any> {
     });
   }
 
-  _createDocumentElement(tagName: string) {
+  private _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 

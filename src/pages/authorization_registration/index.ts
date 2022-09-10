@@ -2,15 +2,15 @@ import Block from '../../utils/Block';
 import template from './authorization_registration.hbs';
 import { AuthorizationRegistrationInputBlock } from '../../blocks/authorization_registration_input_block/';
 import { Input } from '../../components/input/';
+import { Button } from '../../components/button/';
 
 
 interface AuthorizationRegistrationPageProps {
   title: string;
-  regAuthButtonTitle: string;
   regAuthLinkTitle: string;
   regAuthLink: string;
   isRegistration: boolean;
-  regAuthButton: string;
+  regAuthButton: Button;
 
 }
 
