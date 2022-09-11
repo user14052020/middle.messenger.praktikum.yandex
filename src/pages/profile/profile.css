@@ -1,0 +1,154 @@
+.profile-content {
+  flex: 1 0 auto;
+}
+
+.profil-forma {
+  display: flex;
+  flex-direction: column;
+  width: 51rem;
+  height: auto;
+  min-height: 62rem;
+  background: var(--button-color);
+  box-shadow: none;
+  border-radius: 0;
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  backdrop-filter: blur(15px);
+  border: none;
+  padding: 5rem 3rem 3rem;
+}
+
+.profil-forma-button {
+  margin-top: auto;
+  display: inline-block;
+  border: none;
+  color: var(--button-color);
+  cursor: pointer;
+  outline: none;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-transform: none;
+  letter-spacing: 1px;
+  padding: 0 2rem;
+  max-height: 3.7rem;
+  white-space: nowrap;
+  line-height: 3.7rem;
+  background: var(--input-border-bottom-color);
+  border-radius: 8px;
+  margin-bottom: 1.4rem;
+}
+
+.profil-forma-button:hover {
+  background: var(--button-bg-color);
+  color: var(--main-body-color);
+}
+
+.out-profil {
+  padding-top: 1.5rem;
+}
+
+.out-profil-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--a-color);
+}
+
+.profil-modal-form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 34rem;
+  background: var(--button-color);
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+  border-radius: 12px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgb(255 255 255 / 10%);
+  padding: 5rem 3rem 3rem;
+}
+
+.profil-modal-form .inp-holder {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.profil-modal-form-inp-holder-label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  color: var(--main-input-placeholder);
+  margin: 0;
+  display: block;
+  order: 2;
+}
+
+.profil-modal-form-inp-holder-input {
+  display: block;
+  height: 2.8rem;
+  width: 100%;
+  background-color: var(--button-color);
+  border-radius: 0;
+  padding: 0 2rem;
+  margin-top: 4px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 2.8rem;
+  color: var(--main-body-color);
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--input-border-bottom-color);
+  order: 2;
+}
+
+.profil-modal-form-button {
+  margin-top: auto;
+  display: inline-block;
+  border: none;
+  color: var(--button-color);
+  cursor: pointer;
+  outline: none;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-transform: none;
+  letter-spacing: 1px;
+  padding: 0 2rem;
+  max-height: 3.7rem;
+  white-space: nowrap;
+  line-height: 3.7rem;
+  background: var(--input-border-bottom-color);
+  border-radius: 8px;
+  margin-bottom: 1.4rem;
+}
+
+.profil-modal-form-button:hover {
+  background: var(--button-bg-color);
+  color: var(--main-body-color);
+}
+
+.profil-modal-overley {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: rgb(0 0 0 / 40%);
+  z-index: 100;
+}

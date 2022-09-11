@@ -1,0 +1,23 @@
+<div class="main"> 
+<form class="auth-reg-form" id="auth-reg-form">
+  <h1 class="subtitle">{{title}}</h1>
+  {{#if isRegistration}}
+    {{{authorizationRegistrationEmailInputBlock}}}
+    {{{authorizationRegistrationLoginInputBlock}}}
+    {{{authorizationRegistrationNameInputBlock}}}
+    {{{authorizationRegistrationSecondnameInputBlock}}}
+    {{{authorizationRegistrationPhoneInputBlock}}}
+    {{{authorizationRegistrationPasswordInputBlock}}}
+    {{{authorizationRegistrationPasswordValInputBlock}}}
+  {{else}}
+    {{{authorizationRegistrationLoginInputBlock}}}
+    {{{authorizationRegistrationPasswordInputBlock}}}
+  {{/if}}
+
+  {{{regAuthButton}}}
+  <div class="form-bottom">
+    <a href="{{regAuthLink}}" class="no-akkaunt-link">{{regAuthLinkTitle}}</a>
+  </div>
+</form>	
+</div>
+

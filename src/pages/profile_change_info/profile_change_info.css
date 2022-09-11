@@ -1,0 +1,89 @@
+form.change-profil-forma {
+  display: flex;
+  flex-direction: column;
+  width: 51rem;
+  height: auto;
+  min-height: 62rem;
+  background: var(--button-color);
+  box-shadow: none;
+  border-radius: 0;
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  backdrop-filter: blur(15px);
+  border: none;
+  padding: 5rem 3rem 3rem;
+}
+
+form.change-profil-forma-inp-holder {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+form.change-profil-forma-inp-holder-label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 9px;
+  color: var(--main-body-color);
+  margin: 0;
+  display: block;
+  opacity: 1;
+  order: 2;
+  position: absolute;
+  top: 13px;
+}
+
+form.change-profil-forma-inp-holder-input {
+  display: block;
+  height: 2.8rem;
+  width: 100%;
+  background-color: var(--button-color);
+  border-radius: 0;
+  padding: 0 0 0 2rem;
+  margin-top: 4px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 2.8rem;
+  color: var(--main-body-color);
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--button-bg-color);
+  order: 2;
+  text-align: right;
+}
+
+.change-profil-forma-button {
+  margin-top: auto;
+  border: none;
+  color: var(--button-color);
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-transform: none;
+  letter-spacing: 1px;
+  padding: 0 2rem;
+  max-height: 3.7rem;
+  white-space: nowrap;
+  line-height: 3.7rem;
+  background: var(--input-border-bottom-color);
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  margin-bottom: 1.4rem;
+}
+
+.change-profil-forma-button:hover {
+  background: var(--button-bg-color);
+  color: var(--main-body-color);
+}
+
+.change-profil-forma-footer {
+  padding-top: 4rem;
+}
