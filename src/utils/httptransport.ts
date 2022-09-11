@@ -23,20 +23,20 @@ interface Options {
 }
 
 export class HTTPTransport {
-	get = (url:string, options: Options) => {
+	get = (url:string, options: Omit<Options, 'method'>) => {
 			 
 		return this.request(url, {...options, method: METHODS.Get}, options.timeout);
 	};
 
-	post = (url:string, options: Options) => {
+	post = (url:string, options: Omit<Options, 'method'>) => {
 		return this.request(url, {...options, method: METHODS.Post}, options.timeout);
 	};
 
-	put = (url:string, options: Options) => {
+	put = (url:string, options: Omit<Options, 'method'>) => {
 		return this.request(url, {...options, method: METHODS.Put}, options.timeout);
 	};
 
-	delete = (url:string, options: Options) => { 
+	delete = (url:string, options: Omit<Options, 'method'>) => {
 		return this.request(url, {...options, method: METHODS.Delete}, options.timeout);
 	};
 
