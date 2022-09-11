@@ -37,8 +37,8 @@ export class Button extends Block<ButtonProps> {
             element.focus();
           }
         });
-        var obj:Record<string,string> = {};
-        for (var key of formData.keys()) {
+        let obj:Record<string,string> = {};
+        for (let key of formData.keys()) {
           obj[key] = formData.get(key) as string;
         }
         console.log(obj);

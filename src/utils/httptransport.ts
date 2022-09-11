@@ -1,8 +1,8 @@
 enum METHODS {
-		GET = 'GET',
-		POST = 'POST',
-		PUT = 'PUT',
-		DELETE = 'DELETE',
+		Get = 'GET',
+		Post = 'POST',
+		Put = 'PUT',
+		Delete = 'DELETE',
 };
 
 function queryStringify(data:Record<string, any>) {
@@ -25,19 +25,19 @@ interface Options {
 export class HTTPTransport {
 	get = (url:string, options: Options) => {
 			 
-		return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+		return this.request(url, {...options, method: METHODS.Get}, options.timeout);
 	};
 
 	post = (url:string, options: Options) => {
-		return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+		return this.request(url, {...options, method: METHODS.Post}, options.timeout);
 	};
 
 	put = (url:string, options: Options) => {
-		return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+		return this.request(url, {...options, method: METHODS.Put}, options.timeout);
 	};
 
 	delete = (url:string, options: Options) => { 
-		return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+		return this.request(url, {...options, method: METHODS.Delete}, options.timeout);
 	};
 
 	request = (url:string, options: Options, timeout = 5000) => {
@@ -50,7 +50,7 @@ export class HTTPTransport {
 			}
 
 			const xhr = new XMLHttpRequest();
-			const isGet = method === METHODS.GET;
+			const isGet = method === METHODS.Get;
 
 			xhr.open(
 				method, 
