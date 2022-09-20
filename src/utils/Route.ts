@@ -1,20 +1,3 @@
-class Block {
-  getContent() { }
-  
-  show() {
-    console.log('show');
-  }
-  
-  hide() {
-    console.log('hide');
-  }
-}
-
-class Button extends Block {
-  getContent() {
-    return 'Button';
-  }
-}
 
 function isEqual(lhs, rhs) {
   return lhs === rhs;
@@ -22,16 +5,18 @@ function isEqual(lhs, rhs) {
 
 function render(query, block) {
   const root = document.querySelector(query);
-  root.textContent = block.getContent();
+  root.append(block.getContent());
+  block.dispatchComponentDidMount();
   return root;
 }
 
-class Route {
-    constructor(pathname, view, props) {
+export class Route {
+    constructor(pathname, view, props, blockProps) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
         this._props = props;
+        this._blockProps = blockProps;
     }
 
     navigate(pathname) {
@@ -52,8 +37,9 @@ class Route {
     }
 
     render() {
+
         if (!this._block) {
-            this._block = new this._blockClass();
+            this._block = new this._blockClass(this._blockProps);
             render(this._props.rootQuery, this._block);
             return;
         }
@@ -61,15 +47,4 @@ class Route {
         this._block.show();
     }
 }
-
-const route = new Route('/buttons', Button, {
-  rootQuery: '.app',
-});
-
-route.render();
-
-console.log(route._pathname, route._props);
-
-route.navigate('/buttons');
-route.navigate('/trash');
-route.leave();
+export default Route;

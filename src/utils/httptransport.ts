@@ -16,31 +16,37 @@ function queryStringify(data:Record<string, any>) {
   }, '?');
 }
 interface Options {
-	timeout: number,
+	timeout?: number,
 	headers: Record<string, string>,
 	method: string,
 	data: Record<string, any> | XMLHttpRequestBodyInit
 }
 
-export class HTTPTransport {
-	get = (url:string, options: Omit<Options, 'method'>) => {
-			 
-		return this.request(url, {...options, method: METHODS.Get}, options.timeout);
+export default class HTTPTransport {
+	static API_URL = 'https://ya-praktikum.tech/api/v2';
+  protected endpoint: string;
+
+   constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+  }
+
+	public get = (url:string, options: Omit<Options, 'method'>) => {
+		return this.request(this.endpoint + url, {...options, method: METHODS.Get});
 	};
 
-	post = (url:string, options: Omit<Options, 'method'>) => {
-		return this.request(url, {...options, method: METHODS.Post}, options.timeout);
+	public post = (url:string, options: Omit<Options, 'method'>) => {
+		return this.request(this.endpoint + url, {...options, method: METHODS.Post});
 	};
 
-	put = (url:string, options: Omit<Options, 'method'>) => {
-		return this.request(url, {...options, method: METHODS.Put}, options.timeout);
+	public put = (url:string, options: Omit<Options, 'method'>) => {
+		return this.request(this.endpoint + url, {...options, method: METHODS.Put});
 	};
 
-	delete = (url:string, options: Omit<Options, 'method'>) => {
-		return this.request(url, {...options, method: METHODS.Delete}, options.timeout);
+	public delete = (url:string, options: Omit<Options, 'method'>) => {
+		return this.request(this.endpoint + url, {...options, method: METHODS.Delete});
 	};
 
-	request = (url:string, options: Options, timeout = 5000) => {
+	private request = (url:string, options: Options, timeout = 50000) => {
 		const {headers, method, data} = options;
 
 		return new Promise(function(resolve, reject) {
@@ -51,34 +57,48 @@ export class HTTPTransport {
 
 			const xhr = new XMLHttpRequest();
 			const isGet = method === METHODS.Get;
-
+			console.log(url);
 			xhr.open(
 				method, 
 				isGet && !!data
 				? `${url}${queryStringify(data as Record<string, any>)}`
 				: url,
 			);
+			// xhr.onload = function() {
+			// 	resolve(xhr);
+			// };
 
-			Object.keys(headers).forEach(key => {
+			xhr.onreadystatechange = (e) => {
+
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
+        }
+      };
+
+      xhr.onabort = () => reject({reason: 'abort'});
+      xhr.onerror = () => reject({reason: 'network error'});
+      xhr.ontimeout = () => reject({reason: 'timeout'});
+      if(!headers){
+      	xhr.setRequestHeader('Content-Type', 'application/json');
+      }else{
+      	Object.keys(headers).forEach(key => {
 				xhr.setRequestHeader(key, headers[key]);
 			});
+      }
 
-			xhr.onload = function() {
-				resolve(xhr);
-			};
+      xhr.withCredentials = true;
+      xhr.responseType = 'json';
 
-			xhr.onabort = reject;
-			xhr.onerror = reject;
-
-			xhr.timeout = timeout;
-			xhr.ontimeout = reject;
 
 			if (isGet || !data) {
 				xhr.send();
 			} else {
-				xhr.send(data as XMLHttpRequestBodyInit);
+				xhr.send(JSON.stringify(data) as XMLHttpRequestBodyInit);
 			}
 		});
 	};
 }
-export default HTTPTransport;

@@ -28,108 +28,134 @@ import { ProfileChangeInfoRowBlock } from './blocks/profile_change_info_row';
 import { ProfileChangeLinkBlock } from './blocks/profile_change_link';
 import { Input } from './components/input';
 import { Button } from './components/button';
-import HTTPTransport from './utils/HTTPTransport';
+import { Link } from './components/link';
+import Route from './utils/Route';
+import Router from './utils/Router';
+import store from './utils/Store';
+import AuthController from './controllers/AuthController';
 
-window.addEventListener('DOMContentLoaded', () => {
+enum Routes {
+  Index = '/login',
+  Register = '/registration',
+  Profile = '/profile'
+}
+
+document.addEventListener('click', function (e) {
+  const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
+    if (e.target === modalProfileAvaChange) {
+      modalProfileAvaChange.style.display = 'none';
+    }
+});
+
+window.addEventListener('DOMContentLoaded', async () => {
 
   const root = document.querySelector('#root')!;
   const menu = new MenuBlock();
   root.append(menu.getContent()!);
+  
   const body = document.querySelector('#body')!;
 
-  if (window.location.pathname === '/404') {
+  const loginButton = new Button({url:'signIn', class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'});
+  const loginBlockProps = { isRegistration:false, title: 'Вход',regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"};
 
-    const errorPage = new ErrorPage({errorCode: "404", errorMessage: "Не туда попали"});
-    body.append(errorPage.getContent()!);
-    errorPage.dispatchComponentDidMount();
+  const authButton = new Button({url:'signUp',class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'});
+  const authBlockProps = { isRegistration:true, title: 'Регистрация', regAuthButton: authButton, regAuthLinkTitle:"Войти", regAuthLink:"login"};
 
-  } else if (window.location.pathname === '/500') {
-    
-    const errorPage = new ErrorPage({errorCode: "500", errorMessage: "Уже чиним"});
-    body.append(errorPage.getContent()!); 
-    errorPage.dispatchComponentDidMount();
+  const error404BlockProps = {errorCode: '404', errorMessage: 'Не туда попали'};
+  const error500BlockProps = {errorCode: '500', errorMessage: 'Уже чиним'};
 
-  } else if (window.location.pathname === '/login') {
-    
-    const loginButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'});
-    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:false, title: 'Вход',regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
-    body.append(authorizationRegistrationPage.getContent()!);
-    authorizationRegistrationPage.dispatchComponentDidMount();
 
-  } else if (window.location.pathname === '/registration') {
-    
-    const authButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'});
-    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:true, title: 'Регистрация', regAuthButton: authButton, regAuthLinkTitle:"Войти", regAuthLink:"login"});
-    body.append(authorizationRegistrationPage.getContent()!);
-    authorizationRegistrationPage.dispatchComponentDidMount();
-    const reg_form = document.getElementsByTagName('form');
-    reg_form[0].style.height = 'auto';
+  const profileBlockProps = createProfilePageProps(Router,false);
+  const profileAvaBlockProps = createProfilePageProps(Router,true);
 
-  } else if (window.location.pathname === '/chats') {
+  const profileChangeInfoBlockProps = createProfileChangePageProps(false);
+  const profileChangePassBlockProps = createProfileChangePageProps(true);
 
-    createChatsPage(body);
+  const chatsBlockProps = createChatsPagesProps();
 
-  } else if (window.location.pathname === '/profile') {
-
-    createProfilePage(body,false);
-
-  }else if (window.location.pathname === '/profile-change-data') {
-
-    const profileChangeInfoRowBlocksData = [{type:"text", placeholder:"pochta@yandex.ru", description:"Почта", id:"email", errorMessage:"Неверный адрес почты"},
-    {type:"text", placeholder:"vadimmaharram", description:"Логин", id:"login", errorMessage:"Неверный Логин"},
-    {type:"text", placeholder:"Вадим", description:"Имя", id:"first_name", errorMessage:"Неверное Имя"},
-    {type:"text", placeholder:"Махаррам", description:"Фамилия", id:"second_name", errorMessage:"Неверная Фамилия"},
-    {type:"text", placeholder:"Вадим", description:"Имя в чате", id:"chat_name", errorMessage:"Неверное Имя"},
-    {type:"text", placeholder:"+7 (909) 967 30 30", description:"Телефон", id:"phone", errorMessage:"Неверный телефон"}]
-    createProfileChangePage(body, profileChangeInfoRowBlocksData);
   
-  }else if (window.location.pathname === '/profile-change-pass') {
+  Router
+  .use("/",AuthorizationRegistrationPage,loginBlockProps)
+  .use("/login",AuthorizationRegistrationPage,loginBlockProps)
+  .use("/registration",AuthorizationRegistrationPage,authBlockProps)
+  .use("/chats",ChatsPage,chatsBlockProps)
+  .use("/profile",ProfilePage,profileBlockProps)
+  .use("/profile-change-data",ProfileChangeInfoPage,profileChangeInfoBlockProps)
+  .use("/profile-change-pass",ProfileChangeInfoPage,profileChangePassBlockProps)
+  .use("/profile-new-ava-modal-choose-file",ProfilePage,profileAvaBlockProps)
+  .use("/404",ErrorPage,error404BlockProps)
+  .use("/500",ErrorPage,error500BlockProps);
 
-    const profileChangeInfoRowBlocksData = [
-                                    {type:"password", description:"Старый пароль", id:"passwordold", errorMessage:"Неверный пароль"},
-                                    {type:"password", description:"Новый пароль", id:"password", errorMessage:"Некорректный пароль"},
-                                    {type:"password", description:"Повторите новый пароль", id:"passwordval", errorMessage:"Пароли не совпадают"}
-                                  ];
-    createProfileChangePage(body, profileChangeInfoRowBlocksData);
+  let isProtectedRoute = true;
 
-  }else if (window.location.pathname === '/profile-new-ava-modal-choose-file') {
-    createProfilePage(body, true);
-  }else{
-    const loginButton = new Button({class:'auth-reg-form-button', isSendMessageButton: false,title:'Авторизоваться'});
-    const authorizationRegistrationPage = new AuthorizationRegistrationPage({ isRegistration:false, title: 'Вход', regAuthButton: loginButton, regAuthLinkTitle:"Нет аккаунта?", regAuthLink:"registration"});
-    body.append(authorizationRegistrationPage.getContent()!);
-    authorizationRegistrationPage.dispatchComponentDidMount();
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Register:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile)
+    }
+  } catch (e) {
+    console.log(e);
+    Router.start();
+
+    if (isProtectedRoute) {
+      Router.go(Routes.Index);
+    }
   }
 });
 
-function createProfileChangePage(body:Element, profileChangeInfoRowBlocksData:Record<string,string>[]){
-    const profileSidebarBlock = new ProfileSidebarBlock();
-    const profileAvaBlock = new ProfileAvaBlock();
-    const profileChangeInfoSaveButton = new Button({title:"Сохранить",class:'change-profil-forma-button'});
-    let profileChangeInfoRowBlocks:ProfileChangeInfoRowBlock[]=[];
-    
-    profileChangeInfoRowBlocksData.forEach((data) => {
-      let profileChangeInfoRowInput = new Input({class:'change-profil-forma-inp-input',placeholder:data.description,inputId:data.id,type:data.type});
-      let profileChangeInfoRowBlock = new ProfileChangeInfoRowBlock({
-                                                                  errorMessage: data.errorMessage,
-                                                                  description: data.description,
-                                                                  labelFor: data.id,
-                                                                  profileChangeInfoRowInput: profileChangeInfoRowInput,                                                               
-                                                                });
-      profileChangeInfoRowBlocks.push(profileChangeInfoRowBlock);  
-    });
-    
-    const profileChangeInfoPage = new ProfileChangeInfoPage({
-                                          profileSidebarBlock: profileSidebarBlock,
-                                          profileAvaBlock: profileAvaBlock,
-                                          profileChangeInfoRowBlock: profileChangeInfoRowBlocks,
-                                          profileChangeInfoSaveButton: profileChangeInfoSaveButton
-                                        });
-    body.append(profileChangeInfoPage.getContent()!);
-    profileChangeInfoPage.dispatchComponentDidMount();
+function createProfileChangePageProps(isChangePass:boolean){
+  let profileChangeInfoRowBlocksData = [];
+  if(!isChangePass){
+    profileChangeInfoRowBlocksData = [
+                                      {type:"text", placeholder:"pochta@yandex.ru", description:"Почта", id:"email", errorMessage:"Неверный адрес почты"},
+                                      {type:"text", placeholder:"vadimmaharram", description:"Логин", id:"login", errorMessage:"Неверный Логин"},
+                                      {type:"text", placeholder:"Вадим", description:"Имя", id:"first_name", errorMessage:"Неверное Имя"},
+                                      {type:"text", placeholder:"Махаррам", description:"Фамилия", id:"second_name", errorMessage:"Неверная Фамилия"},
+                                      {type:"text", placeholder:"Вадим", description:"Имя в чате", id:"chat_name", errorMessage:"Неверное Имя"},
+                                      {type:"text", placeholder:"+7 (909) 967 30 30", description:"Телефон", id:"phone", errorMessage:"Неверный телефон"}
+                                      ];
+}else{
+    profileChangeInfoRowBlocksData = [
+                                      {type:"password", description:"Старый пароль", id:"passwordold", errorMessage:"Неверный пароль"},
+                                      {type:"password", description:"Новый пароль", id:"password", errorMessage:"Некорректный пароль"},
+                                      {type:"password", description:"Повторите новый пароль", id:"passwordval", errorMessage:"Пароли не совпадают"}
+                                      ];
+  }
+  const profileSidebarBlock = new ProfileSidebarBlock({events:{click: () => router.back()}});
+  const profileAvaBlock = new ProfileAvaBlock();
+  const profileChangeInfoSaveButton = new Button({title:"Сохранить",class:'change-profil-forma-button'});
+  let profileChangeInfoRowBlocks:ProfileChangeInfoRowBlock[]=[];
+  
+  profileChangeInfoRowBlocksData.forEach((data) => {
+    let profileChangeInfoRowInput = new Input({class:'change-profil-forma-inp-input',placeholder:data.description,inputId:data.id,type:data.type});
+    let profileChangeInfoRowBlock = new ProfileChangeInfoRowBlock({
+                                                                    errorMessage: data.errorMessage,
+                                                                    description: data.description,
+                                                                    labelFor: data.id,
+                                                                    profileChangeInfoRowInput: profileChangeInfoRowInput,                                                               
+                                                                  });
+    profileChangeInfoRowBlocks.push(profileChangeInfoRowBlock);  
+  });
+  
+  return {
+            profileSidebarBlock: profileSidebarBlock,
+            profileAvaBlock: profileAvaBlock,
+            profileChangeInfoRowBlock: profileChangeInfoRowBlocks,
+            profileChangeInfoSaveButton: profileChangeInfoSaveButton
+          };
 }
 
-function createChatsPage(body:Element){
+function createChatsPagesProps(){
   let conversations = [
     { personName: 'Андрей', messageText: 'Катастрофы...', messageDate: '12:59',unreadedMessageAmount:3},
     { personName: 'Радим', messageText: 'Нормально!', messageDate: '13:59',unreadedMessageAmount:2},
@@ -172,21 +198,20 @@ function createChatsPage(body:Element){
   const chatsSearchInput = new Input({class:'chat-forma-search-input',placeholder:'Поиск',inputId:'chatsSearchInput',type:'text'});
   const chatsMessageInput = new Input({placeholder:'Сообщение',inputId:'message',type:'text'});
   const chatsMessageButton = new Button({isSendMessageButton: true});
-  const chatsPage = new ChatsPage({
-                                    personName: conversations[0].personName,
-                                    toRightAngleSvg: toRightAngleSvg,
-                                    chatsSearchInput: chatsSearchInput,
-                                    chatsMessageInput: chatsMessageInput,
-                                    chatsPersonBlock: chatsPersonBlocks,
-                                    conversationBlock: conversationBlocks,
-                                    chatsMessageButton: chatsMessageButton, 
-                                  });
-  body.append(chatsPage.getContent()!);
-  chatsPage.dispatchComponentDidMount();
+  return {
+            personName: conversations[0].personName,
+            toRightAngleSvg: toRightAngleSvg,
+            chatsSearchInput: chatsSearchInput,
+            chatsMessageInput: chatsMessageInput,
+            chatsPersonBlock: chatsPersonBlocks,
+            conversationBlock: conversationBlocks,
+            chatsMessageButton: chatsMessageButton 
+          };
 }
 
-function createProfilePage(body:Element, isChangeAva:boolean){
-  const profileSidebarBlock = new ProfileSidebarBlock();
+function createProfilePageProps(router, isChangeAva:boolean){
+  const logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e) => {e.preventDefault(); AuthController.logout();}}});
+  const profileSidebarBlock = new ProfileSidebarBlock({events:{click: () => router.back()}});
   const profileAvaBlock = new ProfileAvaBlock();
   const userData = [
                       {description:"Почта",value:"asktask@icloud.ru"},
@@ -217,14 +242,13 @@ function createProfilePage(body:Element, isChangeAva:boolean){
                             });
     profileChangeLinkBlocks.push(profileChangeLinkBlock);  
   });                      
-  const profilePage = new ProfilePage({
-                                        profileSidebarBlock: profileSidebarBlock,
-                                        profileAvaBlock: profileAvaBlock,
-                                        profileRowBlock: profileRowBlocks,
-                                        profileChangeLinkBlock: profileChangeLinkBlocks,
-                                        isChangeAva: isChangeAva
-                                      });
-  body.append(profilePage.getContent()!);
-  profilePage.dispatchComponentDidMount();
+  return {
+          profileSidebarBlock: profileSidebarBlock,
+          profileAvaBlock: profileAvaBlock,
+          profileRowBlock: profileRowBlocks,
+          profileChangeLinkBlock: profileChangeLinkBlocks,
+          isChangeAva: isChangeAva,
+          logoutLink: logoutLink
+        };
 }
 

@@ -5,7 +5,8 @@
 		<div class="profile-content">
 			<form class="profil-forma">
 				{{{profileAvaBlock}}}
-			  	<h1>Вадим</h1>
+			  	<h1>{{first_name}} {{second_name}}</h1>
+
 				<div class="prof-table d-flex">
           {{#each profileRowBlock}}
             {{{ this }}}
@@ -16,7 +17,7 @@
 		            {{{ this }}}
 		          {{/each}}
 				</div>
-				<div class="out-profil"><a class="out-profil-link" href="login">Выйти</a></div>
+				<div class="out-profil">{{{logoutLink}}}</div>
 			</form>	
 		</div>
 	</section>
