@@ -1,7 +1,9 @@
 import Block from '../../utils/Block';
 import template from './button.hbs';
 import { SignupData } from '../../api/AuthAPI';
+import { UserChange } from '../../api/UserAPI';
 import AuthController from '../../controllers/AuthController';
+import UserController from '../../controllers/UserController';
 
 interface ButtonProps {
   url: string;
@@ -26,6 +28,7 @@ export class Button extends Block<ButtonProps> {
     return this.compile(template, this.props);
   }
   validate(event:Event, url:string) {
+    console.log(url);
     event.preventDefault(); 
     const formsIds = ['auth-reg-form','message-form','profile-data-form'];
     const forms = document.getElementsByTagName('form');
@@ -40,19 +43,35 @@ export class Button extends Block<ButtonProps> {
             element.focus();
           }
         });
-        let obj:Record<string,string> = {};
-        let data:Record<string,string> = {};
-        for (let key of formData.keys()) {
-          data[key] = formData.get(key) as string;
+        let hasErrors = false;
+        const warns = document.getElementsByClassName('warn');
+        for (const warn of warns) {
+          if (warn.style.opacity === '1'){
+            hasErrors = true;
+          }
+
         }
-        
-        obj['data'] = data;
-        console.log(obj);
-        if(url === 'signUp'){
-          AuthController.signup(obj as SignupData);
+        console.log(hasErrors,url);
+        if(hasErrors){
+          console.log('Пожалуйста исправьте ошибки');
         }else{
-          AuthController.signin(obj as SignupData);
+          let obj:Record<string,string> = {};
+          let data:Record<string,string> = {};
+          for (let key of formData.keys()) {
+            data[key] = formData.get(key) as string;
+          }
+          
+          obj['data'] = data;
+          console.log(obj);
+          if(url === 'signUp'){
+            AuthController.signup(obj as SignupData);
+          }else if (url === 'signIn'){
+            AuthController.signin(obj as SignupData);
+          }else if (url === 'userProfile'){
+            UserController.profile(obj as UserChange);
+          }
         }
+
         
       }
     }

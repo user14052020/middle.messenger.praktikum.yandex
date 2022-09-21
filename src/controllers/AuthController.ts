@@ -12,8 +12,11 @@ export class AuthController {
   async signin(data: SigninData) {
     try {
       await this.api.signin(data);
+      
+      await this.fetchUser();
 
-      router.go('/profile');
+      router.go('/settings');
+
     } catch (e: any) {
       console.error(e);
     }
@@ -25,7 +28,7 @@ export class AuthController {
 
       await this.fetchUser();
 
-      router.go('/profile');
+      router.go('/settings');
     } catch (e: any) {
       console.error(e);
     }
@@ -46,6 +49,8 @@ export class AuthController {
       console.error(e.message);
     }
   }
+
+
 }
 
 export default new AuthController();

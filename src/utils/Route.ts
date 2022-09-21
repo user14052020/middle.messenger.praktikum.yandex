@@ -1,7 +1,4 @@
-
-function isEqual(lhs, rhs) {
-  return lhs === rhs;
-}
+import { isEqual } from './helpers';
 
 function render(query, block) {
   const root = document.querySelector(query);
@@ -11,12 +8,11 @@ function render(query, block) {
 }
 
 export class Route {
-    constructor(pathname, view, props, blockProps) {
+    constructor(pathname, view, props) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
         this._props = props;
-        this._blockProps = blockProps;
     }
 
     navigate(pathname) {
@@ -39,7 +35,7 @@ export class Route {
     render() {
 
         if (!this._block) {
-            this._block = new this._blockClass(this._blockProps);
+            this._block = new this._blockClass();
             render(this._props.rootQuery, this._block);
             return;
         }

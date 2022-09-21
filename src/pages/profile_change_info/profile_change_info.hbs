@@ -1,18 +1,31 @@
-<div class="main">
-	<section class="profile">
-		{{{profileSidebarBlock}}}
-		<div class="profile-content">
-			<form id="profile-data-form" class="change-profil-forma">
-				{{{profileAvaBlock}}}
-				<div class="change-profil-forma">
-		          {{#each profileChangeInfoRowBlock}}
-		            {{{ this }}}
-		          {{/each}}
-					<div class="change-profil-forma-footer">
-					{{{profileChangeInfoSaveButton}}}		
+<div>
+	<div class="main">
+		<section class="profile">
+			{{{profileSidebarBlock}}}
+			<div class="profile-content">
+				<form id="profile-data-form" class="change-profil-forma">
+					{{{profileAvaBlock}}}
+					<div class="change-profil-forma">
+			          {{#each profileChangeInfoRowBlock}}
+			            {{{ this }}}
+			          {{/each}}
+						<div class="change-profil-forma-footer">
+						{{{profileChangeInfoSaveButton}}}		
+						</div>
 					</div>
-				</div>
-			</form>	
-		</div>
-	</section>
+				</form>	
+			</div>
+		</section>
+	</div>
+	<div class="profil-modal-overley" >
+		<form class="profil-modal-form">
+			<h3>Загрузите файл</h3>
+			<div class="inp-holder">   
+				<input class="profil-modal-form-inp-holder-input" type="file" placeholder="Выбрать файл на компьютере" id="file-sel">
+				<span class="file-sel d-none">Выбрать файл на компьютере</span> 
+				<label class="profil-modal-form-inp-holder-label" for="file-sel">Выбрать файл на компьютере</label>
+			</div>   
+			<button class="profil-modal-form-button">Поменять</button>
+		</form> 
+	</div>
 </div>

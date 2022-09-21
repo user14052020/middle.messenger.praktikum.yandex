@@ -4,6 +4,7 @@ import template from './input.hbs';
 interface InputProps {
   class?: string;
   type: string;
+  name: string;
   inputId: string;
   placeholder?: string;
   events?: {
@@ -34,7 +35,7 @@ export class Input extends Block<InputProps> {
     let passwordRGEX = /(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     let messageRGEX = /^\s*$/;
     let result = false;
-    const passwordInputNames = ['password', 'passwordold'];
+    const passwordInputNames = ['password', 'passwordold','oldPassword','newPassword'];
     const namesInput = ['first_name', 'second_name','chat_name'];
     if(inputId === 'email'){
       result = emailRGEX.test(inputValue);
