@@ -130,8 +130,20 @@ abstract class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
+    // const fragment = this.render();
+    // this._element = fragment.firstElementChild as HTMLElement;
+    // this._addEvents();
+
     const fragment = this.render();
-    this._element = fragment.firstElementChild as HTMLElement;
+
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    if (this._element && newElement) {
+      this._element.replaceWith(newElement);
+    }
+
+    this._element = newElement;
+
     this._addEvents();
   }
 

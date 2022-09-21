@@ -10,6 +10,10 @@ export interface UserChange {
   phone: string;
 }
 
+export interface UserAvatar {
+  file: string;
+}
+
 
 export interface UserPassword {
   oldPassword: string;
@@ -23,6 +27,10 @@ export class UserAPI extends BaseAPI {
 
   profile(data: UserChange) {
     return this.http.put('/profile', data);
+  }
+
+  avatar(data: Avatar) {
+    return this.http.put('/profile/avatar', data);
   }
 
   password(data: UserPassword) {

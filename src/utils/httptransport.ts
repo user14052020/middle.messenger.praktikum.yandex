@@ -82,21 +82,25 @@ export default class HTTPTransport {
       xhr.onabort = () => reject({reason: 'abort'});
       xhr.onerror = () => reject({reason: 'network error'});
       xhr.ontimeout = () => reject({reason: 'timeout'});
+      xhr.mode = 'cors';
       if(!headers){
-      	xhr.setRequestHeader('Content-Type', 'application/json');
+      	if(url.includes('avatar') === false){
+      		xhr.setRequestHeader('Content-Type', 'application/json');
+      	}  	
       }else{
       	Object.keys(headers).forEach(key => {
-				xhr.setRequestHeader(key, headers[key]);
-			});
+					xhr.setRequestHeader(key, headers[key]);
+				});
       }
-
       xhr.withCredentials = true;
       xhr.responseType = 'json';
 
 
 			if (isGet || !data) {
 				xhr.send();
-			} else {
+			} else if(url.includes('avatar')){
+				xhr.send(data as XMLHttpRequestBodyInit);
+			}else {
 				xhr.send(JSON.stringify(data) as XMLHttpRequestBodyInit);
 			}
 		});
