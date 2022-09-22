@@ -6,11 +6,7 @@ function render(query: any, block: Block) {
     if (root === null) {
         throw new Error(`root not found by selector "${query}"`);
     }
-    console.log(root.innerHTML.length);
-    if (root.innerHTML.length>5){
-        root.innerHTML = '';
-    }
-
+    root.innerHTML = '';
     root.append(block.getContent());
     block.dispatchComponentDidMount();
     return root;

@@ -56,8 +56,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await AuthController.fetchUser();
-    await UserController.getChats();
-    
+
     Router.start();
 
     if (!isProtectedRoute) {

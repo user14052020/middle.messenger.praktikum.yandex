@@ -64,16 +64,16 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
 
   componentDidUpdate(){
     let chatsListBlocks:ChatsListElementBlock[] = [];
-    
+
     for (const [, value] of Object.entries(this.props)) {
-      let chatsListElementBlock = new ChatsListElementBlock({ 
-                                  title: value.title, 
-                                  last_message: value.last_message, 
+      let chatsListElementBlock = new ChatsListElementBlock({
+                                  title: value.title,
+                                  last_message: value.last_message,
                                   unread_count:value.unread_count
                                 });
-       chatsListBlocks.push(chatsListElementBlock); 
+       chatsListBlocks.push(chatsListElementBlock);
 
-    }  
+    }
     this.children.chatsListBlocks = chatsListBlocks;
     return true;
   }

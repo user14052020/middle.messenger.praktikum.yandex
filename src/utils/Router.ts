@@ -38,10 +38,6 @@ interface ComponentConstructable<P extends Record<string, any>> {
             const target = event.currentTarget as Window;
             this._onRoute(target.location.pathname);
         });
-        //        window.onpopstate = ((event:PopStateEvent) => {
-        //
-        //             this._onRoute(event.currentTarget!.location.pathname);
-        //         }).bind(this);
 
         this._onRoute(window.location.pathname);
     }
