@@ -1,7 +1,6 @@
 import Block from '../../utils/Block';
 import template from './button.hbs';
-import { SigninData,SignupData } from '../../api/AuthAPI';
-import { UserChange,UserPassword,UserAvatar } from '../../api/UserAPI';
+import {Options} from '../../utils/HTTPTransport';
 
 import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
@@ -30,18 +29,19 @@ export class Button extends Block<ButtonProps> {
   }
   validate(event:Event, url:string) {
     
-    event.preventDefault(); 
-    let obj:Record<string,string> = {};
+    event.preventDefault();
+    let options:Options = {}
     let data:Record<string,string> = {};
     if (url==='avatar'){
-      const avatar = document.getElementById('avatar');
-      const formData = new FormData();
-      formData.append('avatar', avatar.files[0]);
-      obj['data'] = formData;
-      console.log(obj);
-      UserController.avatar(obj as Avatar);
+      const changeAvaForm = document.getElementById('change-avatar-modal') as HTMLFormElement;
+      const formData = new FormData(changeAvaForm);
+      options['data'] = formData;
+      console.log(options);
+      UserController.avatar(options);
+
       const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
-      modalProfileAvaChange.classList.remove("_show");
+      modalProfileAvaChange!.classList.remove("show");
+
     }else{
       const formsIds = ['auth-reg-form','message-form','profile-data-form'];
       const forms = document.getElementsByTagName('form');
@@ -57,8 +57,8 @@ export class Button extends Block<ButtonProps> {
             }
           });
           let hasErrors = false;
-          const warns = document.getElementsByClassName('warn');
-          for (const warn of warns) {
+          const warns = Array.from(document.getElementsByClassName('warn') as HTMLCollectionOf<HTMLElement>);
+          for (let warn of warns) {
             if (warn.style.opacity === '1'){
               hasErrors = true;
             }
@@ -70,17 +70,17 @@ export class Button extends Block<ButtonProps> {
             for (let key of formData.keys()) {
               data[key] = formData.get(key) as string;
             }
-            
-            obj['data'] = data;
-            console.log(obj);
+            options['headers'] = {'Content-Type': 'application/json'};
+            options['data'] = data;
+            console.log(options);
             if(url === 'signUp'){
-              AuthController.signup(obj as SignupData);
+              AuthController.signup(options as Options);
             }else if (url === 'signIn'){
-              AuthController.signin(obj as SigninData);
+              AuthController.signin(options as Options);
             }else if (url === 'userProfile'){
-              UserController.profile(obj as UserChange);
+              UserController.profile(options as Options);
             }else if (url === 'userPassword'){
-              UserController.password(obj as UserPassword);
+              UserController.password(options as Options);
             }
           }    
         }

@@ -19,3 +19,4 @@ export class Link extends Block<LinkProps> {
   render() {
     return this.compile(template, this.props);
   }
+}

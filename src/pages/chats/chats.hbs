@@ -5,15 +5,20 @@
         <div class="chat-top-profil">
           <a class="chat-top-profil-link" href="settings">Профиль <img alt="" src="{{toRightAngleSvg}}"></a>
         </div>
-        <div class="chat-top-search">
-          <form class="chat-forma">
-            {{{chatsSearchInput}}}
-          </form>
+        <div class="chat-top-search-add">
+            <div class="chat-top-search">
+              <form class="chat-forma">
+                {{{chatsSearchInput}}}
+              </form>
+          </div>
+            {{{chatAddBlock}}}
         </div>
+
       </div>
+
       <div class="tumbler">
         <div class="conversations">
-          {{#each chatsPersonBlock}}
+          {{#each chatsListBlocks}}
             {{{ this }}}
           {{/each}}
         </div>

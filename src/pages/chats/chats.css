@@ -11,7 +11,7 @@
 }
 
 .chat .top {
-  display: flex;
+  /* display: flex; */
   align-items: flex-end;
   flex-direction: column;
   min-height: 60px;
@@ -38,6 +38,10 @@
   margin: 0 auto;
 }
 
+.chat-top-search-add {
+  display: flex;
+}
+
 .chat-top-profil {
   flex: 0 0 auto;
   width: 100%;
@@ -59,7 +63,7 @@
 
 .chat-top-search {
   flex: 0 0 auto;
-  width: 100%;
+  width: 88%;
   padding-top: 2rem;
   margin-bottom: 1.2rem;
 }
@@ -67,6 +71,13 @@
 .chat-top-search ::placeholder {
   /* Most modern browsers support this now. */
   text-align: center;
+}
+
+.chat-add {
+  margin-bottom: 1.2rem;
+  padding-top: 2rem;
+  padding-left: 0.5rem;
+  cursor: pointer;
 }
 
 .chat-forma-search-input {

@@ -15,11 +15,11 @@ function queryStringify(data:Record<string, any>) {
     return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
   }, '?');
 }
-interface Options {
+export interface Options {
 	timeout?: number,
-	headers: Record<string, string>,
-	method: string,
-	data: Record<string, any> | XMLHttpRequestBodyInit
+	headers?: Record<string, string>,
+	method?: string,
+	data?: Record<string, any> | XMLHttpRequestBodyInit | FormData
 }
 
 export default class HTTPTransport {
@@ -46,7 +46,7 @@ export default class HTTPTransport {
 		return this.request(this.endpoint + url, {...options, method: METHODS.Delete});
 	};
 
-	private request = (url:string, options: Options, timeout = 50000) => {
+	private request = (url:string, options: Options) => {
 		const {headers, method, data} = options;
 
 		return new Promise(function(resolve, reject) {
@@ -64,25 +64,21 @@ export default class HTTPTransport {
 				? `${url}${queryStringify(data as Record<string, any>)}`
 				: url,
 			);
-			// xhr.onload = function() {
-			// 	resolve(xhr);
-			// };
 
-			xhr.onreadystatechange = (e) => {
+		xhr.onreadystatechange = () => {
 
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status < 400) {
-            resolve(xhr.response);
-          } else {
-            reject(xhr.response);
-          }
-        }
-      };
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status < 400) {
+					resolve(xhr.response);
+				} else {
+					reject(xhr.response);
+				}
+			}
+		};
 
       xhr.onabort = () => reject({reason: 'abort'});
       xhr.onerror = () => reject({reason: 'network error'});
       xhr.ontimeout = () => reject({reason: 'timeout'});
-      xhr.mode = 'cors';
       if(!headers){
       	if(url.includes('avatar') === false){
       		xhr.setRequestHeader('Content-Type', 'application/json');
@@ -94,7 +90,6 @@ export default class HTTPTransport {
       }
       xhr.withCredentials = true;
       xhr.responseType = 'json';
-
 
 			if (isGet || !data) {
 				xhr.send();

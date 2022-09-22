@@ -1,4 +1,5 @@
-import { isEqual } from './helpers';
+import { isEqual,PlainObject } from './helpers';
+import Block from "./Block";
 
 function render(query, block) {
   const root = document.querySelector(query);
@@ -8,14 +9,20 @@ function render(query, block) {
 }
 
 export class Route {
-    constructor(pathname, view, props) {
+
+    protected _props:Record<string, any>;
+    protected _blockClass:Block;
+    protected _block:Block;
+    protected _pathname:PlainObject<any>;
+
+    constructor(pathname:PlainObject, view:Block, props:Record<string, any>) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
         this._props = props;
     }
 
-    navigate(pathname) {
+    navigate(pathname:PlainObject) {
         if (this.match(pathname)) {
             this._pathname = pathname;
             this.render();
@@ -28,7 +35,7 @@ export class Route {
         }
     }
 
-    match(pathname) {
+    match(pathname:PlainObject) {
         return isEqual(pathname, this._pathname);
     }
 

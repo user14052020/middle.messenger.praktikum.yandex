@@ -5,8 +5,7 @@ import { ProfileAvaBlock } from '../../blocks/profile_ava';
 import { ProfileRowBlock } from '../../blocks/profile_row';
 import { ProfileChangeLinkBlock } from '../../blocks/profile_change_link';
 import { ProfileAvaChangeModalBlock } from '../../blocks/profile_ava_change_modal';
-import { withStore } from '../../utils/Store';
-import store from '../../utils/Store';
+import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from '../../components/link';
 
@@ -28,19 +27,6 @@ class ProfilePageBase extends Block<ProfilePageProps> {
 
   init() {
     //   AuthController.fetchUser();
-    this.test();
-
-  }
-
-  render() {
-    return this.compile(template, this.props);
-  }
-
-  componentDidUpdate(){
-    this.children.profileAvaBlock.setProps({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+this.props.avatar});
-  }
-
-  test(){
     const user = store.getState();
     if (Object.keys(user).length !== 0 ){
       this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e) => {e.preventDefault(); AuthController.logout();}}});
@@ -87,7 +73,17 @@ class ProfilePageBase extends Block<ProfilePageProps> {
       this.children.profileRowBlock = profileRowBlocks;
       this.children.profileChangeLinkBlock = profileChangeLinkBlocks;
     }
+
   }
+
+  render() {
+    return this.compile(template, this.props);
+  }
+
+  componentDidUpdate(){
+    this.children.profileAvaBlock.setProps({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+this.props.avatar});
+  }
+
 }
 
 

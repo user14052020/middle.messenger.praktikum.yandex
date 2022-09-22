@@ -153,6 +153,6 @@
   z-index: 100;
 }
 
-.profil-modal-overley._show{
+.profil-modal-overley.show {
   display: flex;
 }

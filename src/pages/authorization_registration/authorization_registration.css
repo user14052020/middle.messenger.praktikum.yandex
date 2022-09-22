@@ -1,7 +1,6 @@
 .auth-reg-form {
   display: flex;
   flex-direction: column;
-  
   width: 34rem;
   background: var(--button-color);
   box-shadow: 0 0 6px rgb(0 0 0 / 14%);
@@ -14,9 +13,11 @@
   border: 2px solid rgb(255 255 255 / 10%);
   padding: 5rem 3rem 3rem;
 }
+
 .auth-reg-form .login {
   height: 46rem;
 }
+
 .auth-reg-form .inp-holder {
   display: flex;
   flex-direction: column-reverse;

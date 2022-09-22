@@ -1,5 +1,5 @@
 import BaseAPI from './BaseAPI';
-import { User } from './AuthAPI';
+import {Options} from '../utils/HTTPTransport';
 
 export interface UserChange {
   first_name: string;
@@ -10,33 +10,24 @@ export interface UserChange {
   phone: string;
 }
 
-export interface UserAvatar {
-  file: string;
-}
-
-
-export interface UserPassword {
-  oldPassword: string;
-  newPassword: string;
-}
-
 export class UserAPI extends BaseAPI {
   constructor() {
     super('/user');
   }
 
-  profile(data: UserChange) {
+  profile(data: Options) {
     return this.http.put('/profile', data);
   }
 
-  avatar(data: Avatar) {
+  avatar(data: Options) {
     return this.http.put('/profile/avatar', data);
   }
 
-  password(data: UserPassword) {
+  password(data: Options) {
     return this.http.put('/password', data);
   }
 
+  read = undefined;
   create = undefined;
   update = undefined;
   delete = undefined;

@@ -1,7 +1,17 @@
 import { Route } from "./Route";
+import { PlainObject } from './helpers';
+import Block from "./Block";
+
 
 export class Router {
-    constructor(rootQuery) {
+
+    protected routes:Route[];
+    protected history:History;
+    protected _currentRoute:Route|null;
+    protected _rootQuery:string;
+
+
+    constructor(rootQuery:string) {
         if (Router.__instance) {
             return Router.__instance;
         }
@@ -14,21 +24,21 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname, block,blockProps) {
-        const route = new Route(pathname, block, {rootQuery: this._rootQuery});
+    use(pathname:string|PlainObject, block:Block) {
+        const route = new Route(pathname as PlainObject, block, {rootQuery: this._rootQuery});
         this.routes.push(route);
         return this;
     }
 
     start() {
-        window.onpopstate = (event => {
+        window.onpopstate = ((event:PopStateEvent) => {
             this._onRoute(event.currentTarget.location.pathname);
         }).bind(this);
 
         this._onRoute(window.location.pathname);
     }
 
-    _onRoute(pathname) {
+    _onRoute(pathname:string|PlainObject) {
 
         const route = this.getRoute(pathname);
         if (!route) {
@@ -41,11 +51,11 @@ export class Router {
         }
 
         this._currentRoute = route;
-        route.render(route, pathname);
+        route.render();
     }
 
-    go(pathname) {
-        this.history.pushState({}, '', pathname);
+    go(pathname:string|PlainObject) {
+        this.history.pushState({}, '', pathname as string);
         this._onRoute(pathname);
     }
 
@@ -57,8 +67,8 @@ export class Router {
         this.history.forward();
     }
 
-    getRoute(pathname) {
-        return this.routes.find(route => route.match(pathname));
+    getRoute(pathname:string|PlainObject) {
+        return this.routes.find((route:Route) => route.match(pathname as PlainObject));
     }
 }
 export default new Router('#body');

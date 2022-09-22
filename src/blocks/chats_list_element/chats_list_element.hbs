@@ -8,21 +8,23 @@
   <div class="information">
     <div class="content">
       <div class="person-information-username">
-        {{personName}}
+        {{title}}
       </div>
       <div class="person-information-message">
-        <strong>Вы:</strong> {{messageText}}
+        {{last_message}}
       </div>
     </div>
   </div>
+  {{#if unread_count}}
   <div class="notice">
     <div class="person-notice-data">
       <time class="person-notice-data-time">
-        {{messageDate}}
+
       </time>
     </div>
     <div class="person-notice-point">
-      {{unreadedMessageAmount}}
+      {{unread_count}}
     </div>
   </div>
+  {{/if}}
 </div>
