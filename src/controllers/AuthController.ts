@@ -1,15 +1,16 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
+import AuthAPI from '../api/AuthAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
+import {Options} from '../utils/HTTPTransport';
 
 export class AuthController {
-  private readonly api: AuthAPI;
+  private readonly api: typeof AuthAPI;
 
   constructor() {
-    this.api = API;
+    this.api = AuthAPI;
   }
 
-  async signin(data: SigninData) {
+  async signin(data: Options) {
     try {
       await this.api.signin(data);
       
@@ -22,7 +23,7 @@ export class AuthController {
     }
   }
 
-  async signup(data: SignupData) {
+  async signup(data: Options) {
     try {
       await this.api.signup(data);
 

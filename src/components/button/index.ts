@@ -6,7 +6,7 @@ import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
 
 interface ButtonProps {
-  url: string;
+  url?: string;
   isSendMessageButton?: boolean;
   class?: string;
   title?: string;

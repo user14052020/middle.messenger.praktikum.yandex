@@ -34,9 +34,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const root = document.querySelector('#root')!;
   const menu = new MenuBlock();
   root.append(menu.getContent()!);
-  
-  const body = document.querySelector('#body')!;
-  
+
   Router
   .use("/", AuthorizationRegistrationPage)
   .use("/sign-up", AuthorizationRegistrationPage)

@@ -6,9 +6,9 @@ import router from '../utils/Router';
 import {Options} from '../utils/HTTPTransport';
 
 export class UserController {
-  private readonly api: UserAPI;
-  private readonly authApi: AuthAPI;
-  private readonly chatsApi: ChatsAPI;
+  private readonly api: typeof UserAPI;
+  private readonly authApi: typeof AuthAPI;
+  private readonly chatsApi: typeof ChatsAPI;
 
   constructor() {
     this.api = UserAPI;
@@ -62,9 +62,9 @@ export class UserController {
 
   async createChat() {
     try {
-      let newChatOptions:createChatRequestData = {};
+      let newChatOptions:Options = {};
       newChatOptions['data'] = {title:(Math.random() + 1).toString(36).substring(7)};
-      const chat = await this.chatsApi.createChat(newChatOptions);
+      await this.chatsApi.createChat(newChatOptions);
       await this.getChats();
 
     } catch (e: any) {

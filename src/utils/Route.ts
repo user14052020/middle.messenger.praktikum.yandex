@@ -1,7 +1,7 @@
 import { isEqual,PlainObject } from './helpers';
 import Block from "./Block";
 
-function render(query, block) {
+function render(query: any, block: Block) {
   const root = document.querySelector(query);
   root.append(block.getContent());
   block.dispatchComponentDidMount();
@@ -11,11 +11,11 @@ function render(query, block) {
 export class Route {
 
     protected _props:Record<string, any>;
-    protected _blockClass:Block;
-    protected _block:Block;
+    protected _blockClass:typeof Block;
+    protected _block:Block|null;
     protected _pathname:PlainObject<any>;
 
-    constructor(pathname:PlainObject, view:Block, props:Record<string, any>) {
+    constructor(pathname:PlainObject, view:typeof Block, props:Record<string, any>) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
@@ -43,7 +43,7 @@ export class Route {
 
         if (!this._block) {
             this._block = new this._blockClass();
-            render(this._props.rootQuery, this._block);
+            render(this._props.rootQuery, this._block as Block);
             return;
         }
 

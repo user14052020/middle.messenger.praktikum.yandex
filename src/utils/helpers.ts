@@ -105,7 +105,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // Handle:
         // * Array
         if (item instanceof Array) {
-            let copy = [];
+            let copy: any[] = [];
 
             item.forEach((_, i) => (copy[i] = _cloneDeep(item[i])));
 
@@ -139,10 +139,12 @@ export function cloneDeep<T extends object = object>(obj: T) {
 
             // Handle:
             // * Object.symbol
+            // @ts-ignore
             Object.getOwnPropertySymbols(item).forEach(s => (copy[s] = _cloneDeep(item[s])));
 
             // Handle:
             // * Object.name (other)
+            // @ts-ignore
             Object.keys(item).forEach(k => (copy[k] = _cloneDeep(item[k])));
 
             return copy;

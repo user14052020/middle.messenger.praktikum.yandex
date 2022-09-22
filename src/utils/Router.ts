@@ -9,6 +9,7 @@ export class Router {
     protected history:History;
     protected _currentRoute:Route|null;
     protected _rootQuery:string;
+    private static __instance: any;
 
 
     constructor(rootQuery:string) {
@@ -24,7 +25,7 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname:string|PlainObject, block:Block) {
+    use(pathname:string|PlainObject, block:typeof Block) {
         const route = new Route(pathname as PlainObject, block, {rootQuery: this._rootQuery});
         this.routes.push(route);
         return this;
