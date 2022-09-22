@@ -1,5 +1,5 @@
 import BaseAPI from './BaseAPI';
-import {Options} from '../utils/HTTPTransport';
+import {Options} from '../utils/httptransport';
 
 export interface User {
   id: number;
