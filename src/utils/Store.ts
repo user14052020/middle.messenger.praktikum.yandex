@@ -21,10 +21,12 @@ export class Store extends EventBus {
 }
 
 const store = new Store();
-
+interface ComponentConstructable<P extends Record<string, any>> {
+  new (props?: P): Block<P>
+}
 export function withStore(mapStateToProps: (state: any) => any) {
 
-  return function wrap(Component: typeof Block){
+  return function wrap(Component: ComponentConstructable<any>){
     let previousState: any;
 
 

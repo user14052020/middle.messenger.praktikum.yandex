@@ -11,7 +11,7 @@ interface ProfileAvaBlockProps {
 
 export class ProfileAvaBlock extends Block<ProfileAvaBlockProps>  {
   constructor(props: ProfileAvaBlockProps) {
-    super('div',props);
+    super('div', props);
     this.props.events = {
         click: () => showAvaModal()
       }

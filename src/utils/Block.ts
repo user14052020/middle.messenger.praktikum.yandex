@@ -19,7 +19,6 @@ abstract class Block<P extends Record<string, any> = any> {
 
   /** JSDoc
    * @param {string} tagName
-   * @param {Object} props
    *
    * @returns {void}
    */

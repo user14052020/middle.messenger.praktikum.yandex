@@ -10,7 +10,7 @@ export interface ProfileSidebarBlockProps extends PropsWithRouter{
 
 class ProfileSidebarBaseBlock extends Block<ProfileSidebarBlockProps> {
   constructor(props: ProfileSidebarBlockProps) {
-    super('div',{
+    super('div', {
       ...props,
       events: {
         click: () => this.props.router.back()

@@ -1,7 +1,10 @@
 import Block from '../utils/Block';
 import Router from '../utils/Router';
 
-export function withRouter(Component: typeof Block<any>) {
+interface ComponentConstructable<P extends Record<string, any>> {
+  new (props?: P): Block<P>
+}
+export function withRouter(Component: ComponentConstructable<any>) {
   type Props = typeof Component extends typeof Block<infer P extends Record<string, any>> ? P : any;
 
   return class WithRouter extends Component {

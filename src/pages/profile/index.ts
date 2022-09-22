@@ -82,13 +82,11 @@ class ProfilePageBase extends Block<ProfilePageProps> {
   }
 
   componentDidUpdate(){
-    this.children.profileAvaBlock.setProps({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+this.props.avatar});
+      (this.children.profileAvaBlock as Block).setProps({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+this.props.avatar}) ;
     return true;
   }
 
 }
-
-
 
 const withUser = withStore((state) => ({ ...state.user }))
 

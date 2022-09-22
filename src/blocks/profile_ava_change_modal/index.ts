@@ -9,7 +9,7 @@ export interface ProfileAvaChangeModalBlockProps {
 
 export class ProfileAvaChangeModalBlock extends Block<ProfileAvaChangeModalBlockProps> {
   constructor(props:ProfileAvaChangeModalBlockProps) {
-    super('div',props);
+    super('div', props);
 
   }
   init() {

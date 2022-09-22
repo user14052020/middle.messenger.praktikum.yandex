@@ -28,9 +28,7 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
   }
 
   init(){
-    
 
-    
     const storeData = store.getState();
    
     // let conversationBlocks:ConversationBlock[] = [];

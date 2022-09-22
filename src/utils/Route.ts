@@ -2,22 +2,30 @@ import { isEqual,PlainObject } from './helpers';
 import Block from "./Block";
 
 function render(query: any, block: Block) {
-  const root = document.querySelector(query);
-  root.append(block.getContent());
-  block.dispatchComponentDidMount();
-  return root;
+    const root = document.querySelector(query);
+    if (root === null) {
+        throw new Error(`root not found by selector "${query}"`);
+    }
+    console.log(root.innerHTML.length);
+    if (root.innerHTML.length>5){
+        root.innerHTML = '';
+    }
+
+    root.append(block.getContent());
+    block.dispatchComponentDidMount();
+    return root;
 }
-// interface ComponentConstructable<P> {
-//     new(): Block<P>
-// }
+interface ComponentConstructable<P extends Record<string, any>> {
+    new (props?: P): Block<P>
+}
 export class Route {
 
     protected _props:Record<string, any>;
-    protected _blockClass:typeof Block;
+    protected _blockClass:ComponentConstructable<any>;
     protected _block:Block|null;
     protected _pathname:PlainObject<any>;
 
-    constructor(pathname:PlainObject, view:typeof Block, props:Record<string, any>) {
+    constructor(pathname:PlainObject, view:ComponentConstructable<any>, props:Record<string, any>) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
@@ -44,8 +52,8 @@ export class Route {
     render() {
 
         if (!this._block) {
-            this._block = new this._blockClass() as ComponentConstructable;
-            render(this._props.rootQuery, this._block as Block);
+            this._block = new this._blockClass() ;
+            render(this._props.rootQuery, this._block );
             return;
         }
 

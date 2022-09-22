@@ -1,13 +1,16 @@
 import AuthAPI from '../api/AuthAPI';
+import ChatsAPI from '../api/ChatsAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
 import {Options} from '../utils/HTTPTransport';
 
 export class AuthController {
   private readonly api: typeof AuthAPI;
+  private readonly chatsApi: typeof ChatsAPI;
 
   constructor() {
     this.api = AuthAPI;
+    this.chatsApi = ChatsAPI;
   }
 
   async signin(data: Options) {
@@ -15,7 +18,8 @@ export class AuthController {
       await this.api.signin(data);
       
       await this.fetchUser();
-
+      const chats = await this.chatsApi.getChats();
+      store.set('chats', chats);
       router.go('/messenger');
 
     } catch (e: any) {

@@ -2,8 +2,10 @@ import { Route } from "./Route";
 import { PlainObject } from './helpers';
 import Block from "./Block";
 
-
-export class Router {
+interface ComponentConstructable<P extends Record<string, any>> {
+    new (props?: P): Block<P>
+}
+ class Router {
 
     protected routes:Route[];
     protected history:History;
@@ -25,7 +27,7 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname:string|PlainObject, block:typeof Block) {
+    use(pathname:string|PlainObject, block:ComponentConstructable<any>) {
         const route = new Route(pathname as PlainObject, block, {rootQuery: this._rootQuery});
         this.routes.push(route);
         return this;
