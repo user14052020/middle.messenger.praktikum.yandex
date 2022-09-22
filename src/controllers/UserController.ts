@@ -17,7 +17,7 @@ export class UserController {
 
       await this.api.profile(data);
       await this.fetchUser();    
-      router.go('/settings');
+      router.go('/messenger');
 
     } catch (e: any) {
 
@@ -30,7 +30,7 @@ export class UserController {
     try {
 
       await this.api.password(data); 
-      router.go('/settings');
+      router.go('/messenger');
 
     } catch (e: any) {
 

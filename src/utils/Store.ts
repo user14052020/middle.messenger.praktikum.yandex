@@ -36,13 +36,11 @@ export function withStore(mapStateToProps: (state: any) => any) {
         super({ ...props, ...previousState });
 
         store.on(StoreEvents.Updated, () => {
-          console.log("test");
           const stateProps = mapStateToProps(store.getState());
 
           previousState = stateProps;
 
           this.setProps({ ...stateProps });
-          console.log("test");
         });
       }
     }

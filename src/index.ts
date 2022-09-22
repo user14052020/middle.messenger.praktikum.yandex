@@ -37,7 +37,7 @@ import AuthController from './controllers/AuthController';
 enum Routes {
   Index = '/',
   Register = '/sign-up',
-  Profile = '/settings'
+  Messenger = '/messenger'
 }
 
 
@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     if (!isProtectedRoute) {
 
-      Router.go(Routes.Profile)
+      Router.go(Routes.Messenger)
     }
   } catch (e) {
     console.log(e);

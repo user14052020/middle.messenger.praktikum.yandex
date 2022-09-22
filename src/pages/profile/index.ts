@@ -45,7 +45,13 @@ class ProfilePageBase extends Block<ProfilePageProps> {
     if (Object.keys(user).length !== 0 ){
       this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e) => {e.preventDefault(); AuthController.logout();}}});
       this.children.profileSidebarBlock = new ProfileSidebarBlock({});
-      this.children.profileAvaBlock = new ProfileAvaBlock({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+user.user.avatar});
+      let hasAvatar = false;
+      let avatarFileLink = '';
+      if(user.user.avatar){
+        hasAvatar = true;
+        avatarFileLink = 'https://ya-praktikum.tech/api/v2/resources'+user.user.avatar;
+      }
+      this.children.profileAvaBlock = new ProfileAvaBlock({hasAvatar:hasAvatar, avatarFileLink:avatarFileLink});
       this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock();
       const userData = [
                         {description:"Почта",value:user.user.email},
