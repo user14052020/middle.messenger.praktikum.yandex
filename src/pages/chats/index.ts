@@ -20,6 +20,8 @@ interface ChatsPageProps {
   chatAddBlock: ChatAddBlock;
 }
 
+
+
 export class ChatsPageBase extends Block<ChatsPageProps> {
   constructor(props: ChatsPageProps) {
     super('div', props);

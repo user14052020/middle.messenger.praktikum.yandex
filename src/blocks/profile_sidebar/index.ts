@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './profile_sidebar.hbs';
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 
-interface ProfileSidebarBlockProps extends PropsWithRouter{
+export interface ProfileSidebarBlockProps extends PropsWithRouter{
   events?: {
     click: () => void;
   };

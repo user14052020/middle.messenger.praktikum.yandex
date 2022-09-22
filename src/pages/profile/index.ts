@@ -1,22 +1,23 @@
 import Block from '../../utils/Block';
 import template from './profile.hbs';
-import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
+import { ProfileSidebarBlock,ProfileSidebarBlockProps } from '../../blocks/profile_sidebar';
 import { ProfileAvaBlock } from '../../blocks/profile_ava';
 import { ProfileRowBlock } from '../../blocks/profile_row';
 import { ProfileChangeLinkBlock } from '../../blocks/profile_change_link';
-import { ProfileAvaChangeModalBlock } from '../../blocks/profile_ava_change_modal';
+import { ProfileAvaChangeModalBlock,ProfileAvaChangeModalBlockProps } from '../../blocks/profile_ava_change_modal';
 import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from '../../components/link';
 
 interface ProfilePageProps {
-  profileSidebarBlock: ProfileSidebarBlock;
+  profileSidebarBlock: typeof ProfileSidebarBlock;
   profileAvaBlock: ProfileAvaBlock;
   profileAvaChangeModalBlock: ProfileAvaChangeModalBlock;
   profileRowBlock: ProfileRowBlock[];
   profileChangeLinkBlock: ProfileChangeLinkBlock[];
   isChangeAva: boolean;
-  logoutLink: Link; 
+  logoutLink: Link;
+  avatar?:string;
 
 }
 
@@ -29,8 +30,8 @@ class ProfilePageBase extends Block<ProfilePageProps> {
     //   AuthController.fetchUser();
     const user = store.getState();
     if (Object.keys(user).length !== 0 ){
-      this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e) => {e.preventDefault(); AuthController.logout();}}});
-      this.children.profileSidebarBlock = new ProfileSidebarBlock({});
+      this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e:Event) => {e.preventDefault(); AuthController.logout();}}});
+      this.children.profileSidebarBlock = new ProfileSidebarBlock({} as ProfileSidebarBlockProps);
       let hasAvatar = false;
       let avatarFileLink = '';
       if(user.user.avatar){
@@ -38,7 +39,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
         avatarFileLink = 'https://ya-praktikum.tech/api/v2/resources'+user.user.avatar;
       }
       this.children.profileAvaBlock = new ProfileAvaBlock({hasAvatar:hasAvatar, avatarFileLink:avatarFileLink});
-      this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock();
+      this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock({} as ProfileAvaChangeModalBlockProps);
       const userData = [
                         {description:"Почта",value:user.user.email},
                         {description:"Логин",value:user.user.login},
@@ -82,6 +83,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
 
   componentDidUpdate(){
     this.children.profileAvaBlock.setProps({hasAvatar:true, avatarFileLink:'https://ya-praktikum.tech/api/v2/resources'+this.props.avatar});
+    return true;
   }
 
 }

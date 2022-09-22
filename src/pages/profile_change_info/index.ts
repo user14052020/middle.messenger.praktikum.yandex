@@ -8,7 +8,7 @@ import { ProfileChangeInfoRowBlock } from '../../blocks/profile_change_info_row'
 import { ProfileAvaChangeModalBlock } from '../../blocks/profile_ava_change_modal';
 
 interface ProfileChangeInfoPageProps {
-  profileSidebarBlock: ProfileSidebarBlock;
+  profileSidebarBlock: typeof ProfileSidebarBlock;
   profileAvaBlock: ProfileAvaBlock;
   profileChangeInfoRowBlock: ProfileChangeInfoRowBlock[];
   profileChangeInfoSaveButton: Button;
@@ -60,7 +60,7 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     this.children.profileAvaBlock = profileAvaBlock;
     this.children.profileChangeInfoRowBlock = profileChangeInfoRowBlocks;
     this.children.profileChangeInfoSaveButton = profileChangeInfoSaveButton;
-    this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock();
+    this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock({});
   }
 
   render() {

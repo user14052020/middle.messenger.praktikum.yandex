@@ -2,14 +2,14 @@ import Block from '../../utils/Block';
 import template from './profile_ava_change_modal.hbs';
 import { Button } from '../../components/button/';
 
-interface ProfileAvaChangeModalBlockProps {
+export interface ProfileAvaChangeModalBlockProps {
   saveButton:Button;
 
 }
 
-export class ProfileAvaChangeModalBlock extends Block {
-  constructor() {
-    super('div');
+export class ProfileAvaChangeModalBlock extends Block<ProfileAvaChangeModalBlockProps> {
+  constructor(props:ProfileAvaChangeModalBlockProps) {
+    super('div',props);
 
   }
   init() {

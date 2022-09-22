@@ -25,16 +25,16 @@ export class ProfileAvaBlock extends Block<ProfileAvaBlockProps>  {
 function showAvaModal() {
   const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
 
-  if (modalProfileAvaChange.classList.contains('show')) {
-    modalProfileAvaChange.classList.remove("show");
+  if (modalProfileAvaChange!.classList.contains('show')) {
+    modalProfileAvaChange!.classList.remove("show");
   }else{
-    modalProfileAvaChange.classList.add("show");
+    modalProfileAvaChange!.classList.add("show");
   }
 }
 
 document.addEventListener('click', function (e) {
   const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
     if (e.target === modalProfileAvaChange) {
-      modalProfileAvaChange.classList.remove("show");
+      modalProfileAvaChange!.classList.remove("show");
     }
 });

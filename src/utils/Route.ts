@@ -7,7 +7,9 @@ function render(query: any, block: Block) {
   block.dispatchComponentDidMount();
   return root;
 }
-
+// interface ComponentConstructable<P> {
+//     new(): Block<P>
+// }
 export class Route {
 
     protected _props:Record<string, any>;
@@ -42,7 +44,7 @@ export class Route {
     render() {
 
         if (!this._block) {
-            this._block = new this._blockClass();
+            this._block = new this._blockClass() as ComponentConstructable;
             render(this._props.rootQuery, this._block as Block);
             return;
         }
