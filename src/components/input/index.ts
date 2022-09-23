@@ -65,7 +65,7 @@ export class Input extends Block<InputProps> {
         nextSibling = nextSibling.nextSibling;
     }
     if (!nextSibling){
-      (<HTMLInputElement>this.element).placeholder = 'Сообщение не может быть пустым';
+      (<HTMLInputElement>this.element).placeholder = 'Поле не может быть пустым';
     }else{
       if(result === false){
         (<HTMLElement>nextSibling).style.opacity = '1';
@@ -73,7 +73,6 @@ export class Input extends Block<InputProps> {
        (<HTMLElement>nextSibling).style.opacity = '0'; 
       }
     }
-
 
     return result;
   }

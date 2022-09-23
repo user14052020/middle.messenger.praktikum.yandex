@@ -1,30 +1,26 @@
 import BaseAPI from './BaseAPI';
 import {Options} from '../utils/httptransport';
-
-export interface UserChange {
-  first_name: string;
-  second_name: string;
-  display_name: string;
-  login: string;
-  email: string;
-  phone: string;
-}
+import {User} from "~src/api/AuthAPI";
 
 export class UserAPI extends BaseAPI {
   constructor() {
     super('/user');
   }
 
-  profile(data: Options) {
-    return this.http.put('/profile', data);
+  profile(options: Options) {
+    return this.http.put('/profile', options);
   }
 
-  avatar(data: Options) {
-    return this.http.put('/profile/avatar', data);
+  avatar(options: Options) {
+    return this.http.put('/profile/avatar', options);
   }
 
-  password(data: Options) {
-    return this.http.put('/password', data);
+  password(options: Options) {
+    return this.http.put('/password', options);
+  }
+
+  search(options: Options): Promise<unknown|User> {
+    return this.http.post('/search', options);
   }
 
   read = undefined;

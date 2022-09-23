@@ -199,3 +199,49 @@ export function trim(string: string, chars?: string): string {
     const reg = new RegExp(`[${chars}]`, "gi");
     return string.replace(reg, "");
 }
+
+export function showModal() {
+    const modal = document.querySelector('.profil-modal-overley');
+
+    if (modal!.classList.contains('show')) {
+        modal!.classList.remove("show");
+    }else{
+        modal!.classList.add("show");
+    }
+}
+
+export function hideModal(){
+    const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
+    modalProfileAvaChange!.classList.remove("show");
+}
+
+export function isEmpty(val:any) {
+    let size = 0;
+    if (val instanceof Set || val instanceof Map){
+        if(val.size>0){
+            return false;
+        }
+    }
+    if (val === undefined ){
+        return true;
+    }
+    if(typeof (val) == 'number' || typeof (val) == 'boolean'){
+        return true;
+    }
+    if (typeof (val) == 'function' || Object.prototype.toString.call(val) === '[object Date]'){
+        return false;
+    }
+    if (val == null || val.length === 0){
+        return true;
+    }
+    if (typeof (val) == "object") {
+        //  if(val.size !== null && val.size>0){
+        //   return false;
+        //  }
+        var r = true;
+        for (var f in val)
+            r = false;
+        return r;
+    }
+    return false;
+}

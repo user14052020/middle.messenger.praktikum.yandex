@@ -20,7 +20,7 @@ import { MenuBlock } from './blocks/menu';
 import Router from './utils/Router';
 
 import AuthController from './controllers/AuthController';
-import UserController from './controllers/UserController';
+// import UserController from './controllers/UserController';
 
 enum Routes {
   Index = '/',

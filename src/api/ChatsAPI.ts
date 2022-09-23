@@ -1,14 +1,30 @@
 import BaseAPI from './BaseAPI';
 import {Options} from '../utils/httptransport';
 
+export interface Chat {
+  id: number;
+}
+
+export interface Token {
+  token: string;
+}
 
 export class ChatsAPI extends BaseAPI {
   constructor() {
     super('/chats');
   }
 
-  createChat(data: Options) {
-    return this.http.post('/', data);
+  getChatToken(options: Options) {
+    console.log(options.data);
+    return this.http.post(`/token/${(options.data as Chat)!.id}`, options);
+  }
+
+  createChat(options: Options) {
+    return this.http.post('/', options);
+  }
+
+  addUserToChat(options: Options) {
+    return this.http.put('/users', options);
   }
 
   getChats() {

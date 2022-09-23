@@ -64,7 +64,7 @@ export default class HTTPTransport {
 				? `${url}${queryStringify(data as Record<string, any>)}`
 				: url,
 			);
-
+			// xhr.timeout = 2;
 		xhr.onreadystatechange = () => {
 
 			if (xhr.readyState === XMLHttpRequest.DONE) {

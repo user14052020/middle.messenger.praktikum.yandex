@@ -5,7 +5,7 @@ import { Input } from '../../components/input';
 import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
 import { ProfileAvaBlock } from '../../blocks/profile_ava';
 import { ProfileChangeInfoRowBlock } from '../../blocks/profile_change_info_row';
-import {ProfileAvaChangeModalBlock, ProfileAvaChangeModalBlockProps} from '../../blocks/profile_ava_change_modal';
+import {ModalBlock, ModalBlockProps} from '../../blocks/modal';
 
 interface ProfileChangeInfoPageProps {
   profileSidebarBlock: typeof ProfileSidebarBlock;
@@ -40,7 +40,7 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
                                       ];
       url = 'userPassword'; 
     }
-    const profileChangeInfoSaveButton = new Button({url:url,title:'Сохранить',class:'change-profil-forma-button'});
+    const profileChangeInfoSaveButton = new Button({formId:'profile-data-form',url:url,title:'Сохранить',class:'change-profil-forma-button'});
     
     const profileSidebarBlock = new ProfileSidebarBlock({});
     const profileAvaBlock = new ProfileAvaBlock({hasAvatar:false});
@@ -60,7 +60,9 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     this.children.profileAvaBlock = profileAvaBlock;
     this.children.profileChangeInfoRowBlock = profileChangeInfoRowBlocks;
     this.children.profileChangeInfoSaveButton = profileChangeInfoSaveButton;
-    this.children.profileAvaChangeModalBlock = new ProfileAvaChangeModalBlock({} as ProfileAvaChangeModalBlockProps);
+    const saveAvaButton = new Button({formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
+    this.children.profileAvaChangeModalBlock = new ModalBlock({formId:'change-avatar-modal',isFileModal:true, button:saveAvaButton,title:'Загрузить файл'} as ModalBlockProps);
+
   }
 
   render() {

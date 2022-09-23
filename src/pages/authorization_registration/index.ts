@@ -22,7 +22,7 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
   init() {
     
     if (window.location.pathname === '/sign-up'){
-      const authButton = new Button({url:'signUp',class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'});
+      const authButton = new Button({formId:'auth-reg-form',url:'signUp',class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'});
       this.children.regAuthButton = authButton; 
       this.props.regAuthLinkTitle = 'Войти'; 
       this.props.regAuthLink = '/';
@@ -62,7 +62,7 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       this.props.title = 'Вход';
       this.props.regAuthLinkTitle = 'Нет аккаунта?';
       this.props.regAuthLink = 'sign-up';
-      const loginButton = new Button({url:'signIn', class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'});
+      const loginButton = new Button({formId:'auth-reg-form',url:'signIn', class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'});
       const loginInput = new Input({class:'auth-reg-form-input', type:'text',name:'login', inputId:'login'});
       const passwordInput = new Input({class:'auth-reg-form-input', type:'password',name:'password', inputId:'password'});
       this.children.regAuthButton = loginButton;

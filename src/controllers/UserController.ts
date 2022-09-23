@@ -18,26 +18,29 @@ export class UserController {
 
   async profile(data: Options) {
     try {
-
       await this.api.profile(data);
-      await this.fetchUser();    
+      await this.fetchUser();
       router.go('/settings');
-
     } catch (e: any) {
-
       console.error(e);
-
     }
   }
 
   async password(data: Options) {
     try {
-
       await this.api.password(data); 
       router.go('/settings');
-
     } catch (e: any) {
+      console.error(e);
 
+    }
+  }
+
+  async search(data: Options) {
+    try {
+      const user = await this.api.search(data);
+      return user;
+    } catch (e: any) {
       console.error(e);
 
     }
@@ -45,13 +48,10 @@ export class UserController {
 
   async avatar(data: Options) {
     try {
-
       const user = await this.api.avatar(data); 
       store.set('user', user);
     } catch (e: any) {
-
       console.error(e);
-
     }
   }
 
@@ -60,35 +60,40 @@ export class UserController {
     store.set('user', user);
   }
 
-  async createChat() {
+  async addUserToChat(data: Options) {
     try {
-      let newChatOptions:Options = {};
-      newChatOptions['data'] = {title:(Math.random() + 1).toString(36).substring(7)};
-      await this.chatsApi.createChat(newChatOptions);
-      await this.getChats();
-
+      await this.chatsApi.addUserToChat(data);
+      // await this.getChats();
     } catch (e: any) {
-
       console.error(e);
-
+    }
+  }
+async getChatToken(data:Options){
+    try {
+      const token = await this.chatsApi.getChatToken(data);
+      return token;
+    }catch (e:any) {
+      console.error(e);
+    }
+}
+  async createChat(data: Options) {
+    try {
+      const chat = await this.chatsApi.createChat(data);
+      await this.getChats();
+      return chat;
+    } catch (e: any) {
+      console.error(e);
     }
   }
 
   async getChats() {
     try {
-      
       const chats = await this.chatsApi.getChats(); 
       store.set('chats', chats);
-
     } catch (e: any) {
-
       console.error(e);
-
     }
   }
-
-
-
 }
 
 export default new UserController();

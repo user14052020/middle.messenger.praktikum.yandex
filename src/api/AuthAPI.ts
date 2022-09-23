@@ -18,13 +18,13 @@ export class AuthAPI extends BaseAPI {
     super('/auth');
   }
 
-  signin(data: Options) {
-    return this.http.post('/signin', data);
+  signin(options: Options) {
+    return this.http.post('/signin', options);
   }
 
 
-  signup(data: Options) {
-    return this.http.post('/signup', data);
+  signup(options: Options) {
+    return this.http.post('/signup', options);
   }
 
   read(): Promise<unknown|User> {
