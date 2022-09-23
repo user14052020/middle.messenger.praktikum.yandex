@@ -22,7 +22,6 @@ import formatDate from "~src/utils/formatDate";
 
 interface ChatsPageProps {
     user:User,
-    // messages: {messages:Message[]};
     messages: Message[];
     chats: Chat[];
     newChatModalBlock: ModalBlock;
