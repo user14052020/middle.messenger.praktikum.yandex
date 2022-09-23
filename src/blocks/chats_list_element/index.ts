@@ -4,8 +4,9 @@ import template from './chats_list_element.hbs';
 interface ChatsListElementBlockProps {
   chatId: number;
   title: string;
+  time?:string;
   last_message: string;
-  unread_count: number;
+  unread_count?: number;
   events:{
     click: () => void;
   }

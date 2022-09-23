@@ -15,13 +15,14 @@
       </div>
     </div>
   </div>
-  {{#if unread_count}}
+
   <div class="notice">
     <div class="person-notice-data">
       <time class="person-notice-data-time">
-
+          {{time}}
       </time>
     </div>
+    {{#if unread_count}}
     <div class="person-notice-point">
       {{unread_count}}
     </div>

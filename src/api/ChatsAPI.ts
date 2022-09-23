@@ -1,8 +1,21 @@
 import BaseAPI from './BaseAPI';
 import {Options} from '../utils/httptransport';
 
+export interface Message {
+  chat_id: string,
+  content: string,
+  file: string,
+  id: number,
+  is_read: boolean,
+  time: string,
+  type: string,
+  user_id: number
+}
 export interface Chat {
   id: number;
+  title: string;
+  unread_count:number,
+  last_message:{content:string,time:string}
 }
 
 export interface Token {
@@ -15,7 +28,6 @@ export class ChatsAPI extends BaseAPI {
   }
 
   getChatToken(options: Options) {
-    console.log(options.data);
     return this.http.post(`/token/${(options.data as Chat)!.id}`, options);
   }
 

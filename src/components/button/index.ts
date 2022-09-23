@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './button.hbs';
 import {Options} from '../../utils/HTTPTransport';
 import {isEmpty,hideModal} from '../../utils/helpers';
-
+import MessageController from '../../controllers/MessageController';
 import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
 import {User} from '../../api/AuthAPI';
@@ -90,6 +90,8 @@ async function sendRequest(formData: FormData, data: Record<string, string>, opt
     await UserController.profile(options as Options);
   } else if (url === 'userPassword') {
     await UserController.password(options as Options);
+  }else if(url==='sendMessage'){
+    MessageController.sendMessage(options.data.message);
   }
 }
 
