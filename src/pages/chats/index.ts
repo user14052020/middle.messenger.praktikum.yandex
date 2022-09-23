@@ -145,26 +145,3 @@ async function updateChatsList() {
 }
 
 
-
-  // let conversationMessages = [
-  //   { date: '19 июня', messages: [
-  //                       {isIn:true,time:'12:59',text:'Один раз научишься и наглеешь. Чувствуешь власть над вещами, чувствуешь, что они теперь истинно твои.'},
-  //                       {isIn:false,time:'13:59',text:' И вот в этот самый момент, когда почувствовал, что можешь всё, и наглеешь - в этот самый момент практически всегда и случается катастрофа.'}]},
-  //   { date: '20 июня', messages: [
-  //                       {isIn:true,time:'12:59',text:'В Вашем случае логично предположить сгорание чего-нибудь в принципе не ремонтируемого в машинке - ну например сгорит блок управления, какой уже не выпускается...'},
-  //                       {isIn:false,time:'13:59',text:'Катастрофы очень любят случаться как раз тогда, когда обнаглеешь, и решишь, что ты всё знаешь, умеешь, можешь и вообще ты превыше всего.'}]}
-  // ];
-  // let conversationBlocks:ConversationBlock[] = [];
-  //
-  // conversationMessages.forEach((data) => {
-  //   let messages:ChatMessagesBlock[] = [];
-  //   data.messages.forEach((message) => {
-  //     //отдельный шаблон для сообщений
-  //     let chatMessagesBlock = new ChatMessagesBlock({isIn:message.isIn, time:message.time, text:message.text});
-  //     messages.push(chatMessagesBlock);
-  //   });
-  //   let conversationBlock = new ConversationBlock({ date: data.date, messages: messages});
-  //   conversationBlocks.push(conversationBlock);
-  // });
-
-

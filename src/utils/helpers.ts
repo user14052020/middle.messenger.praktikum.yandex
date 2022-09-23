@@ -216,7 +216,7 @@ export function hideModal(){
 }
 
 export function isEmpty(val:any) {
-    let size = 0;
+    // let size = 0;
     if (val instanceof Set || val instanceof Map){
         if(val.size>0){
             return false;
@@ -238,8 +238,8 @@ export function isEmpty(val:any) {
         //  if(val.size !== null && val.size>0){
         //   return false;
         //  }
-        var r = true;
-        for (var f in val)
+        let r = true;
+        for (let _f in val)
             r = false;
         return r;
     }
