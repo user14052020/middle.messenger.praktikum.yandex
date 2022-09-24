@@ -1,18 +1,21 @@
-<div class="main">
-	<section class="profile">
-		{{{profileSidebarBlock}}}
-		<div class="profile-content">
-			<form id="profile-data-form" class="change-profil-forma">
-				{{{profileAvaBlock}}}
-				<div class="change-profil-forma">
-		          {{#each profileChangeInfoRowBlock}}
-		            {{{ this }}}
-		          {{/each}}
-					<div class="change-profil-forma-footer">
-					{{{profileChangeInfoSaveButton}}}		
+<div>
+	<div class="main">
+		<section class="profile">
+			{{{profileSidebarBlock}}}
+			<div class="profile-content">
+				<form id="profile-data-form" class="change-profil-forma">
+					{{{profileAvaBlock}}}
+					<div class="change-profil-forma">
+			          {{#each profileChangeInfoRowBlock}}
+			            {{{ this }}}
+			          {{/each}}
+						<div class="change-profil-forma-footer">
+						{{{profileChangeInfoSaveButton}}}		
+						</div>
 					</div>
-				</div>
-			</form>	
-		</div>
-	</section>
+				</form>	
+			</div>
+		</section>
+	</div>
+	{{{profileAvaChangeModalBlock}}}
 </div>

@@ -1,38 +1,26 @@
 <div>
-<div class="main">
-	<section class="profile">
-		{{{profileSidebarBlock}}}
-		<div class="profile-content">
-			<form class="profil-forma">
-				{{{profileAvaBlock}}}
-			  	<h1>Вадим</h1>
-				<div class="prof-table d-flex">
-          {{#each profileRowBlock}}
-            {{{ this }}}
-          {{/each}}
-				</div>
-				<div class="prof-table d-flex data-forma">
-		          {{#each profileChangeLinkBlock}}
-		            {{{ this }}}
-		          {{/each}}
-				</div>
-				<div class="out-profil"><a class="out-profil-link" href="login">Выйти</a></div>
-			</form>	
-		</div>
-	</section>
-</div>
-{{#if isChangeAva}}
+	<div class="main">
+		<section class="profile">
+			{{{profileSidebarBlock}}}
+			<div class="profile-content">
+				<form class="profil-forma">
+					{{{profileAvaBlock}}}
+				  	<h1>{{first_name}} {{second_name}}</h1>
 
-<div class="profil-modal-overley">
-	<form class="profil-modal-form">
-		<h3>Загрузите файл</h3>
-		<div class="inp-holder">   
-			<input class="profil-modal-form-inp-holder-input" type="file" placeholder="Выбрать файл на компьютере" id="file-sel">
-			<span class="file-sel d-none">Выбрать файл на компьютере</span> 
-			<label class="profil-modal-form-inp-holder-label" for="file-sel">Выбрать файл на компьютере</label>
-		</div>   
-		<button class="profil-modal-form-button">Поменять</button>
-	</form> 
-</div>
-{{/if}}
+					<div class="prof-table d-flex">
+	          {{#each profileRowBlock}}
+	            {{{ this }}}
+	          {{/each}}
+					</div>
+					<div class="prof-table d-flex data-forma">
+			          {{#each profileChangeLinkBlock}}
+			            {{{ this }}}
+			          {{/each}}
+					</div>
+					<div class="out-profil">{{{logoutLink}}}</div>
+				</form>	
+			</div>
+		</section>
+	</div>
+	{{{profileAvaChangeModalBlock}}}
 </div>

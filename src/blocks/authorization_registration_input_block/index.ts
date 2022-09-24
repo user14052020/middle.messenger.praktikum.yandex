@@ -3,7 +3,6 @@ import template from './authorization_registration_input_block.hbs';
 import { Input } from '../../components/input';
 
 interface AuthorizationRegistrationInputBlockProps {
-  inputId: string;
   label: string;
   errorMessage: string;
   authorizationRegistrationInput: Input;

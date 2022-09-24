@@ -2,8 +2,10 @@ import Block from '../../utils/Block';
 import template from './input.hbs';
 
 interface InputProps {
+  disabled?:string;
   class?: string;
   type: string;
+  name: string;
   inputId: string;
   placeholder?: string;
   events?: {
@@ -34,7 +36,7 @@ export class Input extends Block<InputProps> {
     let passwordRGEX = /(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     let messageRGEX = /^\s*$/;
     let result = false;
-    const passwordInputNames = ['password', 'passwordold'];
+    const passwordInputNames = ['password', 'passwordold','oldPassword','newPassword'];
     const namesInput = ['first_name', 'second_name','chat_name'];
     if(inputId === 'email'){
       result = emailRGEX.test(inputValue);
@@ -64,7 +66,7 @@ export class Input extends Block<InputProps> {
         nextSibling = nextSibling.nextSibling;
     }
     if (!nextSibling){
-      (<HTMLInputElement>this.element).placeholder = 'Сообщение не может быть пустым';
+      (<HTMLInputElement>this.element).placeholder = 'Поле не может быть пустым';
     }else{
       if(result === false){
         (<HTMLElement>nextSibling).style.opacity = '1';
@@ -72,7 +74,6 @@ export class Input extends Block<InputProps> {
        (<HTMLElement>nextSibling).style.opacity = '0'; 
       }
     }
-
 
     return result;
   }

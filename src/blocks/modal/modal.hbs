@@ -1,0 +1,20 @@
+<div class="profil-modal-overley" id="{{modalId}}">
+	<form class="profil-modal-form" id="{{formId}}" enctype="multipart/form-data" data-delete-chat-id="{{deleteChatId}}" data-delete-user-id="{{deleteUserId}}">
+		<h3>{{title}}</h3>
+		<div class="inp-holder">
+            {{#if isFileModal}}
+			    <input class="profil-modal-form-inp-holder-input" type="file" placeholder="Выбрать файл на компьютере" name="avatar" id="avatar">
+			    <span class="file-sel d-none">Выбрать файл на компьютере</span>
+			    <label class="profil-modal-form-inp-holder-label" for="file-sel">Выбрать файл на компьютере</label>
+            {{else}}
+                {{{input}}}
+                <span class="warn" id="modal-error-message"></span>
+            {{/if}}
+        </div>
+		
+
+        {{#each button}}
+            {{{ this }}}
+        {{/each}}
+	</form> 
+</div>
