@@ -10,6 +10,7 @@ import {Chat} from '../../api/ChatsAPI';
 
 interface ButtonProps {
   url?: string;
+  modalId?:string;
   formId: string;
   isSendMessageButton?: boolean;
   class?: string;
@@ -24,7 +25,7 @@ export class Button extends Block<ButtonProps> {
   constructor(props: ButtonProps) {
     super('button', props);
     this.props.events = {
-        click: () => validateAndSend(event as Event,this.props.url as string,props.formId as string)
+        click: () => {validateAndSend(event as Event,this.props.url as string,props.formId as string,props.modalId as string)}
       }
   }
 
@@ -34,19 +35,18 @@ export class Button extends Block<ButtonProps> {
 }
 
 
-async function uploadAvatar(options:Options,formId:string) {
+async function uploadAvatar(options:Options,formId:string,modalId:string) {
   const changeAvaForm = document.getElementById(formId) as HTMLFormElement | null;
 
   if(changeAvaForm !== null){
     const formData = new FormData(changeAvaForm);
     options['data'] = formData;
-    console.log(options);
     await UserController.avatar(options);
-    hideModal();
+    hideModal(modalId);
   }
 }
 
-async function createNewChat(options: Options) {
+async function createNewChat(options: Options,modalFormId:string) {
   let newChatUserLoginElement = document.getElementById('newChatUserName') as HTMLInputElement | null;
   if (newChatUserLoginElement !== null) {
     let newChatUserLogin = newChatUserLoginElement.value;
@@ -54,16 +54,13 @@ async function createNewChat(options: Options) {
     options['data'] = {"login": newChatUserLogin};
     let newChatUserData = await UserController.search(options as Options) as User[];
     if (!isEmpty(newChatUserData)) {
-
       let userId = newChatUserData[0].id;
       let userName = `${newChatUserData[0].first_name} ${newChatUserData[0].second_name}`;
-      console.log(userId, userName);
       options['data'] = {"title": userName};
       let chat = await UserController.createChat(options as Options) as Chat;
-      console.log(chat);
       options['data'] = {"users": [userId], "chatId": chat.id};
       await UserController.addUserToChat(options as Options);
-      hideModal();
+      hideModal(modalFormId);
 
     } else {
       let modalErrorMessage = document.getElementById('modal-error-message') as HTMLElement | null;
@@ -81,7 +78,6 @@ async function sendRequest(formData: FormData, data: Record<string, string>, opt
   }
   options['headers'] = {'Content-Type': 'application/json'};
   options['data'] = data;
-  console.log(options);
   if (url === 'signUp') {
     await AuthController.signup(options as Options);
   } else if (url === 'signIn') {
@@ -116,15 +112,37 @@ function validateInputs(formId: string) {
   return {formData, hasErrors};
 }
 
-async function validateAndSend(event:Event, url:string, formId:string) {
+async function deleteChatOrUserFromChat(url:string,formId: string, options: Options) {
+  const form = document.getElementById(formId) as HTMLFormElement;
+  const deleteChatId = form.dataset.deleteChatId;
+  options['data'] = {chatId: deleteChatId};
+  if (url === 'deleteChat'){
+    await UserController.deleteChat(options);
+
+  }else{
+    const deleteUserId = form.dataset.deleteUserId;
+    options['data'] = {users:[deleteUserId],chatId: deleteChatId};
+    await UserController.deleteUserFromChat(options);
+    options['data'] = {id: deleteChatId};
+    await UserController.getChatUsers(options);
+
+  }
+
+}
+
+async function validateAndSend(event:Event, url:string, formId:string,modalId:string) {
   event.preventDefault();
   let options:Options = {}
   let data:Record<string,string> = {};
 
   if (url==='avatar'){
-    await uploadAvatar(options,formId);
+    await uploadAvatar(options,formId,modalId);
   }else if(url==='newChat'){
-    await createNewChat(options);
+    await createNewChat(options,modalId);
+  }else if(url==='deleteUserFromChat'){
+    await deleteChatOrUserFromChat(url,formId, options);
+  }else if(url==='deleteChat'){
+    await deleteChatOrUserFromChat(url,formId, options);
   }else{
     let {formData, hasErrors} = validateInputs(formId);
     if(hasErrors){

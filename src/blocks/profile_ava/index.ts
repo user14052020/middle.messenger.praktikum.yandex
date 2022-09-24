@@ -1,6 +1,5 @@
 import Block from '../../utils/Block';
 import template from './profile_ava.hbs';
-import { showModal } from '../../utils/helpers';
 
 interface ProfileAvaBlockProps {
   hasAvatar:boolean;
@@ -13,9 +12,6 @@ interface ProfileAvaBlockProps {
 export class ProfileAvaBlock extends Block<ProfileAvaBlockProps>  {
   constructor(props: ProfileAvaBlockProps) {
     super('div', props);
-    this.props.events = {
-        click: () => showModal()
-      }
   }
 
   render() {

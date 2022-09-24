@@ -200,8 +200,8 @@ export function trim(string: string, chars?: string): string {
     return string.replace(reg, "");
 }
 
-export function showModal() {
-    const modal = document.querySelector('.profil-modal-overley');
+export function showModal(id:string) {
+    const modal = document.getElementById(id);
 
     if (modal!.classList.contains('show')) {
         modal!.classList.remove("show");
@@ -210,9 +210,9 @@ export function showModal() {
     }
 }
 
-export function hideModal(){
-    const modalProfileAvaChange = document.querySelector('.profil-modal-overley');
-    modalProfileAvaChange!.classList.remove("show");
+export function hideModal(id:string){
+    const modal = document.getElementById(id);
+    modal!.classList.remove("show");
 }
 
 export function isEmpty(val:any) {

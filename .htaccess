@@ -1,0 +1,7 @@
+Content-Security-Policy:
+  default-src 'self';
+  img-src *;
+  script-src trusted.com;
+
+Content-Security-Policy:
+  media-src https://yandex.ru

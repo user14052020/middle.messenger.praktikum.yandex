@@ -5,6 +5,7 @@ import store from '../utils/Store';
 import router from '../utils/Router';
 import {Options} from '../utils/HTTPTransport';
 
+
 export class UserController {
   private readonly api: typeof UserAPI;
   private readonly authApi: typeof AuthAPI;
@@ -63,19 +64,46 @@ export class UserController {
   async addUserToChat(data: Options) {
     try {
       await this.chatsApi.addUserToChat(data);
-      // await this.getChats();
     } catch (e: any) {
       console.error(e);
     }
   }
-async getChatToken(data:Options){
+  async deleteUserFromChat(data: Options) {
     try {
-      const token = await this.chatsApi.getChatToken(data);
-      return token;
+      await this.chatsApi.deleteUserFromChat(data);
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
+
+  async deleteChat(data: Options) {
+    try {
+      await this.chatsApi.deleteChat(data);
+      await this.getChats();
+    } catch (e: any) {
+      console.error(e);
+
+    }
+  }
+
+  async getChatToken(data:Options){
+      try {
+        const token = await this.chatsApi.getChatToken(data);
+        await this.getChatUsers(data);
+        return token;
+      }catch (e:any) {
+        console.error(e);
+      }
+  }
+
+  async getChatUsers(data:Options){
+    try {
+      const chatUsers = await this.chatsApi.getChatUsers(data);
+      store.set('currentChatUsers', chatUsers);
     }catch (e:any) {
       console.error(e);
     }
-}
+  }
   async createChat(data: Options) {
     try {
       const chat = await this.chatsApi.createChat(data);
@@ -90,6 +118,9 @@ async getChatToken(data:Options){
     try {
       const chats = await this.chatsApi.getChats(); 
       store.set('chats', chats);
+      store.set('currentChatUsers', undefined);
+      store.set('currentChatId', undefined);
+      store.set('messages',undefined);
     } catch (e: any) {
       console.error(e);
     }

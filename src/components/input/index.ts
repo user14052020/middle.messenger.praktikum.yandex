@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './input.hbs';
 
 interface InputProps {
+  disabled?:string;
   class?: string;
   type: string;
   name: string;

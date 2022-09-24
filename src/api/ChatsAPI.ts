@@ -31,6 +31,10 @@ export class ChatsAPI extends BaseAPI {
     return this.http.post(`/token/${(options.data as Chat)!.id}`, options);
   }
 
+  getChatUsers(options: Options) {
+    return this.http.get(`/${(options.data as Chat)!.id}/users`, options);
+  }
+
   createChat(options: Options) {
     return this.http.post('/', options);
   }
@@ -39,9 +43,17 @@ export class ChatsAPI extends BaseAPI {
     return this.http.put('/users', options);
   }
 
+  deleteUserFromChat(options: Options) {
+    return this.http.delete('/users', options);
+  }
+
+  deleteChat(options: Options) {
+    return this.http.delete('/', options);
+  }
+
   getChats() {
     let options:Options = {'headers':{'Content-Type': 'application/json'}}
-    return this.http.get('?limit=5',options);
+    return this.http.get('/',options);
   }
 
   read = undefined;

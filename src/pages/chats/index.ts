@@ -5,6 +5,8 @@ import { Button } from '../../components/button/';
 import { ConversationBlock } from '../../blocks/conversation';
 import { ChatsListElementBlock } from '../../blocks/chats_list_element';
 import { ChatAddBlock } from '../../blocks/chat_add';
+import { CurrentChatBlock } from '../../blocks/current_chat';
+import {ChatHeaderBlock} from "~src/blocks/chat_header";
 import {ChatMessagesBlock} from '../../blocks/chat_messages';
 import UserController from '../../controllers/UserController';
 import MessageController from '../../controllers/MessageController';
@@ -25,14 +27,17 @@ interface ChatsPageProps {
     messages: Message[];
     chats: Chat[];
     newChatModalBlock: ModalBlock;
-    personName: string;
+    burgerMenuModalBlock: ModalBlock;
+    currentChatName: string;
     toRightAngleSvg: string;
     chatsSearchInput: Input;
-    chatsMessageInput: Input;
-    chatsMessageButton: Button;
     chatsListBlocks: ChatsListElementBlock[];
-    conversationBlock: ConversationBlock[];
     chatAddBlock: ChatAddBlock;
+    currentChatBlock: CurrentChatBlock;
+    deleteUserId:number;
+    currentChatId:number;
+    currentChatUsers:User[];
+
 }
 
 
@@ -55,7 +60,7 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
         storeData.chats.forEach((data:Record<string, any>) => {
 
           let chatsListElementBlock = new ChatsListElementBlock({
-                                                                  events: {click: () => showChat(data.id)},
+                                                                  events: {click: () => showChat(data.id,data.title)},
                                                                   chatId: data.id,
                                                                   title: data.title,
                                                                   last_message: data.last_message,
@@ -67,16 +72,14 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
     }
 
     this.children.chatsListBlocks = chatsListBlocks;
-    const newChatSaveButton = new Button({formId:'change-avatar-modal',url:'newChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Создать чат'});
+    const newChatSaveButton = new Button({modalId:'newChatModalBlock',formId:'newChat',url:'newChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Создать чат'});
     const newChatInput = new Input({class:'profil-modal-form-inp-holder-input', placeholder:'Введите логин пользователя',name:'newChatUserName',type:'text',inputId:'newChatUserName'});
+    let newChatSaveModalButtons = [newChatSaveButton];
 
-    this.children.newChatModalBlock = new ModalBlock({input:newChatInput,title:'Новый чат',button:newChatSaveButton} as ModalBlockProps);
-
-    this.children.chatsSearchInput = new Input({class:'chat-forma-search-input',placeholder:'Поиск',name:'chatsSearchInput', inputId:'chatsSearchInput',type:'text'});
-    this.children.chatsMessageInput = new Input({placeholder:'Сообщение',name:'message',inputId:'message',type:'text'});
-    this.children.chatsMessageButton = new Button({url:'sendMessage',formId:'message-form',isSendMessageButton: true});
-
-    this.children.chatAddBlock = new ChatAddBlock({events:{click:() => showModal()}});
+    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
+    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат',button:newChatSaveModalButtons} as ModalBlockProps);
+    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    this.children.chatAddBlock = new ChatAddBlock({events:{click:() => showModal('newChatModalBlock')}});
 
   }
 
@@ -85,29 +88,28 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
   }
 
   componentDidUpdate(){
-
     let chatsListBlocks:ChatsListElementBlock[] = [];
-
-      if (typeof this.props.chats !=='undefined' ){
-
-          this.props.chats.forEach((chat) => {
-              let chatsListElementBlock = new ChatsListElementBlock({
-                  events: {click: () => showChat(chat.id)},
-                  chatId:chat.id,
-                  title: chat.title,
-                  last_message: (!isEmpty(chat.last_message) ? chat.last_message.content : ''),
-                  time: (!isEmpty(chat.last_message) ? formatDate(chat.last_message.time) as string : ''),
-                  unread_count:chat.unread_count
-              });
-              chatsListBlocks.push(chatsListElementBlock);
+    let conversationBlocks:ConversationBlock[] = [];
+    if (typeof this.props.chats !=='undefined' ){
+      this.props.chats.forEach((chat) => {
+          let chatsListElementBlock = new ChatsListElementBlock({
+              events: {click: () => showChat(chat.id,chat.title)},
+              chatId:chat.id,
+              title: chat.title,
+              last_message: (!isEmpty(chat.last_message) ? chat.last_message.content : ''),
+              time: (!isEmpty(chat.last_message) ? formatDate(chat.last_message.time) as string : ''),
+              unread_count:chat.unread_count
           });
-      }
+          chatsListBlocks.push(chatsListElementBlock);
+      });
+    }
 
     this.children.chatsListBlocks = chatsListBlocks;
-    let conversationBlocks:ConversationBlock[] = [];
 
     if (typeof this.props.messages !=='undefined' ){
-        
+        const chatMessageInput = new Input({placeholder:'Сообщение',name:'message',inputId:'message',type:'text'});
+        const chatMessageButton = new Button({url:'sendMessage',formId:'message-form',isSendMessageButton: true});
+
         let messagesSrc  = this.props.messages.reverse();
         let messages:ChatMessagesBlock[] = [];
 
@@ -116,9 +118,31 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
             messages.push(chatMessagesBlock);
         });
 
-        let conversationBlock = new ConversationBlock({ date: 'Сегодня', messages: messages});
+        const conversationBlock = new ConversationBlock({ date: 'Сегодня', messages: messages});
         conversationBlocks.push(conversationBlock);
-        this.children.conversationBlock = conversationBlocks;
+
+        let chatHeaderBlock = new ChatHeaderBlock({currentChatName: this.props.currentChatName,events:{click:() => showModal('burgerMenuModalBlock')}});
+        this.children.currentChatBlock = new CurrentChatBlock({isNotHidden:true,chatHeaderBlock:chatHeaderBlock,conversationBlock:conversationBlocks,chatMessageInput:chatMessageInput,chatMessageButton:chatMessageButton});
+
+    }else{
+        this.children.currentChatBlock = new CurrentChatBlock({isNotHidden: false})
+    }
+
+    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
+    this.children.burgerMenuModalBlock = new ModalBlock({deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    if (typeof this.props.currentChatUsers !=='undefined'){
+        const currentChatCompanion = Array.prototype.filter.call(
+            this.props.currentChatUsers,
+            (user:User) => user.id !== this.props.user.id,
+        );
+        if(currentChatCompanion.length > 0){
+            const deleteUserFromChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteUserFromChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить пользователя'});
+            let burgerMenuModalButtons = [deleteUserFromChatButton,deleteChatButton];
+            this.children.burgerMenuModalBlock = new ModalBlock({deleteUserId:currentChatCompanion[0].id,deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:burgerMenuModalButtons} as ModalBlockProps);
+        }
+    }
+    if(this.props.currentChatId){
+        (this.children.burgerMenuModalBlock as Block).setProps({deleteChatId:this.props.currentChatId}) ;
     }
 
     return true;
@@ -129,10 +153,12 @@ const withChats = withStore((state) => ({ ...state }))
 
 export const ChatsPage = withChats(ChatsPageBase);
 
-async function showChat(chatId:number){
+async function showChat(chatId:number,chatTitle:string){
     let options:Options = {}
     options['headers'] = {'Content-Type': 'application/json'};
     options['data'] = {id:chatId};
+    store.set('currentChatId',chatId);
+    store.set('currentChatName',chatTitle);
     let token = await UserController.getChatToken(options) as Token;
     const storeData = store.getState();
     MessageController.connect({userId:storeData.user.id,chatId:chatId,token:token.token});

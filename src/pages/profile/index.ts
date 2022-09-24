@@ -9,6 +9,7 @@ import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from '../../components/link';
 import {Button} from "~src/components/button";
+import {showModal} from "~src/utils/helpers";
 
 interface ProfilePageProps {
   profileSidebarBlock: typeof ProfileSidebarBlock;
@@ -39,9 +40,9 @@ class ProfilePageBase extends Block<ProfilePageProps> {
         hasAvatar = true;
         avatarFileLink = 'https://ya-praktikum.tech/api/v2/resources'+user.user.avatar;
       }
-      this.children.profileAvaBlock = new ProfileAvaBlock({hasAvatar:hasAvatar, avatarFileLink:avatarFileLink});
-      const saveAvaButton = new Button({formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
-      this.children.profileAvaChangeModalBlock = new ModalBlock({formId:'change-avatar-modal',isFileModal:true, button:saveAvaButton,title:'Загрузить файл'} as ModalBlockProps);
+      this.children.profileAvaBlock = new ProfileAvaBlock({events:{click:()=>showModal('profileAvaChangeModalBlock')},hasAvatar:hasAvatar, avatarFileLink:avatarFileLink});
+      const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
+      this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Загрузить файл'} as ModalBlockProps);
       const userData = [
                         {description:"Почта",value:user.user.email},
                         {description:"Логин",value:user.user.login},

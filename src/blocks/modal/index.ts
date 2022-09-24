@@ -4,11 +4,14 @@ import { Button } from '../../components/button/';
 import { Input } from '../../components/input/';
 
 export interface ModalBlockProps {
-  formId:string;
+  modalId:string;
+  formId?:string;
+  deleteChatId?:number;
+  deleteUserId?:number;
   title:string;
   isFileModal:Boolean;
   input?:Input;
-  button:Button;
+  button:Button[];
 
 }
 
@@ -24,10 +27,12 @@ export class ModalBlock extends Block<ModalBlockProps> {
 }
 
 document.addEventListener('click', function (e) {
-  const modal = document.querySelector('.profil-modal-overley');
-  if (e.target === modal) {
-    modal!.classList.remove("show");
-  }
+  const modals = document.getElementsByClassName('profil-modal-overley');
+  Array.prototype.forEach.call(modals, function(el:HTMLElement) {
+    if (e.target === el) {
+      el!.classList.remove("show");
+    }
+  });
 });
 
 

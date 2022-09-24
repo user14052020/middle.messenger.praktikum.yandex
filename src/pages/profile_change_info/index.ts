@@ -6,6 +6,7 @@ import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
 import { ProfileAvaBlock } from '../../blocks/profile_ava';
 import { ProfileChangeInfoRowBlock } from '../../blocks/profile_change_info_row';
 import {ModalBlock, ModalBlockProps} from '../../blocks/modal';
+import {showModal} from "~src/utils/helpers";
 
 interface ProfileChangeInfoPageProps {
   profileSidebarBlock: typeof ProfileSidebarBlock;
@@ -43,7 +44,7 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     const profileChangeInfoSaveButton = new Button({formId:'profile-data-form',url:url,title:'Сохранить',class:'change-profil-forma-button'});
     
     const profileSidebarBlock = new ProfileSidebarBlock({});
-    const profileAvaBlock = new ProfileAvaBlock({hasAvatar:false});
+    const profileAvaBlock = new ProfileAvaBlock({events:{click:()=>showModal('profileAvaChangeModalBlock')},hasAvatar:false});
     let profileChangeInfoRowBlocks:ProfileChangeInfoRowBlock[]=[];
     
     profileChangeInfoRowBlocksData.forEach((data) => {
@@ -60,8 +61,8 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     this.children.profileAvaBlock = profileAvaBlock;
     this.children.profileChangeInfoRowBlock = profileChangeInfoRowBlocks;
     this.children.profileChangeInfoSaveButton = profileChangeInfoSaveButton;
-    const saveAvaButton = new Button({formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
-    this.children.profileAvaChangeModalBlock = new ModalBlock({formId:'change-avatar-modal',isFileModal:true, button:saveAvaButton,title:'Загрузить файл'} as ModalBlockProps);
+    const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
+    this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Загрузить файл'} as ModalBlockProps);
 
   }
 
