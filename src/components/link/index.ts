@@ -3,7 +3,7 @@ import template from './link.hbs';
 
 interface LinkProps {
   href?: string;
-  lable?: boolean;
+  hasLable?: boolean;
   class?: string;
   events?: {
     click: (e: Event) => void;
