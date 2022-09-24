@@ -12,7 +12,7 @@ import {Button} from "~src/components/button";
 import {showModal} from "~src/utils/helpers";
 
 interface ProfilePageProps {
-  profileSidebarBlock: typeof ProfileSidebarBlock;
+  profileSidebarBlockType: typeof ProfileSidebarBlock;
   profileAvaBlock: ProfileAvaBlock;
   profileAvaChangeModalBlock: ModalBlock;
   profileRowBlock: ProfileRowBlock[];
