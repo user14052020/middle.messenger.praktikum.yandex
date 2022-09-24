@@ -31,6 +31,7 @@ enum Routes {
 
 window.addEventListener('DOMContentLoaded', async () => {
 
+  console.log('sprint_4')
   const root = document.querySelector('#root')!;
   const menu = new MenuBlock();
   root.append(menu.getContent()!);
