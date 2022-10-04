@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/sprint_1.iml" filepath="$PROJECT_DIR$/.idea/sprint_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../yandex_practicum_chat/.idea/yandex_practicum_chat.iml" filepath="$PROJECT_DIR$/../yandex_practicum_chat/.idea/yandex_practicum_chat.iml" />
     </modules>
   </component>
 </project>

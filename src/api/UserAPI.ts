@@ -1,5 +1,5 @@
 import BaseAPI from './BaseAPI';
-import {Options} from '../utils/httptransport';
+import {Options} from '../utils/HTTPTransport';
 import {User} from "~src/api/AuthAPI";
 
 export class UserAPI extends BaseAPI {

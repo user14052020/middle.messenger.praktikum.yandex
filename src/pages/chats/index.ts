@@ -6,7 +6,7 @@ import { ConversationBlock } from '../../blocks/conversation';
 import { ChatsListElementBlock } from '../../blocks/chats_list_element';
 import { ChatAddBlock } from '../../blocks/chat_add';
 import { CurrentChatBlock } from '../../blocks/current_chat';
-import {ChatHeaderBlock} from "~src/blocks/chat_header";
+import {ChatHeaderBlock} from "../../blocks/chat_header";
 import {ChatMessagesBlock} from '../../blocks/chat_messages';
 import UserController from '../../controllers/UserController';
 import MessageController from '../../controllers/MessageController';
@@ -19,8 +19,8 @@ import {Token} from '../../api/ChatsAPI';
 
 
 import store, { withStore } from '../../utils/Store';
-import {Options} from "~src/utils/httptransport";
-import formatDate from "~src/utils/formatDate";
+import {Options} from "../../utils/HTTPTransport";
+import formatDate from "../../utils/formatDate";
 
 interface ChatsPageProps {
     user:User,

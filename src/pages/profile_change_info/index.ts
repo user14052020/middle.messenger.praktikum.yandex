@@ -6,7 +6,7 @@ import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
 import { ProfileAvaBlock } from '../../blocks/profile_ava';
 import { ProfileChangeInfoRowBlock } from '../../blocks/profile_change_info_row';
 import {ModalBlock, ModalBlockProps} from '../../blocks/modal';
-import {showModal} from "~src/utils/helpers";
+import {showModal} from "../../utils/helpers";
 
 interface ProfileChangeInfoPageProps {
   profileSidebarBlock: typeof ProfileSidebarBlock;

@@ -1,3 +1,5 @@
+@import "../../vars.css";
+
 .profile-content {
   flex: 1 0 auto;
 }
@@ -89,7 +91,7 @@
   font-weight: 500;
   font-size: 9px;
   line-height: 9px;
-  color: var(--main-input-placeholder);
+  color: var(--main-input-placeholder-color);
   margin: 0;
   display: block;
   order: 2;

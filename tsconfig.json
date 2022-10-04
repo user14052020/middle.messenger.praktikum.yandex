@@ -5,6 +5,7 @@
         "declaration": false,
         "module": "commonjs",
         "strictNullChecks": true,
+        "esModuleInterop": true,
         "sourceMap": true,
         "noImplicitAny": true,
         "noUnusedLocals": true,

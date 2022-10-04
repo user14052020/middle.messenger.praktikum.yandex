@@ -1,3 +1,5 @@
+@import "../../vars.css";
+
 .auth-reg-form {
   display: flex;
   flex-direction: column;
@@ -30,7 +32,7 @@
   font-weight: 500;
   font-size: 9px;
   line-height: 9px;
-  color: var(--main-input-placeholder);
+  color: var(--main-input-placeholder-color);
   margin: 0;
   display: block;
   order: 2;
@@ -88,5 +90,5 @@
 }
 
 .auth-reg-form .no-akkaunt-link:hover {
-  color: var(--main-input-placeholder);
+  color: var(--main-input-placeholder-color);
 }

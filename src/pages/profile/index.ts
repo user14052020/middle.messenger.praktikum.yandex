@@ -8,8 +8,8 @@ import { ModalBlock,ModalBlockProps } from '../../blocks/modal';
 import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from '../../components/link';
-import {Button} from "~src/components/button";
-import {showModal} from "~src/utils/helpers";
+import {Button} from "../../components/button";
+import {showModal} from "../../utils/helpers";
 
 interface ProfilePageProps {
   profileSidebarBlockType: typeof ProfileSidebarBlock;

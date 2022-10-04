@@ -8,7 +8,7 @@ on:
 
 jobs:
   sprint_1:
-    if: ${{github.head_ref == 'sprint_1'}}
+    if: ${{github.head_ref == 'yandex_practicum_chat'}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,15 +26,15 @@ jobs:
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
     - name: Check dist and node_modules in .gitignore
-      run: bash tests-second-floor/sprint_1/check_gitignore.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_gitignore.sh
     - name: Check npm run start existence
-      run: bash tests-second-floor/sprint_1/check_start.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_start.sh
     - name: Check Parcel in start script
-      run: bash tests-second-floor/sprint_1/check_parcel.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_parcel.sh
     - name: Check PORT 3000
-      run: bash tests-second-floor/sprint_1/check_port.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_port.sh
     - name: Check routing
-      run: node tests-second-floor/sprint_1/check_routing.js
+      run: node tests-second-floor/yandex_practicum_chat/check_routing.js
       
   sprint_2:
     if: ${{github.head_ref == 'sprint_2'}}
@@ -55,15 +55,15 @@ jobs:
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
     - name: Check dist and node_modules in .gitignore
-      run: bash tests-second-floor/sprint_1/check_gitignore.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_gitignore.sh
     - name: Check npm run start existence
-      run: bash tests-second-floor/sprint_1/check_start.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_start.sh
     - name: Check Parcel in start script
-      run: bash tests-second-floor/sprint_1/check_parcel.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_parcel.sh
     - name: Check PORT 3000
-      run: bash tests-second-floor/sprint_1/check_port.sh
+      run: bash tests-second-floor/yandex_practicum_chat/check_port.sh
     - name: Check routing
-      run: node tests-second-floor/sprint_1/check_routing.js
+      run: node tests-second-floor/yandex_practicum_chat/check_routing.js
       # sprint 2 checks
     - name: Check typescript in package.json
       run: node tests-second-floor/sprint_2/check_typescript.js

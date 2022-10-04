@@ -569,3 +569,9 @@
   color: #966;
   opacity: 1; /* Firefox */
 }
+
+.new-chat-add-svg-icon {
+  width: 32px;
+  vertical-align: middle;
+  overflow: hidden;
+}
