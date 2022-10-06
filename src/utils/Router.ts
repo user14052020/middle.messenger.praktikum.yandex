@@ -7,11 +7,11 @@ interface ComponentConstructable<P extends Record<string, any>> {
 }
  class Router {
 
-    protected routes:Route[];
-    protected history:History;
-    protected _currentRoute:Route|null;
-    protected _rootQuery:string;
-    private static __instance: any;
+     public routes:Route[];
+     public history:History;
+     private _currentRoute:Route|null;
+     private _rootQuery:string;
+     static __instance: any;
 
 
     constructor(rootQuery:string) {

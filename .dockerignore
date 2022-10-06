@@ -1,6 +1,7 @@
-/node_modules/
-/.cache/
-/.parcel-cache/
-/parcel-catch/
-/dist/
-*.map
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
+dist
