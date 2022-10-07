@@ -1,10 +1,10 @@
 :root {
-    --main-input-placeholder-color: #999;
-    --main-input-bg: #efefef;
-    --main-body-color: #1e1e1e;
-    --input-border-bottom-color: #3369f3;
-    --button-bg-color: #eaeaea;
-    --button-color: #fff;
-    --section-bg-color: #fbfbfb;
-    --a-color: #f00;
+  --main-input-placeholder-color: #999;
+  --main-input-bg: #efefef;
+  --main-body-color: #1e1e1e;
+  --input-border-bottom-color: #3369f3;
+  --button-bg-color: #eaeaea;
+  --button-color: #fff;
+  --section-bg-color: #fbfbfb;
+  --a-color: #f00;
 }
