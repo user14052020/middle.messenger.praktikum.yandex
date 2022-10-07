@@ -1,4 +1,4 @@
-import Router, { ComponentConstructable } from './Router'
+import Router, { BlockConstructable } from './Router'
 import { expect } from 'chai';
 import sinon from 'sinon';
 
@@ -19,7 +19,7 @@ describe('Router', () => {
 
     const BlockMock = class {
         getContent = getContentFake;
-    } as unknown as ComponentConstructable;
+    } as unknown as BlockConstructable;
 
     it('use() should return Router instance', () => {
         const result = Router.use('/', BlockMock);
