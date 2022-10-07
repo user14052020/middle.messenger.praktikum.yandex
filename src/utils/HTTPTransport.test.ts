@@ -1,18 +1,16 @@
 import HTTPTransport from './HTTPTransport';
 
-const http = new HTTPTransport('', 'https://api.nomoreparties.co/');
+const http = new HTTPTransport('', 'https://jsonplaceholder.typicode.com/');
 
 describe('HTTPTransport', () => {
     it('Get', (done) => {
         http
             .get(
-                'github-search',
-                { data: { q: 'tme.eu' } },
+                'comments',
+                { data: { postId: 1 } },
             )
-            .then(({ response }) => {
-
-                const [{ postId }] = response || [];
-                if (postId === 1) {
+            .then(( response ) => {
+                if ( typeof response !== 'undefined') {
                     done();
                 } else {
                     done(new Error('Ожидался массив объектов с ключом postId и значением 1'));
@@ -33,8 +31,8 @@ describe('HTTPTransport', () => {
                     userId: 1,
                 }),
             })
-            .then(({ response }) => {
-                const { title } = response || {};
+            .then(( response ) => {
+                const { title } = response as {title:string, body:string,userId:number} || {};
                 if (title === 'foo') {
                     done();
                 } else {

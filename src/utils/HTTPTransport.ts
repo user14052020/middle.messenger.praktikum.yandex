@@ -82,23 +82,23 @@ export default class HTTPTransport {
 			xhr.onerror = () => reject({reason: 'network error'});
 			xhr.ontimeout = () => reject({reason: 'timeout'});
 			if(!headers){
-			if(url.includes('avatar') === false){
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			}
+				if(url.includes('avatar') === false){
+					xhr.setRequestHeader('Content-Type', 'application/json');
+				}
 			}else{
-			Object.keys(headers).forEach(key => {
-					xhr.setRequestHeader(key, headers[key]);
+				Object.keys(headers).forEach(key => {
+						xhr.setRequestHeader(key, headers[key]);
 				});
 			}
 			xhr.withCredentials = true;
 			xhr.responseType = 'json';
 
 			if (isGet || !data) {
-			xhr.send();
+				xhr.send();
 			} else if(url.includes('avatar')){
-			xhr.send(data as XMLHttpRequestBodyInit);
+				xhr.send(data as XMLHttpRequestBodyInit);
 			}else {
-			xhr.send(JSON.stringify(data) as XMLHttpRequestBodyInit);
+				xhr.send(JSON.stringify(data) as XMLHttpRequestBodyInit);
 			}
 		});
 	};

@@ -20,7 +20,6 @@ import { MenuBlock } from './blocks/menu';
 import Router from './utils/Router';
 
 import AuthController from './controllers/AuthController';
-// import UserController from './controllers/UserController';
 
 enum Routes {
   Index = '/',
@@ -31,7 +30,6 @@ enum Routes {
 
 window.addEventListener('DOMContentLoaded', async () => {
 
-  console.log('sprint_4')
   const root = document.querySelector('#root')!;
   const menu = new MenuBlock();
   root.append(menu.getContent()!);
