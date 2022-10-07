@@ -8,7 +8,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all lint:fix stylelint:fix"
+      "pre-commit": "npm-run-all test lint:fix stylelint:fix"
     }
   },
   "scripts": {
