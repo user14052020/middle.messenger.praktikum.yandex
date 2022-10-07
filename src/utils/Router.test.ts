@@ -1,4 +1,4 @@
-import Router, { BlockConstructable } from './Router'
+import Router, { ComponentConstructable } from './Router'
 import { expect } from 'chai';
 import sinon from 'sinon';
 
@@ -19,8 +19,15 @@ describe('Router', () => {
 
     const BlockMock = class {
         getContent = getContentFake;
-    } as unknown as BlockConstructable;
+        dispatchComponentDidMount = ()=>{console.log('1')};
+        show = ()=>{console.log('1')};
+    } as unknown as ComponentConstructable<any>;
 
+        it('should render a page on start', () => {
+        Router
+            .use('/', BlockMock)
+            .start();
+    })
     it('use() should return Router instance', () => {
         const result = Router.use('/', BlockMock);
 

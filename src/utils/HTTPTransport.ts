@@ -1,3 +1,4 @@
+import { apiURL } from './helpers';
 enum METHODS {
 		Get = 'GET',
 		Post = 'POST',
@@ -23,10 +24,9 @@ export interface Options {
 }
 
 export default class HTTPTransport {
-	static API_URL = 'https://ya-praktikum.tech/api/v2';
-  protected endpoint: string;
+	protected endpoint: string;
 
-   constructor(endpoint: string,api:string = HTTPTransport.API_URL) {
+   constructor(endpoint: string,api:string = apiURL) {
     this.endpoint = `${api}${endpoint}`;
   }
 

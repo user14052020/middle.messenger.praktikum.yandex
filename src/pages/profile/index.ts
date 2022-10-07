@@ -7,7 +7,7 @@ import { ProfileChangeLinkBlock } from '../../blocks/profile_change_link';
 import { ModalBlock,ModalBlockProps } from '../../blocks/modal';
 import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
-import { Link } from '../../components/link';
+import { Link, LinkProps } from '../../components/link';
 import {Button} from "../../components/button";
 import {showModal} from "../../utils/helpers";
 
@@ -32,7 +32,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
     //   AuthController.fetchUser();
     const user = store.getState();
     if (Object.keys(user).length !== 0 ){
-      this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e:Event) => {e.preventDefault(); AuthController.logout();}}});
+      this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e:Event) => {e.preventDefault(); AuthController.logout();}}} as LinkProps);
       this.children.profileSidebarBlock = new ProfileSidebarBlock({} as ProfileSidebarBlockProps);
       let hasAvatar = false;
       let avatarFileLink = '';
