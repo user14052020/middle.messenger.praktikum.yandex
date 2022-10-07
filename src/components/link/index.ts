@@ -2,8 +2,7 @@ import Block from '../../utils/Block';
 import template from './link.hbs';
 
 export interface LinkProps {
-  href?: string;
-  hasLable?: boolean;
+  label?: string;
   class?: string;
   events?: {
     click: (e: Event) => void;
