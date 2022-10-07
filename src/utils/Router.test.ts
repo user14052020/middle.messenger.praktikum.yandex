@@ -1,28 +1,49 @@
+import Router, { ComponentConstructable } from './Router'
 import { expect } from 'chai';
-import Router from './Router';
-import Block from './Block';
+import sinon from 'sinon';
 
 describe('Router', () => {
 
-    class HomePage extends Block {}
-    class AboutPage extends Block {}
-    class InfoPage extends Block {}
+    global.window.history.back = () => {
+        if (typeof window.onpopstate === 'function') {
+            window.onpopstate({currentTarget: window} as unknown as PopStateEvent);
+        }
+    };
+    global.window.history.forward = () => {
+        if (typeof window.onpopstate === 'function') {
+            window.onpopstate({currentTarget: window} as unknown as PopStateEvent);
+        }
+    }
 
-    Router
-        .use('/', HomePage)
-        .use('/about', AboutPage)
-        .use('/info', InfoPage)
-        .start();
+    const getContentFake = sinon.fake.returns(document.createElement('div'));
 
-    it('Change route', () => {
-        Router.go('/');
-        Router.go('/about');
-        expect(Router.history.length).to.eq(3);
+    const BlockMock = class {
+        getContent = getContentFake;
+    } as unknown as ComponentConstructable;
+
+    it('use() should return Router instance', () => {
+        const result = Router.use('/', BlockMock);
+
+        expect(result).to.eq(Router);
     });
 
-    it('Get pathname', () => {
-        Router.go('/info');
-        // const { pathname } = Router.currentRoute || {};
-        // expect(pathname).to.eq('/info');
+    describe('.back()', () => {
+        it('should render a page on history back action', () => {
+            Router
+                .use('/', BlockMock)
+                .start();
+
+            Router.back();
+
+            expect(getContentFake.callCount).to.eq(1);
+        });
+    });
+
+    it('should render a page on start', () => {
+        Router
+            .use('/', BlockMock)
+            .start();
+
+        expect(getContentFake.callCount).to.eq(1);
     });
 });

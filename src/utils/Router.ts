@@ -2,7 +2,8 @@ import { Route } from "./Route";
 import { PlainObject } from './helpers';
 import Block from "./Block";
 
-interface ComponentConstructable<P extends Record<string, any>> {
+
+export interface ComponentConstructable<P extends Record<string, any>> {
     new (props?: P): Block<P>
 }
  class Router {
