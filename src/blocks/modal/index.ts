@@ -1,7 +1,7 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './modal.hbs';
-import { Button } from '../../components/button/';
-import { Input } from '../../components/input/';
+import { Button } from '~/components/button/';
+import { Input } from '~/components/input/';
 
 export interface ModalBlockProps {
   modalId:string;

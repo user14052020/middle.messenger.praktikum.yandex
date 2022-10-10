@@ -1,15 +1,15 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './profile.hbs';
-import { ProfileSidebarBlock,ProfileSidebarBlockProps } from '../../blocks/profile_sidebar';
-import { ProfileAvaBlock } from '../../blocks/profile_ava';
-import { ProfileRowBlock } from '../../blocks/profile_row';
-import { ProfileChangeLinkBlock } from '../../blocks/profile_change_link';
-import { ModalBlock,ModalBlockProps } from '../../blocks/modal';
-import store, { withStore } from '../../utils/Store';
-import AuthController from '../../controllers/AuthController';
-import { Link, LinkProps } from '../../components/link';
-import {Button} from "../../components/button";
-import {showModal} from "../../utils/helpers";
+import { ProfileSidebarBlock,ProfileSidebarBlockProps } from '~/blocks/profile_sidebar';
+import { ProfileAvaBlock } from '~/blocks/profile_ava';
+import { ProfileRowBlock } from '~/blocks/profile_row';
+import { ProfileChangeLinkBlock } from '~/blocks/profile_change_link';
+import { ModalBlock,ModalBlockProps } from '~/blocks/modal';
+import store, { withStore } from '~/utils/Store';
+import AuthController from '~/controllers/AuthController';
+import { Link, LinkProps } from '~/components/link';
+import {Button} from "~/components/button";
+import {showModal} from "~/utils/helpers";
 
 interface ProfilePageProps {
   profileSidebarBlockType: typeof ProfileSidebarBlock;

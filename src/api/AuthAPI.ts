@@ -1,5 +1,6 @@
 import BaseAPI from './BaseAPI';
-import {Options} from '../utils/HTTPTransport';
+import {Options} from '~/utils/HTTPTransport';
+import { API_URL } from '~/utils/helpers';
 
 export interface User {
   id: number;
@@ -15,7 +16,7 @@ export interface User {
 
 export class AuthAPI extends BaseAPI {
   constructor() {
-    super('/auth');
+    super(API_URL,'/auth');
   }
 
   signin(options: Options) {

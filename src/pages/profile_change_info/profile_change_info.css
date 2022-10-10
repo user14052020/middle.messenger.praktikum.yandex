@@ -1,4 +1,4 @@
-@import "../../vars.css";
+@import "~/vars.css";
 
 form.change-profil-forma {
   display: flex;

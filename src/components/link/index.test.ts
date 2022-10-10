@@ -1,12 +1,12 @@
 import { Link,LinkProps } from './index';
 import { expect } from 'chai';
-import Router from '../../utils/Router';
+import Router from '~/utils/Router';
 import sinon from 'sinon';
-import {AuthorizationRegistrationPage} from "../../pages/authorization_registration";
+import {AuthorizationRegistrationPage} from "~/pages/authorization_registration";
 
 
 
-describe.only('Link', () => {
+describe('Link', () => {
     it('should render', () => {
         new Link({label:"Выход", events: {click: () => { Router.go('/');}}} as LinkProps);
     });

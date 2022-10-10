@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './profile_ava.hbs';
 
 interface ProfileAvaBlockProps {

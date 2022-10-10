@@ -575,3 +575,7 @@
   vertical-align: middle;
   overflow: hidden;
 }
+
+#current-chat-main-div {
+  display: none;
+}

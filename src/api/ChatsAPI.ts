@@ -1,5 +1,6 @@
 import BaseAPI from './BaseAPI';
-import {Options} from '../utils/HTTPTransport';
+import {Options} from '~/utils/HTTPTransport';
+import {API_URL} from "~/utils/helpers";
 
 export interface Message {
   chat_id: string,
@@ -24,7 +25,7 @@ export interface Token {
 
 export class ChatsAPI extends BaseAPI {
   constructor() {
-    super('/chats');
+    super(API_URL,'/chats');
   }
 
   getChatToken(options: Options) {

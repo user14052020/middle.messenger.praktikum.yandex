@@ -4,6 +4,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+console.log(__dirname, '/api/');
 module.exports = {
     mode: 'development',
     devtool: 'source-map',
@@ -13,7 +14,10 @@ module.exports = {
         filename: 'chat.bundle.js'
     },
     resolve: {
-        extensions: ['.ts', '.js', '.json']
+        extensions: ['.ts', '.js', '.json'],
+        alias: {
+            '~': path.resolve(__dirname, 'src/'),
+        },
     },
     devServer: {
         static: {

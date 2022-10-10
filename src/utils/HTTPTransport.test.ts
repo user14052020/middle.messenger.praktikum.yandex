@@ -1,6 +1,6 @@
 import HTTPTransport from './HTTPTransport';
 
-const http = new HTTPTransport('', 'https://jsonplaceholder.typicode.com/');
+const http = new HTTPTransport('https://jsonplaceholder.typicode.com/', '');
 
 describe('HTTPTransport', () => {
     it('Get', (done) => {

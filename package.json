@@ -14,7 +14,7 @@
   "scripts": {
     "stylelint:fix": "npx stylelint 'src/*/*/*.css' --fix",
     "lint:fix": "node_modules/.bin/eslint . --fix",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js 'src/**/*.test.ts'",
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register -r ./mochaSetup.js 'src/**/*.test.ts'",
     "dev": "webpack serve --mode=development --progress",
     "build": "webpack --progress",
     "start": "npm run build && node server.js"

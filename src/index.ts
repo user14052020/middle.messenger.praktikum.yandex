@@ -21,13 +21,15 @@ import Router from './utils/Router';
 
 import AuthController from './controllers/AuthController';
 
+// const path = require('path');
+
 enum Routes {
   Index = '/',
   Register = '/sign-up',
   Messenger = '/messenger'
 }
 
-
+// path.join(__dirname, '../src/');
 window.addEventListener('DOMContentLoaded', async () => {
 
   const root = document.querySelector('#root')!;

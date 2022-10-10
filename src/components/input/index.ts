@@ -1,6 +1,6 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './input.hbs';
-import { phoneRGEX,emailRGEX,loginRGEX,nameRGEX,passwordRGEX,messageRGEX } from '../../utils/helpers';
+import { PHONE_RGEX,EMAIL_RGEX,LOGIN_RGEX,NAME_RGEX,PASSWORD_RGEX,MESSAGE_RGEX } from '~/utils/helpers';
 interface InputProps {
   disabled?:string;
   class?: string;
@@ -33,15 +33,15 @@ export class Input extends Block<InputProps> {
     const passwordInputNames = ['password', 'passwordold','oldPassword','newPassword'];
     const namesInput = ['first_name', 'second_name','chat_name'];
     if(inputId === 'email'){
-      result = emailRGEX.test(inputValue);
+      result = EMAIL_RGEX.test(inputValue);
     }else if(inputId === 'phone'){
-      result = phoneRGEX.test(inputValue);
+      result = PHONE_RGEX.test(inputValue);
     }else if(inputId === 'login'){
-      result = loginRGEX.test(inputValue);
+      result = LOGIN_RGEX.test(inputValue);
     }else if(passwordInputNames.includes(inputId)){
-      result = passwordRGEX.test(inputValue);
+      result = PASSWORD_RGEX.test(inputValue);
     }else if(namesInput.includes(inputId)){
-      result = nameRGEX.test(inputValue);
+      result = NAME_RGEX.test(inputValue);
     }else if(inputId === 'passwordval'){
       let password = (<HTMLInputElement>document.getElementById('password')).value;
       if(inputValue !== password){
@@ -50,7 +50,7 @@ export class Input extends Block<InputProps> {
         result = true;
       }
     }else if(this.element?.id === 'message'|| this.element?.id === 'chatsSearchInput'){
-      result = !messageRGEX.test(inputValue);
+      result = !MESSAGE_RGEX.test(inputValue);
     }else{
       result = true;
     }

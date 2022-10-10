@@ -1,4 +1,4 @@
-import { apiURL } from './helpers';
+
 enum METHODS {
 		Get = 'GET',
 		Post = 'POST',
@@ -26,7 +26,7 @@ export interface Options {
 export default class HTTPTransport {
 	protected endpoint: string;
 
-   constructor(endpoint: string,api:string = apiURL) {
+   constructor(api:string, endpoint: string) {
     this.endpoint = `${api}${endpoint}`;
   }
 

@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './profile_change_link.hbs';
 
 interface ProfileChangeLinkBlockProps {
