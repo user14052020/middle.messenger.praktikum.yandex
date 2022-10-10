@@ -6,6 +6,7 @@ import {AuthorizationRegistrationPage} from "~/pages/authorization_registration"
 
 
 
+
 describe('Link', () => {
     it('should render', () => {
         new Link({label:"Выход", events: {click: () => { Router.go('/');}}} as LinkProps);
@@ -24,9 +25,9 @@ describe('Link', () => {
         const link = new Link({label:"Выход", events: {click: () => {Router.go('/')}}} as LinkProps);
         const spy = sinon.spy(Router, 'go');
         const element = link.element as HTMLDivElement;
-        console.log(element)
         element.click();
 
         expect(spy.calledOnce).to.eq(true);
+        spy.restore()
     });
 });
