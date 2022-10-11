@@ -35,7 +35,8 @@ class Router {
     }
 
     reset() {
-        Router.__instance = null;
+        this.routes = [];
+        this._currentRoute = null;
     }
 
     start() {

@@ -2,9 +2,9 @@ import Router, { ComponentConstructable } from './Router'
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-Router.reset();
 
-describe.only('Router', () => {
+
+describe('Router', () => {
 
     global.window.history.back = () => {
         if (typeof window.onpopstate === 'function') {
@@ -18,7 +18,10 @@ describe.only('Router', () => {
     }
 
     const getContentFake = sinon.fake.returns(document.createElement('div'));
-
+    beforeEach( () => {
+        Router.reset();
+        getContentFake.resetHistory();
+    })
     const BlockMock = class {
         getContent = getContentFake;
         dispatchComponentDidMount = ()=>{console.log('was called dispatchComponentDidMount()')};
@@ -35,22 +38,20 @@ describe.only('Router', () => {
         Router
             .use('/', BlockMock)
             .start();
-            expect(getContentFake.callCount).to.eq(1);
+        expect(getContentFake.callCount).to.eq(1);
     })
 
 
-    // describe('.back()', () => {
+    it('should render a page on history back action', () => {
+        Router
+            .use('/', BlockMock)
+            .start();
 
-        it('should render a page on history back action', () => {
-            Router
-                .use('/', BlockMock)
-                .start();
+        Router.back();
 
-            Router.back();
+        expect(getContentFake.callCount).to.eq(1);
+    });
 
-            expect(getContentFake.callCount).to.eq(1);
-        });
-    // });
 
 
 });

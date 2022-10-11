@@ -10,9 +10,9 @@
         "strictNullChecks": true,
         "sourceMap": true,
         "noImplicitAny": true,
-        "noUnusedLocals": true,
         "noUnusedParameters": true,
         "esModuleInterop": true,
+        "noUnusedLocals": false,
         "baseUrl": ".",
         "paths": {
           "~src/*": ["src/*"],
