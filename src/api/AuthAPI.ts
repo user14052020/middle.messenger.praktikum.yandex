@@ -12,6 +12,7 @@ export interface User {
   password: string;
   phone: string;
   avatar: string;
+  -1
 }
 
 export class AuthAPI extends BaseAPI {
