@@ -1,4 +1,0 @@
-{
-  "~/*.{js,ts}": ["tslint --fix --config tslint.precommit.json --project tsconfig.json", "git add"],
-  "*.css": "stylelint --fix"
-}
