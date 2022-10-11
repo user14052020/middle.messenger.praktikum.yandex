@@ -3,13 +3,13 @@ const { merge } = require('webpack-merge'); //[1]
 const commonConfig = require('./webpack.common'); //[2]
 
 module.exports = (env) => {
-    console.log(env);
-    let confgFileName = ''
+
+    let configFileName = ''
     if(typeof  env.production !== 'undefined'){
-        confgFileName = 'production.js';
+        configFileName = 'production.js';
     }else{
-        confgFileName = 'development.js';
+        configFileName = 'development.js';
     }
-    const config = require('./webpack.' + confgFileName); //[3]
+    const config = require('./webpack.' + configFileName); //[3]
     return merge(commonConfig, config); //[4]
 };

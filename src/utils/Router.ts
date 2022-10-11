@@ -6,7 +6,7 @@ import Block from "./Block";
  export interface ComponentConstructable<P extends Record<string, any>> {
     new (props?: P): Block<P>
 }
- class Router {
+class Router {
 
      public routes:Route[];
      public history:History;
@@ -34,6 +34,10 @@ import Block from "./Block";
         return this;
     }
 
+    reset() {
+        Router.__instance = null;
+    }
+
     start() {
         window.onpopstate = ((event:PopStateEvent) => {
             const target = event.currentTarget as Window;
@@ -47,7 +51,7 @@ import Block from "./Block";
 
         const route = this.getRoute(pathname);
         if (!route) {
-            this.go('/404');
+            // this.go('/404');
             return;
         }
 

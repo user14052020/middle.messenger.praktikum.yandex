@@ -2,7 +2,9 @@ import Router, { ComponentConstructable } from './Router'
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-describe('Router', () => {
+Router.reset();
+
+describe.only('Router', () => {
 
     global.window.history.back = () => {
         if (typeof window.onpopstate === 'function') {
@@ -19,22 +21,26 @@ describe('Router', () => {
 
     const BlockMock = class {
         getContent = getContentFake;
-        dispatchComponentDidMount = ()=>{console.log('1')};
-        show = ()=>{console.log('1')};
+        dispatchComponentDidMount = ()=>{console.log('was called dispatchComponentDidMount()')};
+        show = ()=>{console.log('was called show()')};
     } as unknown as ComponentConstructable<any>;
 
-        it('should render a page on start', () => {
-        Router
-            .use('/', BlockMock)
-            .start();
-    })
     it('use() should return Router instance', () => {
         const result = Router.use('/', BlockMock);
 
         expect(result).to.eq(Router);
     });
 
-    describe('.back()', () => {
+    it('should render a page on start', () => {
+        Router
+            .use('/', BlockMock)
+            .start();
+            expect(getContentFake.callCount).to.eq(1);
+    })
+
+
+    // describe('.back()', () => {
+
         it('should render a page on history back action', () => {
             Router
                 .use('/', BlockMock)
@@ -44,13 +50,7 @@ describe('Router', () => {
 
             expect(getContentFake.callCount).to.eq(1);
         });
-    });
+    // });
 
-    it('should render a page on start', () => {
-        Router
-            .use('/', BlockMock)
-            .start();
 
-        expect(getContentFake.callCount).to.eq(1);
-    });
 });

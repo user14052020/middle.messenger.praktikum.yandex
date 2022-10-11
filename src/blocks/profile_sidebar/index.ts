@@ -1,6 +1,6 @@
-import Block from '~/utils/Block';
+import Block from '../../utils/Block';
 import template from './profile_sidebar.hbs';
-import { PropsWithRouter, withRouter } from '~/hocs/withRouter';
+import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 
 export interface ProfileSidebarBlockProps extends PropsWithRouter{
   events?: {
