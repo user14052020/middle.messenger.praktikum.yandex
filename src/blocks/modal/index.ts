@@ -9,6 +9,7 @@ export interface ModalBlockProps {
   deleteChatId?:number;
   deleteUserId?:number;
   title:string;
+  subtitle?:string;
   isFileModal:Boolean;
   input?:Input;
   button:Button[];

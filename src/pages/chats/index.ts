@@ -77,8 +77,8 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
     let newChatSaveModalButtons = [newChatSaveButton];
 
     const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
-    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат',button:newChatSaveModalButtons} as ModalBlockProps);
-    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат', subtitle:'Введите логин пользователя, с которым хотите поговорить', button:newChatSaveModalButtons} as ModalBlockProps);
+    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm', title:'Действия чата', button:[deleteChatButton]} as ModalBlockProps);
     this.children.chatAddBlock = new ChatAddBlock({events:{click:() => showModal('newChatModalBlock')}});
 
   }
