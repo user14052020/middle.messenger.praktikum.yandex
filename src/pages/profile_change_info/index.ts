@@ -1,12 +1,12 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './profile_change_info.hbs';
-import { Button } from '../../components/button/';
-import { Input } from '../../components/input';
-import { ProfileSidebarBlock } from '../../blocks/profile_sidebar';
-import { ProfileAvaBlock } from '../../blocks/profile_ava';
-import { ProfileChangeInfoRowBlock } from '../../blocks/profile_change_info_row';
-import {ModalBlock, ModalBlockProps} from '../../blocks/modal';
-import {showModal} from "~src/utils/helpers";
+import { Button } from '~/components/button/';
+import { Input } from '~/components/input';
+import { ProfileSidebarBlock } from '~/blocks/profile_sidebar';
+import { ProfileAvaBlock } from '~/blocks/profile_ava';
+import { ProfileChangeInfoRowBlock } from '~/blocks/profile_change_info_row';
+import {ModalBlock, ModalBlockProps} from '~/blocks/modal';
+import {showModal} from "~/utils/helpers";
 
 interface ProfileChangeInfoPageProps {
   profileSidebarBlock: typeof ProfileSidebarBlock;

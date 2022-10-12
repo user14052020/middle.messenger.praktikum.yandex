@@ -1,9 +1,8 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './link.hbs';
 
-interface LinkProps {
-  href?: string;
-  hasLable?: boolean;
+export interface LinkProps {
+  label?: string;
   class?: string;
   events?: {
     click: (e: Event) => void;
@@ -12,7 +11,7 @@ interface LinkProps {
 }
 
 export class Link extends Block<LinkProps> {
-    constructor(props: { label: string; class: string; events: { click: (e: Event) => void } }) {
+    constructor(props: LinkProps) {
     super('div', props);
   }
 

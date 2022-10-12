@@ -1,26 +1,26 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './chats.hbs';
-import { Input } from '../../components/input/';
-import { Button } from '../../components/button/';
-import { ConversationBlock } from '../../blocks/conversation';
-import { ChatsListElementBlock } from '../../blocks/chats_list_element';
-import { ChatAddBlock } from '../../blocks/chat_add';
-import { CurrentChatBlock } from '../../blocks/current_chat';
-import {ChatHeaderBlock} from "~src/blocks/chat_header";
-import {ChatMessagesBlock} from '../../blocks/chat_messages';
-import UserController from '../../controllers/UserController';
-import MessageController from '../../controllers/MessageController';
-import {Chat,Message} from '../../api/ChatsAPI';
-import {User} from '../../api/AuthAPI';
-import { ModalBlock,ModalBlockProps } from '../../blocks/modal';
-import { showModal,isEmpty } from '../../utils/helpers';
+import { Input } from '~/components/input/';
+import { Button } from '~/components/button/';
+import { ConversationBlock } from '~/blocks/conversation';
+import { ChatsListElementBlock } from '~/blocks/chats_list_element';
+import { ChatAddBlock } from '~/blocks/chat_add';
+import { CurrentChatBlock } from '~/blocks/current_chat';
+import {ChatHeaderBlock} from "~/blocks/chat_header";
+import {ChatMessagesBlock} from '~/blocks/chat_messages';
+import UserController from '~/controllers/UserController';
+import MessageController from '~/controllers/MessageController';
+import {Chat,Message} from '~/api/ChatsAPI';
+import {User} from '~/api/AuthAPI';
+import { ModalBlock,ModalBlockProps } from '~/blocks/modal';
+import { showModal,isEmpty } from '~/utils/helpers';
 
-import {Token} from '../../api/ChatsAPI';
+import {Token} from '~/api/ChatsAPI';
 
 
-import store, { withStore } from '../../utils/Store';
-import {Options} from "~src/utils/httptransport";
-import formatDate from "~src/utils/formatDate";
+import store, { withStore } from '~/utils/Store';
+import {Options} from "~/utils/HTTPTransport";
+import formatDate from "~/utils/formatDate";
 
 interface ChatsPageProps {
     user:User,
@@ -77,8 +77,8 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
     let newChatSaveModalButtons = [newChatSaveButton];
 
     const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
-    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат',button:newChatSaveModalButtons} as ModalBlockProps);
-    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат', subtitle:'Введите логин пользователя, с которым хотите поговорить', button:newChatSaveModalButtons} as ModalBlockProps);
+    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm', title:'Действия чата', button:[deleteChatButton]} as ModalBlockProps);
     this.children.chatAddBlock = new ChatAddBlock({events:{click:() => showModal('newChatModalBlock')}});
 
   }

@@ -20,14 +20,13 @@ import { MenuBlock } from './blocks/menu';
 import Router from './utils/Router';
 
 import AuthController from './controllers/AuthController';
-// import UserController from './controllers/UserController';
+
 
 enum Routes {
   Index = '/',
   Register = '/sign-up',
   Messenger = '/messenger'
 }
-
 
 window.addEventListener('DOMContentLoaded', async () => {
 

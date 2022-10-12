@@ -1,6 +1,6 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './authorization_registration_input_block.hbs';
-import { Input } from '../../components/input';
+import { Input } from '~/components/input';
 
 interface AuthorizationRegistrationInputBlockProps {
   label: string;

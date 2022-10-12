@@ -1,9 +1,9 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './current_chat.hbs';
-import {ConversationBlock} from "~src/blocks/conversation";
-import {ChatHeaderBlock} from "~src/blocks/chat_header";
-import {Input} from "~src/components/input";
-import {Button} from "~src/components/button";
+import {ConversationBlock} from "~/blocks/conversation";
+import {ChatHeaderBlock} from "~/blocks/chat_header";
+import {Input} from "~/components/input";
+import {Button} from "~/components/button";
 
 interface CurrentChatBlockProps {
     currentChatName?:string,

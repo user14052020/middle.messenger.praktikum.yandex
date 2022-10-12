@@ -1,4 +1,7 @@
 {
+    "ts-node": {
+        "files": true
+    },
     "compilerOptions": {
         "outDir": "dist",
         "target": "es2016",
@@ -7,11 +10,13 @@
         "strictNullChecks": true,
         "sourceMap": true,
         "noImplicitAny": true,
-        "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "esModuleInterop": true,
+        "noUnusedLocals": false,
         "baseUrl": ".",
         "paths": {
-          "~src/*": ["src/*"]
-        } 
+          "~src/*": ["src/*"],
+            "~*": ["./src/*"]
+        }
    }
 } 

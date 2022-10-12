@@ -1,10 +1,11 @@
 import BaseAPI from './BaseAPI';
-import {Options} from '../utils/httptransport';
-import {User} from "~src/api/AuthAPI";
+import {Options} from '../utils/HTTPTransport';
+import {User} from "./AuthAPI";
+import {API_URL} from "../utils/helpers";
 
 export class UserAPI extends BaseAPI {
   constructor() {
-    super('/user');
+    super(API_URL,'/user');
   }
 
   profile(options: Options) {

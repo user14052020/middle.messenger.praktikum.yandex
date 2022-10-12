@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './chats_list_element.hbs';
 
 interface ChatsListElementBlockProps {

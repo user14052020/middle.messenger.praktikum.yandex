@@ -11,7 +11,7 @@ abstract class Block<P extends Record<string, any> = any> {
   };
 
   public id = nanoid(6);
-  protected props: P;
+  public props: P;
   public children: Record<string, Block | Block[]> ;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
@@ -88,6 +88,7 @@ abstract class Block<P extends Record<string, any> = any> {
 
   private _componentDidMount() {
     this.componentDidMount();
+    // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   componentDidMount() {}

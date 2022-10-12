@@ -1,7 +1,7 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './modal.hbs';
-import { Button } from '../../components/button/';
-import { Input } from '../../components/input/';
+import { Button } from '~/components/button/';
+import { Input } from '~/components/input/';
 
 export interface ModalBlockProps {
   modalId:string;
@@ -9,6 +9,7 @@ export interface ModalBlockProps {
   deleteChatId?:number;
   deleteUserId?:number;
   title:string;
+  subtitle?:string;
   isFileModal:Boolean;
   input?:Input;
   button:Button[];

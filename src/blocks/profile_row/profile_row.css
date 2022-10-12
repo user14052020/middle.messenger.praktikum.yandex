@@ -1,3 +1,5 @@
+@import "~/vars.css";
+
 .prof-table.d-flex {
   display: flex;
   flex-direction: column;
@@ -47,7 +49,7 @@
 }
 
 .prof-table-col-right .prof-description-value {
-  color: var(--main-input-placeholder);
+  color: var(--main-input-placeholder-color);
 }
 
 .prof-table.d-flex.data-forma {

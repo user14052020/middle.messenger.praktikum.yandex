@@ -1,6 +1,6 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './profile_change_info_row.hbs';
-import { Input } from '../../components/input';
+import { Input } from '~/components/input';
 
 interface ProfileChangeInfoRowBlockProps {
   description: string;

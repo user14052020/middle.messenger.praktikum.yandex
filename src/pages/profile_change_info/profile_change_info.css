@@ -1,3 +1,5 @@
+@import "~/vars.css";
+
 form.change-profil-forma {
   display: flex;
   flex-direction: column;

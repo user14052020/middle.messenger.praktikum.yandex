@@ -1,3 +1,11 @@
+export const API_URL:string = 'https://ya-praktikum.tech/api/v2';
+export const  PHONE_RGEX = /^[+0-9][0-9]{9,14}$/;
+export const  EMAIL_RGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export const  LOGIN_RGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,20}$/;
+export const  NAME_RGEX = /^[A-ZА-ЯЁ][ёa-zа-я-]{1,20}$/;
+export const  PASSWORD_RGEX = /(?=^.{8,40}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+export const  MESSAGE_RGEX = /^\s*$/;
+
 export type Indexed<T = any> = {
   [key in string]: T;
 };

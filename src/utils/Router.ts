@@ -2,16 +2,17 @@ import { Route } from "./Route";
 import { PlainObject } from './helpers';
 import Block from "./Block";
 
-interface ComponentConstructable<P extends Record<string, any>> {
+
+ export interface ComponentConstructable<P extends Record<string, any>> {
     new (props?: P): Block<P>
 }
- class Router {
+class Router {
 
-    protected routes:Route[];
-    protected history:History;
-    protected _currentRoute:Route|null;
-    protected _rootQuery:string;
-    private static __instance: any;
+     public routes:Route[];
+     public history:History;
+     private _currentRoute:Route|null;
+     private _rootQuery:string;
+     static __instance: any;
 
 
     constructor(rootQuery:string) {
@@ -33,6 +34,11 @@ interface ComponentConstructable<P extends Record<string, any>> {
         return this;
     }
 
+    reset() {
+        this.routes = [];
+        this._currentRoute = null;
+    }
+
     start() {
         window.onpopstate = ((event:PopStateEvent) => {
             const target = event.currentTarget as Window;
@@ -46,7 +52,7 @@ interface ComponentConstructable<P extends Record<string, any>> {
 
         const route = this.getRoute(pathname);
         if (!route) {
-            this.go('/404');
+            // this.go('/404');
             return;
         }
 

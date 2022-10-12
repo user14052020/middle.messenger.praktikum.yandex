@@ -1,12 +1,12 @@
-import Block from '../../utils/Block';
+import Block from '~/utils/Block';
 import template from './button.hbs';
-import {Options} from '../../utils/HTTPTransport';
-import {isEmpty,hideModal} from '../../utils/helpers';
-import MessageController from '../../controllers/MessageController';
-import AuthController from '../../controllers/AuthController';
-import UserController from '../../controllers/UserController';
-import {User} from '../../api/AuthAPI';
-import {Chat} from '../../api/ChatsAPI';
+import {Options} from '~/utils/HTTPTransport';
+import {isEmpty,hideModal} from '~/utils/helpers';
+import MessageController from '~/controllers/MessageController';
+import AuthController from '~/controllers/AuthController';
+import UserController from '~/controllers/UserController';
+import {User} from '~/api/AuthAPI';
+import {Chat} from '~/api/ChatsAPI';
 
 interface ButtonProps {
   url?: string;

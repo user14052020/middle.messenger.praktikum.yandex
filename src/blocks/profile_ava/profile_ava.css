@@ -1,3 +1,5 @@
+@import "~/vars.css";
+
 .profil-ava {
   display: flex;
   width: 13rem;

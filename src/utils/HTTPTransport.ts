@@ -1,3 +1,4 @@
+
 enum METHODS {
 		Get = 'GET',
 		Post = 'POST',
@@ -23,11 +24,10 @@ export interface Options {
 }
 
 export default class HTTPTransport {
-	static API_URL = 'https://ya-praktikum.tech/api/v2';
-  protected endpoint: string;
+	protected endpoint: string;
 
-   constructor(endpoint: string) {
-    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+   constructor(api:string, endpoint: string) {
+    this.endpoint = `${api}${endpoint}`;
   }
 
 	public get = (url:string, options: Omit<Options, 'method'>) => {
@@ -54,42 +54,44 @@ export default class HTTPTransport {
 				reject('No method');
 				return;
 			}
-
+			let XMLHttpRequest = require('xhr2');
 			const xhr = new XMLHttpRequest();
 			const isGet = method === METHODS.Get;
-			console.log(url);
+			console.log(isGet && !!data
+				? `${url}${queryStringify(data as Record<string, any>)}`
+				: url);
 			xhr.open(
-				method, 
+				method,
 				isGet && !!data
 				? `${url}${queryStringify(data as Record<string, any>)}`
 				: url,
 			);
-			// xhr.timeout = 2;
-		xhr.onreadystatechange = () => {
 
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status < 400) {
-					resolve(xhr.response);
-				} else {
-					reject(xhr.response);
+			xhr.onreadystatechange = () => {
+
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status < 400) {
+						resolve(xhr.response);
+					} else {
+						reject(xhr.response);
+					}
 				}
-			}
-		};
+			};
 
-      xhr.onabort = () => reject({reason: 'abort'});
-      xhr.onerror = () => reject({reason: 'network error'});
-      xhr.ontimeout = () => reject({reason: 'timeout'});
-      if(!headers){
-      	if(url.includes('avatar') === false){
-      		xhr.setRequestHeader('Content-Type', 'application/json');
-      	}  	
-      }else{
-      	Object.keys(headers).forEach(key => {
-					xhr.setRequestHeader(key, headers[key]);
+			xhr.onabort = () => reject({reason: 'abort'});
+			xhr.onerror = () => reject({reason: 'network error'});
+			xhr.ontimeout = () => reject({reason: 'timeout'});
+			if(!headers){
+				if(url.includes('avatar') === false){
+					xhr.setRequestHeader('Content-Type', 'application/json');
+				}
+			}else{
+				Object.keys(headers).forEach(key => {
+						xhr.setRequestHeader(key, headers[key]);
 				});
-      }
-      xhr.withCredentials = true;
-      xhr.responseType = 'json';
+			}
+			xhr.withCredentials = true;
+			xhr.responseType = 'json';
 
 			if (isGet || !data) {
 				xhr.send();
