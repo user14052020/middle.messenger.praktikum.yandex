@@ -41,8 +41,8 @@ class ProfilePageBase extends Block<ProfilePageProps> {
         avatarFileLink = 'https://ya-praktikum.tech/api/v2/resources'+user.user.avatar;
       }
       this.children.profileAvaBlock = new ProfileAvaBlock({events:{click:()=>showModal('profileAvaChangeModalBlock')},hasAvatar:hasAvatar, avatarFileLink:avatarFileLink});
-      const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
-      this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Загрузить файл'} as ModalBlockProps);
+      const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Change'});
+      this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Upload avatar'} as ModalBlockProps);
       const userData = [
                         {description:"E-Mail",value:user.user.email},
                         {description:"Login",value:user.user.login},
