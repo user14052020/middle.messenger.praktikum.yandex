@@ -60,31 +60,31 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       });
 
       this.children.authorizationRegistrationEmailInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Почта', errorMessage:'Invalid email address', authorizationRegistrationInput: emailInput
+        label:'Mail', errorMessage:'Invalid email address', authorizationRegistrationInput: emailInput
       });
 
       this.children.authorizationRegistrationLoginInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Логин', errorMessage:'Invalid login', authorizationRegistrationInput: loginInput
+        label:'Login', errorMessage:'Invalid login', authorizationRegistrationInput: loginInput
       });
 
       this.children.authorizationRegistrationNameInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Имя', errorMessage:'Invalid name', authorizationRegistrationInput: nameInput
+        label:'Name', errorMessage:'Invalid name', authorizationRegistrationInput: nameInput
       });
 
       this.children.authorizationRegistrationSecondnameInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Фамилия', errorMessage:'Incorrect last name', authorizationRegistrationInput: secondnameInput
+        label:'Surname', errorMessage:'Incorrect last name', authorizationRegistrationInput: secondnameInput
       });
 
       this.children.authorizationRegistrationPhoneInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Телефон', errorMessage:'Incorrect phone number',authorizationRegistrationInput: phoneInput
+        label:'Telephone', errorMessage:'Incorrect phone number',authorizationRegistrationInput: phoneInput
       });
 
       this.children.authorizationRegistrationPasswordInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль', errorMessage:'Invalid password', authorizationRegistrationInput: passwordInput
+        label:'Password', errorMessage:'Invalid password', authorizationRegistrationInput: passwordInput
       });
 
       this.children.authorizationRegistrationPasswordValInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль (ещё раз)', errorMessage:'Passwords don't match', authorizationRegistrationInput: passwordValInput
+        label:'Password (again)', errorMessage:'Passwords don`t match', authorizationRegistrationInput: passwordValInput
       });
              
     }else{
