@@ -25,23 +25,23 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     let url = '';
     if (window.location.pathname === '/profile-change-data'){
       profileChangeInfoRowBlocksData = [
-                                      {type:"text", description:"Почта", name:"email", id:"email", errorMessage:"Неверный адрес почты"},
-                                      {type:"text", description:"Логин", name:"login", id:"login", errorMessage:"Неверный Логин"},
-                                      {type:"text", description:"Имя", name:"first_name", id:"first_name", errorMessage:"Неверное Имя"},
-                                      {type:"text", description:"Фамилия", name:"second_name", id:"second_name", errorMessage:"Неверная Фамилия"},
-                                      {type:"text", description:"Имя в чате", name:"display_name", id:"display_name", errorMessage:"Неверное Имя"},
-                                      {type:"text", description:"Телефон", name:"phone", id:"phone", errorMessage:"Неверный телефон"}
+                                      {type:"text", description:"E-Mail", name:"email", id:"email", errorMessage:"Invalid email address"},
+                                      {type:"text", description:"Login", name:"login", id:"login", errorMessage:"Invalid Login"},
+                                      {type:"text", description:"Name", name:"first_name", id:"first_name", errorMessage:"Wrong Name"},
+                                      {type:"text", description:"Surname", name:"second_name", id:"second_name", errorMessage:"Wrong Last Name"},
+                                      {type:"text", description:"Name in the chat", name:"display_name", id:"display_name", errorMessage:"Wrong Name"},
+                                      {type:"text", description:"Telephone", name:"phone", id:"phone", errorMessage:"Wrong phone number"}
                                       ];
       url = 'userProfile';                                
     }else{
       profileChangeInfoRowBlocksData = [
-                                      {type:"password", description:"Старый пароль", name:"oldPassword", id:"oldPassword", errorMessage:"Неверный пароль"},
-                                      {type:"password", description:"Новый пароль", name:'newPassword', id:"password", errorMessage:"Некорректный пароль"},
-                                      {type:"password", description:"Повторите новый пароль", name:"passwordval", id:"passwordval", errorMessage:"Пароли не совпадают"}
+                                      {type:"password", description:"Old password", name:"oldPassword", id:"oldPassword", errorMessage:"Invalid password"},
+                                      {type:"password", description:"New password", name:'newPassword', id:"password", errorMessage:"Invalid password"},
+                                      {type:"password", description:"Repeat the new password", name:"passwordval", id:"passwordval", errorMessage:"Passwords don`t match"}
                                       ];
       url = 'userPassword'; 
     }
-    const profileChangeInfoSaveButton = new Button({formId:'profile-data-form',url:url,title:'Сохранить',class:'change-profil-forma-button'});
+    const profileChangeInfoSaveButton = new Button({formId:'profile-data-form',url:url,title:'Save',class:'change-profil-forma-button'});
     
     const profileSidebarBlock = new ProfileSidebarBlock({});
     const profileAvaBlock = new ProfileAvaBlock({events:{click:()=>showModal('profileAvaChangeModalBlock')},hasAvatar:false});
@@ -61,8 +61,8 @@ export class ProfileChangeInfoPage extends Block<ProfileChangeInfoPageProps> {
     this.children.profileAvaBlock = profileAvaBlock;
     this.children.profileChangeInfoRowBlock = profileChangeInfoRowBlocks;
     this.children.profileChangeInfoSaveButton = profileChangeInfoSaveButton;
-    const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
-    this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Загрузить файл'} as ModalBlockProps);
+    const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Change'});
+    this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Upload avatar'} as ModalBlockProps);
 
   }
 
