@@ -72,13 +72,13 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
     }
 
     this.children.chatsListBlocks = chatsListBlocks;
-    const newChatSaveButton = new Button({modalId:'newChatModalBlock',formId:'newChat',url:'newChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Создать чат'});
-    const newChatInput = new Input({class:'profil-modal-form-inp-holder-input', placeholder:'Введите логин пользователя',name:'newChatUserName',type:'text',inputId:'newChatUserName'});
+    const newChatSaveButton = new Button({modalId:'newChatModalBlock',formId:'newChat',url:'newChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Create a chat'});
+    const newChatInput = new Input({class:'profil-modal-form-inp-holder-input', placeholder:'Enter the user's username',name:'newChatUserName',type:'text',inputId:'newChatUserName'});
     let newChatSaveModalButtons = [newChatSaveButton];
 
-    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
-    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'Новый чат',button:newChatSaveModalButtons} as ModalBlockProps);
-    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Delete a chat'});
+    this.children.newChatModalBlock = new ModalBlock({modalId:'newChatModalBlock',formId:'newChat',input:newChatInput,title:'New chat',button:newChatSaveModalButtons} as ModalBlockProps);
+    this.children.burgerMenuModalBlock = new ModalBlock({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Chat Actions',button:[deleteChatButton]} as ModalBlockProps);
     this.children.chatAddBlock = new ChatAddBlock({events:{click:() => showModal('newChatModalBlock')}});
 
   }
@@ -107,7 +107,7 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
     this.children.chatsListBlocks = chatsListBlocks;
 
     if (typeof this.props.messages !=='undefined' ){
-        const chatMessageInput = new Input({placeholder:'Сообщение',name:'message',inputId:'message',type:'text'});
+        const chatMessageInput = new Input({placeholder:'Message',name:'message',inputId:'message',type:'text'});
         const chatMessageButton = new Button({url:'sendMessage',formId:'message-form',isSendMessageButton: true});
 
         let messagesSrc  = this.props.messages.reverse();
@@ -118,7 +118,7 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
             messages.push(chatMessagesBlock);
         });
 
-        const conversationBlock = new ConversationBlock({ date: 'Сегодня', messages: messages});
+        const conversationBlock = new ConversationBlock({ date: 'Today', messages: messages});
         conversationBlocks.push(conversationBlock);
 
         let chatHeaderBlock = new ChatHeaderBlock({currentChatName: this.props.currentChatName,events:{click:() => showModal('burgerMenuModalBlock')}});
@@ -128,17 +128,17 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
         this.children.currentChatBlock = new CurrentChatBlock({isNotHidden: false})
     }
 
-    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить чат'});
-    this.children.burgerMenuModalBlock = new ModalBlock({deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:[deleteChatButton]} as ModalBlockProps);
+    const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Delete a chat'});
+    this.children.burgerMenuModalBlock = new ModalBlock({deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Chat Actions',button:[deleteChatButton]} as ModalBlockProps);
     if (typeof this.props.currentChatUsers !=='undefined'){
         const currentChatCompanion = Array.prototype.filter.call(
             this.props.currentChatUsers,
             (user:User) => user.id !== this.props.user.id,
         );
         if(currentChatCompanion.length > 0){
-            const deleteUserFromChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteUserFromChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Удалить пользователя'});
+            const deleteUserFromChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteUserFromChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Delete a user'});
             let burgerMenuModalButtons = [deleteUserFromChatButton,deleteChatButton];
-            this.children.burgerMenuModalBlock = new ModalBlock({deleteUserId:currentChatCompanion[0].id,deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Действия чата',button:burgerMenuModalButtons} as ModalBlockProps);
+            this.children.burgerMenuModalBlock = new ModalBlock({deleteUserId:currentChatCompanion[0].id,deleteChatId:this.props.currentChatId,modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',title:'Chat Actions',button:burgerMenuModalButtons} as ModalBlockProps);
         }
     }
     if(this.props.currentChatId){
