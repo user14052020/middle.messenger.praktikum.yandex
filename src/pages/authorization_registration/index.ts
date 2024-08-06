@@ -23,12 +23,12 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
     
     if (window.location.pathname === '/sign-up'){
       const authButton = new Button({
-        formId:'auth-reg-form',url:'signUp',class:'auth-reg-form-button', isSendMessageButton: false, title:'Зарегистрироваться'
+        formId:'auth-reg-form',url:'signUp',class:'auth-reg-form-button', isSendMessageButton: false, title:'Register'
       });
       this.children.regAuthButton = authButton; 
-      this.props.regAuthLinkTitle = 'Войти'; 
+      this.props.regAuthLinkTitle = 'Log in'; 
       this.props.regAuthLink = '/';
-      this.props.title = 'Регистрация'; 
+      this.props.title = 'Registration'; 
       this.props.isRegistration = true;
 
       const loginInput = new Input({
@@ -60,40 +60,40 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       });
 
       this.children.authorizationRegistrationEmailInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Почта', errorMessage:'Некорректный адрес почты', authorizationRegistrationInput: emailInput
+        label:'Почта', errorMessage:'Invalid email address', authorizationRegistrationInput: emailInput
       });
 
       this.children.authorizationRegistrationLoginInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Логин', errorMessage:'Некорректный логин', authorizationRegistrationInput: loginInput
+        label:'Логин', errorMessage:'Invalid login', authorizationRegistrationInput: loginInput
       });
 
       this.children.authorizationRegistrationNameInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Имя', errorMessage:'Некорректное имя', authorizationRegistrationInput: nameInput
+        label:'Имя', errorMessage:'Invalid name', authorizationRegistrationInput: nameInput
       });
 
       this.children.authorizationRegistrationSecondnameInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Фамилия', errorMessage:'Некорректная фамилия', authorizationRegistrationInput: secondnameInput
+        label:'Фамилия', errorMessage:'Incorrect last name', authorizationRegistrationInput: secondnameInput
       });
 
       this.children.authorizationRegistrationPhoneInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Телефон', errorMessage:'Некорректный телефон',authorizationRegistrationInput: phoneInput
+        label:'Телефон', errorMessage:'Incorrect phone number',authorizationRegistrationInput: phoneInput
       });
 
       this.children.authorizationRegistrationPasswordInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль', errorMessage:'Некорректный пароль', authorizationRegistrationInput: passwordInput
+        label:'Пароль', errorMessage:'Invalid password', authorizationRegistrationInput: passwordInput
       });
 
       this.children.authorizationRegistrationPasswordValInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль (ещё раз)', errorMessage:'Пароли не совпадают', authorizationRegistrationInput: passwordValInput
+        label:'Пароль (ещё раз)', errorMessage:'Passwords don't match', authorizationRegistrationInput: passwordValInput
       });
              
     }else{
       this.props.title = 'Вход';
-      this.props.regAuthLinkTitle = 'Нет аккаунта?';
+      this.props.regAuthLinkTitle = 'No account?';
       this.props.regAuthLink = 'sign-up';
 
       const loginButton = new Button({
-        formId:'auth-reg-form',url:'signIn', class:'auth-reg-form-button', isSendMessageButton: false, title:'Авторизоваться'
+        formId:'auth-reg-form',url:'signIn', class:'auth-reg-form-button', isSendMessageButton: false, title:'Log in'
       });
 
       const loginInput = new Input({
@@ -107,11 +107,11 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       this.children.regAuthButton = loginButton;
 
       this.children.authorizationRegistrationLoginInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Логин', errorMessage:'Неверный логин или пароль', authorizationRegistrationInput: loginInput,
+        label:'Логин', errorMessage:'Invalid username or password', authorizationRegistrationInput: loginInput,
       });
 
       this.children.authorizationRegistrationPasswordInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль', errorMessage:'Неверный логин или пароль', authorizationRegistrationInput: passwordInput
+        label:'Пароль', errorMessage:'Invalid username or password', authorizationRegistrationInput: passwordInput
       });
     }
   }
