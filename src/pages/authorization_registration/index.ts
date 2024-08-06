@@ -88,7 +88,7 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       });
              
     }else{
-      this.props.title = 'Вход';
+      this.props.title = 'Log In';
       this.props.regAuthLinkTitle = 'No account?';
       this.props.regAuthLink = 'sign-up';
 
@@ -107,11 +107,11 @@ export class AuthorizationRegistrationPage extends Block<AuthorizationRegistrati
       this.children.regAuthButton = loginButton;
 
       this.children.authorizationRegistrationLoginInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Логин', errorMessage:'Invalid username or password', authorizationRegistrationInput: loginInput,
+        label:'Login', errorMessage:'Invalid username or password', authorizationRegistrationInput: loginInput,
       });
 
       this.children.authorizationRegistrationPasswordInputBlock = new AuthorizationRegistrationInputBlock({
-        label:'Пароль', errorMessage:'Invalid username or password', authorizationRegistrationInput: passwordInput
+        label:'Password', errorMessage:'Invalid username or password', authorizationRegistrationInput: passwordInput
       });
     }
   }
