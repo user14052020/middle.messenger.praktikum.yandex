@@ -73,7 +73,7 @@ export class ChatsPageBase extends Block<ChatsPageProps> {
 
     this.children.chatsListBlocks = chatsListBlocks;
     const newChatSaveButton = new Button({modalId:'newChatModalBlock',formId:'newChat',url:'newChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Create a chat'});
-    const newChatInput = new Input({class:'profil-modal-form-inp-holder-input', placeholder:'Enter the user's username',name:'newChatUserName',type:'text',inputId:'newChatUserName'});
+    const newChatInput = new Input({class:'profil-modal-form-inp-holder-input', placeholder:'Enter the user`s username',name:'newChatUserName',type:'text',inputId:'newChatUserName'});
     let newChatSaveModalButtons = [newChatSaveButton];
 
     const deleteChatButton = new Button({modalId:'burgerMenuModalBlock',formId:'chatHeaderBurgerMenuModalForm',url:'deleteChat',class:'profil-modal-form-button', isSendMessageButton: false, title:'Delete a chat'});
