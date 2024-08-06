@@ -14,10 +14,10 @@ export class ErrorPage extends Block<ErrorPageProps> {
   init() {
     if(window.location.pathname === '/404'){
       this.props.errorCode = '404';
-      this.props.errorMessage = 'Не туда попали';
+      this.props.errorMessage = 'Wrong place';
     }else{
       this.props.errorCode = '500';
-      this.props.errorMessage = 'Уже чиним';
+      this.props.errorMessage = 'We`re already fixing it';
     }
   }
 
