@@ -2,7 +2,7 @@
 # sprint
 The project work within Yandex Practicum Middle Frontend Course Sprint 3 includes the implementation of a chat web application with an HTML template engine and CSS preprocessor. TypeScript has been enabled and a component approach has been adopted. A class has been created for working with queries, and ESLint and Stylelint have been added. Routing has been configured in the project and interaction with the API has been implemented, including user registration, editing, chat creation, adding and deleting users from chats, and sending messages. The project has also been protected against XSS and DOS attacks.
 # UI
-https://www.figma.com/file/kmLuPGnncVioppcBkxk9xx/sprint_1_chat
+[https://www.figma.com/file/kmLuPGnncVioppcBkxk9xx/sprint_1_chat](https://www.figma.com/design/kmLuPGnncVioppcBkxk9xx/sprint_1_chat?m=auto&t=FOtqXT4J9NC4I3Uy-6)
 # сборка
 npm run build 
 # запуск
