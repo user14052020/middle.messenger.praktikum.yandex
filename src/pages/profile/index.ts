@@ -32,7 +32,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
     //   AuthController.fetchUser();
     const user = store.getState();
     if (Object.keys(user).length !== 0 ){
-      this.children.logoutLink = new Link({ label: 'Выйти', class:'out-profil-link', events: {click: (e:Event) => {e.preventDefault(); AuthController.logout();}}});
+      this.children.logoutLink = new Link({ label: 'Exit', class:'out-profil-link', events: {click: (e:Event) => {e.preventDefault(); AuthController.logout();}}});
       this.children.profileSidebarBlock = new ProfileSidebarBlock({} as ProfileSidebarBlockProps);
       let hasAvatar = false;
       let avatarFileLink = '';
@@ -44,16 +44,16 @@ class ProfilePageBase extends Block<ProfilePageProps> {
       const saveAvaButton = new Button({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',url:'avatar',class:'profil-modal-form-button', isSendMessageButton: false, title:'Поменять'});
       this.children.profileAvaChangeModalBlock = new ModalBlock({modalId:'profileAvaChangeModalBlock',formId:'change-avatar-modal',isFileModal:true, button:[saveAvaButton],title:'Загрузить файл'} as ModalBlockProps);
       const userData = [
-                        {description:"Почта",value:user.user.email},
-                        {description:"Логин",value:user.user.login},
-                        {description:"Имя",value:user.user.first_name},
-                        {description:"Фамилия", value:user.user.second_name},
-                        {description:"Имя в чате", value:user.user.display_name},
-                        { description:"Телефон", value:user.user.phone}
+                        {description:"E-Mail",value:user.user.email},
+                        {description:"Login",value:user.user.login},
+                        {description:"Name",value:user.user.first_name},
+                        {description:"Surname", value:user.user.second_name},
+                        {description:"Name in the chat", value:user.user.display_name},
+                        { description:"Telephone", value:user.user.phone}
                       ];
       const profileChangeLinksData = [
-                                    {description:"Изменить данные",link:"profile-change-data"},
-                                    {description:"Изменить пароль",link:"profile-change-pass"},
+                                    {description:"Change the data",link:"profile-change-data"},
+                                    {description:"Change the password",link:"profile-change-pass"},
                                     ];
       
       let profileChangeLinkBlocks:ProfileChangeLinkBlock[] = [];                                       
